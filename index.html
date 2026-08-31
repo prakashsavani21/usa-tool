@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USA Free Tools</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+      background: #111827;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>USA Free Tools</h1>
+    <p>Simple, fast and free online tools</p>
+  </header>
+
+  <div class="container">
+
+    <div class="tools">
+
+      <div class="card">
+        <h2>💰 Tip Calculator</h2>
+        <p>Calculate your restaurant tip quickly.</p>
+
+        <input type="number" id="bill" placeholder="Bill amount ($)">
+        <input type="number" id="tip" placeholder="Tip percentage (%)">
+
+        <button onclick="calculateTip()">Calculate</button>
+
+        <div class="result" id="tipResult"></div>
+      </div>
+
+      <div class="card">
+        <h2>🧮 Percentage Calculator</h2>
+        <p>Calculate a percentage of any number.</p>
+
+        <input type="number" id="number" placeholder="Number">
+        <input type="number" id="percent" placeholder="Percentage (%)">
+
+        <button onclick="calculatePercent()">Calculate</button>
+
+        <div class="result" id="percentResult"></div>
+      </div>
+
+      <div class="card">
+        <h2>📅 Age Calculator</h2>
+        <p>Calculate your age from your birth date.</p>
+
+        <input type="date" id="birthdate">
+
+        <button onclick="calculateAge()">Calculate Age</button>
+
+        <div class="result" id="ageResult"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 USA Free Tools</p>
+    <p>Free online tools for everyone.</p>
+  </footer>
+
+  <script>
+
+    function calculateTip() {
+      let bill = parseFloat(document.getElementById("bill").value);
+      let tip = parseFloat(document.getElementById("tip").value);
+
+      if (isNaN(bill) || isNaN(tip)) {
+        document.getElementById("tipResult").innerText =
+          "Please enter both values.";
+        return;
+      }
+
+      let tipAmount = bill * tip / 100;
+      let total = bill + tipAmount;
+
+      document.getElementById("tipResult").innerText =
+        "Tip: $" + tipAmount.toFixed(2) +
+        " | Total: $" + total.toFixed(2);
+    }
+
+    function calculatePercent() {
+      let number = parseFloat(document.getElementById("number").value);
+      let percent = parseFloat(document.getElementById("percent").value);
+
+      if (isNaN(number) || isNaN(percent)) {
+        document.getElementById("percentResult").innerText =
+          "Please enter both values.";
+        return;
+      }
+
+      let result = number * percent / 100;
+
+      document.getElementById("percentResult").innerText =
+        percent + "% of " + number + " = " + result;
+    }
+
+    function calculateAge() {
+      let birth = document.getElementById("birthdate").value;
+
+      if (!birth) {
+        document.getElementById("ageResult").innerText =
+          "Please select your birth date.";
+        return;
+      }
+
+      let birthDate = new Date(birth);
+      let today = new Date();
+
+      let age = today.getFullYear() - birthDate.getFullYear();
+
+      let month = today.getMonth() - birthDate.getMonth();
+
+      if (
+        month < 0 ||
+        (month === 0 && today.getDate() < birthDate.getDate())
+      ) {
+        age--;
+      }
+
+      document.getElementById("ageResult").innerText =
+        "Your age is " + age + " years.";
+    }
+
+  </script>
+
+</body>
+</html>
