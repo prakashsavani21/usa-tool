@@ -46,7 +46,46 @@ footer{margin-top:70px;background:#0f172a;color:#fff;padding:45px 20px 25px}.foo
 <main class="container">
 <section id="tools"><div class="section-title"><h2>Our Free Tools</h2><p>Choose a calculator and get your result instantly.</p></div>
 <div class="tools" id="toolGrid">
-<article class="card tool-card"><div class="card-icon">💰</div><h3>Tip Calculator</h3><p>Calculate restaurant tip and total bill quickly.</p><input class="input" type="number" id="bill" placeholder="Bill amount ($)" min="0" step=".01"><input class="input" type="number" id="tip" placeholder="Tip percentage (%)" min="0" step=".1"><button onclick="calculateTip()">Calculate Tip</button><div class="result" id="tipResult" aria-live="polite"></div></article>
+<article class="card tool-card">
+  <div class="card-icon">💰</div>
+
+  <h3>Tip Calculator</h3>
+
+  <p>
+    Calculate restaurant tip, total bill and amount per person.
+  </p>
+
+  <input
+    type="number"
+    id="bill"
+    placeholder="Bill amount ($)"
+    min="0"
+    step="0.01"
+  >
+
+  <input
+    type="number"
+    id="tip"
+    placeholder="Tip percentage (%)"
+    min="0"
+    step="0.1"
+  >
+
+  <input
+    type="number"
+    id="people"
+    placeholder="Number of people"
+    min="1"
+    step="1"
+    value="1"
+  >
+
+  <button onclick="calculateTip()">
+    Calculate Tip
+  </button>
+
+  <div class="result" id="tipResult"></div>
+</article>
 <article class="card tool-card"><div class="card-icon">🧮</div><h3>Percentage Calculator</h3><p>Find any percentage of a number in seconds.</p><input class="input" type="number" id="number" placeholder="Number" step="any"><input class="input" type="number" id="percent" placeholder="Percentage (%)" step="any"><button onclick="calculatePercent()">Calculate Percentage</button><div class="result" id="percentResult" aria-live="polite"></div></article>
 <article class="card tool-card"><div class="card-icon">🎂</div><h3>Age Calculator</h3><p>Calculate your age from your date of birth.</p><input class="input" type="date" id="birthdate"><button onclick="calculateAge()">Calculate Age</button><div class="result" id="ageResult" aria-live="polite"></div></article>
 <article class="card tool-card"><div class="card-icon">🏷️</div><h3>Discount Calculator</h3><p>Calculate sale price and total savings.</p><input class="input" type="number" id="price" placeholder="Original price ($)" min="0" step=".01"><input class="input" type="number" id="discount" placeholder="Discount (%)" min="0" max="100" step=".1"><button onclick="calculateDiscount()">Calculate Discount</button><div class="result" id="discountResult" aria-live="polite"></div></article>
@@ -90,7 +129,28 @@ so you can use our calculators wherever you need them.
 <script>
 function setResult(id,msg,type="success"){const e=document.getElementById(id);e.textContent=msg;e.className="result "+type}
 function n(id){return parseFloat(document.getElementById(id).value)}
-function calculateTip(){const b=n("bill"),t=n("tip");if(!Number.isFinite(b)||!Number.isFinite(t)||b<0||t<0)return setResult("tipResult","Please enter valid values.","error");const x=b*t/100;setResult("tipResult",`Tip: $${x.toFixed(2)} | Total: $${(b+x).toFixed(2)}`)}
+function calculateTip(){
+
+  const bill = parseFloat(document.getElementById("bill").value);
+  const tip = parseFloat(document.getElementById("tip").value);
+  const people = parseInt(document.getElementById("people").value);
+
+  const result = document.getElementById("tipResult");
+
+  if (!Number.isFinite(bill) || !Number.isFinite(tip) || !Number.isFinite(people) || people < 1) {
+    result.innerText = "Please enter valid values.";
+    return;
+  }
+
+  const tipAmount = bill * tip / 100;
+  const total = bill + tipAmount;
+  const perPerson = total / people;
+
+  result.innerHTML =
+    "Tip: $" + tipAmount.toFixed(2) +
+    "<br>Total Bill: $" + total.toFixed(2) +
+    "<br>Per Person: $" + perPerson.toFixed(2);
+}
 function calculatePercent(){const x=n("number"),p=n("percent");if(!Number.isFinite(x)||!Number.isFinite(p))return setResult("percentResult","Please enter both values.","error");setResult("percentResult",`${p}% of ${x} = ${(x*p/100).toFixed(2)}`)}
 function calculateAge(){const v=document.getElementById("birthdate").value;if(!v)return setResult("ageResult","Please select your birth date.","error");const b=new Date(v+"T00:00:00"),d=new Date();if(b>d)return setResult("ageResult","Birth date cannot be in the future.","error");let a=d.getFullYear()-b.getFullYear(),m=d.getMonth()-b.getMonth();if(m<0||(m===0&&d.getDate()<b.getDate()))a--;setResult("ageResult",`Your age is ${a} years.`)}
 function calculateDiscount(){const p=n("price"),d=n("discount");if(!Number.isFinite(p)||!Number.isFinite(d)||p<0||d<0||d>100)return setResult("discountResult","Enter a valid price and discount from 0% to 100%.","error");const s=p*d/100;setResult("discountResult",`You save: $${s.toFixed(2)} | Sale price: $${(p-s).toFixed(2)}`)}
