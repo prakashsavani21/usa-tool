@@ -1,4 +1,342 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USA Free Tools - Free Online Calculators</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#222;
+}
+
+header{
+background:#111827;
+color:white;
+text-align:center;
+padding:40px 20px;
+}
+
+header h1{
+margin:0 0 10px;
+font-size:36px;
+}
+
+header p{
+margin:0;
+font-size:18px;
+}
+
+.container{
+max-width:1050px;
+margin:35px auto;
+padding:0 18px;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:22px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card h2{
+margin-top:0;
+font-size:25px;
+}
+
+.card p{
+color:#555;
+line-height:1.5;
+}
+
+input{
+width:100%;
+padding:13px;
+margin:7px 0;
+border:1px solid #ccc;
+border-radius:9px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:13px;
+border:0;
+border-radius:9px;
+background:#2563eb;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:8px;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.result{
+margin-top:15px;
+font-weight:bold;
+font-size:17px;
+line-height:1.6;
+}
+
+footer{
+text-align:center;
+padding:35px 20px;
+margin-top:40px;
+background:#111827;
+color:white;
+}
+
+footer p{
+margin:7px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>USA Free Tools</h1>
+<p>Simple, fast and free online calculators</p>
+</header>
+
+<div class="container">
+
+<div class="tools">
+
+<!-- TIP CALCULATOR -->
+<div class="card">
+<h2>💰 Tip Calculator</h2>
+<p>Calculate restaurant tip and total bill.</p>
+
+<input type="number" id="bill" placeholder="Bill amount ($)">
+<input type="number" id="tip" placeholder="Tip percentage (%)">
+
+<button onclick="calculateTip()">Calculate</button>
+
+<div class="result" id="tipResult"></div>
+</div>
+
+
+<!-- PERCENTAGE CALCULATOR -->
+<div class="card">
+<h2>🧮 Percentage Calculator</h2>
+<p>Find a percentage of any number.</p>
+
+<input type="number" id="number" placeholder="Number">
+<input type="number" id="percent" placeholder="Percentage (%)">
+
+<button onclick="calculatePercent()">Calculate</button>
+
+<div class="result" id="percentResult"></div>
+</div>
+
+
+<!-- AGE CALCULATOR -->
+<div class="card">
+<h2>🎂 Age Calculator</h2>
+<p>Calculate your age from your birth date.</p>
+
+<input type="date" id="birthdate">
+
+<button onclick="calculateAge()">Calculate Age</button>
+
+<div class="result" id="ageResult"></div>
+</div>
+
+
+<!-- DISCOUNT CALCULATOR -->
+<div class="card">
+<h2>🏷️ Discount Calculator</h2>
+<p>Calculate sale price and how much you save.</p>
+
+<input type="number" id="price" placeholder="Original price ($)">
+<input type="number" id="discount" placeholder="Discount (%)">
+
+<button onclick="calculateDiscount()">Calculate</button>
+
+<div class="result" id="discountResult"></div>
+</div>
+
+
+<!-- AVERAGE CALCULATOR -->
+<div class="card">
+<h2>📊 Average Calculator</h2>
+<p>Calculate the average of multiple numbers.</p>
+
+<input type="text" id="numbers" placeholder="Example: 10, 20, 30, 40">
+
+<button onclick="calculateAverage()">Calculate</button>
+
+<div class="result" id="averageResult"></div>
+</div>
+
+
+<!-- SIMPLE INTEREST -->
+<div class="card">
+<h2>💵 Interest Calculator</h2>
+<p>Calculate simple interest quickly.</p>
+
+<input type="number" id="principal" placeholder="Principal amount ($)">
+<input type="number" id="rate" placeholder="Annual interest rate (%)">
+<input type="number" id="years" placeholder="Years">
+
+<button onclick="calculateInterest()">Calculate</button>
+
+<div class="result" id="interestResult"></div>
+</div>
+
+</div>
+</div>
+
+
+<footer>
+<p>© 2026 USA Free Tools</p>
+<p>Free online tools for everyone.</p>
+</footer>
+
+
+<script>
+
+function calculateTip(){
+
+let bill=parseFloat(document.getElementById("bill").value);
+let tip=parseFloat(document.getElementById("tip").value);
+
+if(isNaN(bill)||isNaN(tip)){
+document.getElementById("tipResult").innerText="Please enter both values.";
+return;
+}
+
+let tipAmount=bill*tip/100;
+let total=bill+tipAmount;
+
+document.getElementById("tipResult").innerText=
+"Tip: $"+tipAmount.toFixed(2)+" | Total: $"+total.toFixed(2);
+}
+
+
+function calculatePercent(){
+
+let number=parseFloat(document.getElementById("number").value);
+let percent=parseFloat(document.getElementById("percent").value);
+
+if(isNaN(number)||isNaN(percent)){
+document.getElementById("percentResult").innerText="Please enter both values.";
+return;
+}
+
+let result=number*percent/100;
+
+document.getElementById("percentResult").innerText=
+percent+"% of "+number+" = "+result.toFixed(2);
+}
+
+
+function calculateAge(){
+
+let birth=document.getElementById("birthdate").value;
+
+if(!birth){
+document.getElementById("ageResult").innerText="Please select your birth date.";
+return;
+}
+
+let birthDate=new Date(birth);
+let today=new Date();
+
+let age=today.getFullYear()-birthDate.getFullYear();
+
+let month=today.getMonth()-birthDate.getMonth();
+
+if(month<0||(month===0&&today.getDate()<birthDate.getDate())){
+age--;
+}
+
+document.getElementById("ageResult").innerText=
+"Your age is "+age+" years.";
+}
+
+
+function calculateDiscount(){
+
+let price=parseFloat(document.getElementById("price").value);
+let discount=parseFloat(document.getElementById("discount").value);
+
+if(isNaN(price)||isNaN(discount)){
+document.getElementById("discountResult").innerText="Please enter both values.";
+return;
+}
+
+let saved=price*discount/100;
+let finalPrice=price-saved;
+
+document.getElementById("discountResult").innerText=
+"You save: $"+saved.toFixed(2)+
+" | Sale price: $"+finalPrice.toFixed(2);
+}
+
+
+function calculateAverage(){
+
+let text=document.getElementById("numbers").value;
+
+let values=text.split(",")
+.map(x=>parseFloat(x.trim()))
+.filter(x=>!isNaN(x));
+
+if(values.length===0){
+document.getElementById("averageResult").innerText=
+"Enter numbers separated by commas.";
+return;
+}
+
+let total=values.reduce((a,b)=>a+b,0);
+let average=total/values.length;
+
+document.getElementById("averageResult").innerText=
+"Average: "+average.toFixed(2);
+}
+
+
+function calculateInterest(){
+
+let principal=parseFloat(document.getElementById("principal").value);
+let rate=parseFloat(document.getElementById("rate").value);
+let years=parseFloat(document.getElementById("years").value);
+
+if(isNaN(principal)||isNaN(rate)||isNaN(years)){
+document.getElementById("interestResult").innerText=
+"Please enter all values.";
+return;
+}
+
+let interest=principal*rate*years/100;
+let total=principal+interest;
+
+document.getElementById("interestResult").innerText=
+"Interest: $"+interest.toFixed(2)+
+" | Total: $"+total.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
