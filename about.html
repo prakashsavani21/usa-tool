@@ -4,66 +4,191 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>About Us - USA Free Tools</title>
+<title>About Us | USA Free Tools</title>
+
+<meta name="description" content="Learn about USA Free Tools, a free website providing simple online calculators for everyday calculations.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://prakashsavani21.github.io/usa-tool/about.html">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f7fb;
-  color: #222;
+*{
+  box-sizing:border-box;
 }
 
-header {
-  background: #111827;
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.6;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 34px;
+header{
+  background:linear-gradient(135deg,#0f172a,#1d4ed8);
+  color:white;
+  padding:20px;
 }
 
-.container {
-  max-width: 800px;
-  margin: 35px auto;
-  padding: 30px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+.navbar{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-h2 {
-  margin-top: 25px;
+.logo{
+  color:white;
+  text-decoration:none;
+  font-size:22px;
+  font-weight:800;
 }
 
-p {
-  line-height: 1.7;
-  color: #444;
+.nav-links{
+  display:flex;
+  gap:22px;
 }
 
-a {
-  color: #2563eb;
-  text-decoration: none;
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
 }
 
-.home {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 18px;
-  background: #2563eb;
-  color: white;
-  border-radius: 8px;
+.nav-links a:hover{
+  text-decoration:underline;
 }
 
-footer {
-  margin-top: 40px;
-  padding: 30px;
-  background: #111827;
-  color: white;
-  text-align: center;
+.hero{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  padding:60px 20px;
+}
+
+.hero h1{
+  margin:0 0 10px;
+  font-size:42px;
+}
+
+.hero p{
+  margin:0;
+  color:#dbeafe;
+  font-size:18px;
+}
+
+.container{
+  max-width:900px;
+  margin:45px auto;
+  padding:0 20px;
+}
+
+.content{
+  background:white;
+  padding:35px;
+  border-radius:20px;
+  border:1px solid #e5e7eb;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);
+}
+
+h2{
+  margin-top:0;
+  margin-bottom:10px;
+  font-size:27px;
+}
+
+h2:not(:first-child){
+  margin-top:32px;
+}
+
+p{
+  color:#475467;
+}
+
+.tool-list{
+  padding-left:22px;
+  color:#475467;
+}
+
+.tool-list li{
+  margin:8px 0;
+}
+
+.home{
+  display:inline-block;
+  margin-top:25px;
+  padding:13px 20px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:700;
+}
+
+.home:hover{
+  background:#1d4ed8;
+}
+
+footer{
+  margin-top:70px;
+  background:#0f172a;
+  color:white;
+  padding:40px 20px 25px;
+  text-align:center;
+}
+
+footer p{
+  color:#cbd5e1;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  color:white;
+  text-decoration:none;
+}
+
+.footer-links a:hover{
+  text-decoration:underline;
+}
+
+.copyright{
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid #334155;
+  color:#94a3b8;
+  font-size:14px;
+}
+
+@media(max-width:650px){
+
+  .navbar{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .nav-links{
+    gap:15px;
+  }
+
+  .hero{
+    padding:45px 20px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .content{
+    padding:25px;
+  }
 }
 </style>
 </head>
@@ -71,46 +196,127 @@ footer {
 <body>
 
 <header>
-  <h1>About USA Free Tools</h1>
+
+  <div class="navbar">
+
+    <a class="logo" href="index.html">
+      USA Free Tools
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </div>
+
+  <div class="hero">
+
+    <h1>About USA Free Tools</h1>
+
+    <p>
+      Simple and useful online calculators for everyday needs.
+    </p>
+
+  </div>
+
 </header>
 
-<div class="container">
 
-<h2>Welcome to USA Free Tools</h2>
+<main class="container">
 
-<p>
-USA Free Tools is a free online tools website designed to provide
-simple and useful calculators for everyday needs.
-</p>
+  <article class="content">
 
-<h2>Our Purpose</h2>
+    <h2>Welcome to USA Free Tools</h2>
 
-<p>
-Our goal is to make common calculations quick, simple and accessible
-without requiring users to install any software.
-</p>
+    <p>
+      USA Free Tools is a free online tools website created to provide
+      simple and useful calculators for everyday calculations.
+      Our goal is to make common calculations quick and easy to access
+      from any modern web browser.
+    </p>
 
-<h2>Our Tools</h2>
 
-<p>
-We provide free online calculators such as tip, percentage, age,
-discount, average and simple interest calculators.
-</p>
+    <h2>Our Purpose</h2>
 
-<h2>Free to Use</h2>
+    <p>
+      We aim to provide straightforward online tools that do not require
+      users to download or install additional software. Our calculators
+      are designed to work across phones, tablets and desktop computers.
+    </p>
 
-<p>
-All tools on this website are provided for general informational
-and calculation purposes. We aim to keep our tools simple and easy
-to use on both mobile phones and computers.
-</p>
 
-<a class="home" href="index.html">← Back to Home</a>
+    <h2>Our Calculators</h2>
 
-</div>
+    <p>
+      USA Free Tools currently provides calculators for several common
+      everyday tasks, including:
+    </p>
+
+    <ul class="tool-list">
+      <li>Tip Calculator</li>
+      <li>Percentage Calculator</li>
+      <li>Age Calculator</li>
+      <li>Discount Calculator</li>
+      <li>Average Calculator</li>
+      <li>Simple Interest Calculator</li>
+    </ul>
+
+
+    <h2>Free to Use</h2>
+
+    <p>
+      Our online calculators are free to use. The tools are designed
+      to provide quick results directly in your browser.
+    </p>
+
+
+    <h2>Important Information</h2>
+
+    <p>
+      The calculators on this website are provided for general
+      informational and educational purposes. Results should be
+      independently verified when accuracy is important, particularly
+      for financial or other important decisions.
+    </p>
+
+
+    <h2>Our Commitment</h2>
+
+    <p>
+      We aim to keep USA Free Tools simple, useful and easy to navigate.
+      We may add more calculators and improvements over time to make
+      the website more useful for visitors.
+    </p>
+
+
+    <a class="home" href="index.html">
+      ← Back to Home
+    </a>
+
+  </article>
+
+</main>
+
 
 <footer>
-<p>© 2026 USA Free Tools</p>
+
+  <div class="footer-links">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About Us</a>
+
+    <a href="contact.html">Contact Us</a>
+
+    <a href="privacy.html">Privacy Policy</a>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 USA Free Tools. All rights reserved.
+  </div>
+
 </footer>
 
 </body>
