@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prakashsavani21.github.io/usa-tool/sitemap.xml
