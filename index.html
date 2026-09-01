@@ -3,115 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>USA Free Tools - Free Online Calculators</title>
 
+<meta name="description" content="Free online calculators for tips, percentages, age, discounts, averages and simple interest. Fast, easy and mobile-friendly.">
+
+<meta name="robots" content="index, follow">
+
 <style>
-  footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 5px;
+*{
+  box-sizing:border-box;
 }
 
-footer a:hover {
-  text-decoration: underline;
+html{
+  scroll-behavior:smooth;
 }
-*{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#222;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f6f8fc;
+  color:#172033;
+  line-height:1.6;
 }
+
+a{
+  color:inherit;
+}
+
+/* HEADER */
 
 header{
-background:#111827;
-color:white;
-text-align:center;
-padding:40px 20px;
+  background:linear-gradient(135deg,#111827,#1e3a8a);
+  color:white;
+  padding:20px;
 }
 
-header h1{
-margin:0 0 10px;
-font-size:36px;
+.navbar{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
 }
 
-header p{
-margin:0;
-font-size:18px;
+.logo{
+  font-size:22px;
+  font-weight:800;
+  text-decoration:none;
 }
+
+.nav-links{
+  display:flex;
+  gap:20px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  opacity:.9;
+}
+
+.nav-links a:hover{
+  opacity:1;
+  text-decoration:underline;
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  max-width:850px;
+  margin:55px auto 35px;
+  padding:0 20px;
+}
+
+.hero h1{
+  font-size:42px;
+  line-height:1.15;
+  margin:0 0 15px;
+}
+
+.hero p{
+  font-size:18px;
+  color:#dbeafe;
+  margin:0 auto;
+}
+
+/* SEARCH */
+
+.search-box{
+  max-width:600px;
+  margin:28px auto 0;
+}
+
+.search-box input{
+  width:100%;
+  padding:15px 18px;
+  border:0;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+/* MAIN */
 
 .container{
-max-width:1050px;
-margin:35px auto;
-padding:0 18px;
+  max-width:1150px;
+  margin:0 auto;
+  padding:20px;
 }
 
+.section-title{
+  text-align:center;
+  margin:15px 0 25px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:30px;
+}
+
+.section-title p{
+  margin:8px 0;
+  color:#667085;
+}
+
+/* TOOLS */
+
 .tools{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
 }
 
 .card{
-background:white;
-padding:25px;
-border-radius:16px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  border:1px solid #e7eaf0;
+  box-shadow:0 8px 25px rgba(15,23,42,.06);
+  transition:transform .2s,box-shadow .2s;
 }
 
-.card h2{
-margin-top:0;
-font-size:25px;
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(15,23,42,.10);
+}
+
+.card-icon{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.card h3{
+  margin:0 0 7px;
+  font-size:21px;
 }
 
 .card p{
-color:#555;
-line-height:1.5;
+  color:#667085;
+  font-size:14px;
+  margin-bottom:18px;
 }
 
+/* FORM */
+
 input{
-width:100%;
-padding:13px;
-margin:7px 0;
-border:1px solid #ccc;
-border-radius:9px;
-font-size:16px;
+  width:100%;
+  padding:13px 14px;
+  margin:5px 0;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  font-size:15px;
+  background:white;
+  outline:none;
+}
+
+input:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 0 3px rgba(37,99,235,.12);
 }
 
 button{
-width:100%;
-padding:13px;
-border:0;
-border-radius:9px;
-background:#2563eb;
-color:white;
-font-size:16px;
-cursor:pointer;
-margin-top:8px;
+  width:100%;
+  padding:13px;
+  margin-top:8px;
+  border:0;
+  border-radius:9px;
+  background:#2563eb;
+  color:white;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
 }
 
 button:hover{
-opacity:.9;
+  background:#1d4ed8;
 }
 
 .result{
-margin-top:15px;
-font-weight:bold;
-font-size:17px;
-line-height:1.6;
+  min-height:25px;
+  margin-top:15px;
+  padding:10px;
+  border-radius:8px;
+  background:#f1f5f9;
+  color:#172033;
+  font-weight:700;
+  font-size:14px;
 }
+
+/* INFO */
+
+.info-section{
+  max-width:900px;
+  margin:60px auto 20px;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  border:1px solid #e7eaf0;
+}
+
+.info-section h2{
+  margin-top:0;
+  font-size:27px;
+}
+
+.info-section h3{
+  margin-top:25px;
+}
+
+.info-section p{
+  color:#475467;
+}
+
+/* FAQ */
+
+.faq{
+  max-width:900px;
+  margin:30px auto 60px;
+}
+
+.faq-item{
+  background:white;
+  margin-bottom:12px;
+  padding:18px 20px;
+  border-radius:12px;
+  border:1px solid #e7eaf0;
+}
+
+.faq-item h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.faq-item p{
+  margin:0;
+  color:#667085;
+}
+
+/* FOOTER */
 
 footer{
-text-align:center;
-padding:35px 20px;
-margin-top:40px;
-background:#111827;
-color:white;
+  background:#111827;
+  color:white;
+  margin-top:60px;
+  padding:40px 20px;
 }
 
-footer p{
-margin:7px;
+.footer-inner{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.footer-brand{
+  max-width:400px;
+}
+
+.footer-brand h3{
+  margin-top:0;
+}
+
+.footer-brand p{
+  color:#cbd5e1;
+}
+
+.footer-links{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.footer-links a{
+  color:white;
+  text-decoration:none;
+}
+
+.footer-links a:hover{
+  text-decoration:underline;
+}
+
+.copyright{
+  max-width:1150px;
+  margin:25px auto 0;
+  padding-top:20px;
+  border-top:1px solid #374151;
+  color:#9ca3af;
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .tools{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:650px){
+
+  .navbar{
+    flex-direction:column;
+  }
+
+  .nav-links{
+    gap:14px;
+  }
+
+  .hero{
+    margin-top:35px;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .tools{
+    grid-template-columns:1fr;
+  }
+
+  .container{
+    padding:15px;
+  }
+
+  .info-section{
+    padding:22px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+  }
 }
 </style>
 </head>
@@ -119,233 +372,632 @@ margin:7px;
 <body>
 
 <header>
-<h1>USA Free Tools</h1>
-<p>Simple, fast and free online calculators</p>
+
+  <div class="navbar">
+
+    <a class="logo" href="index.html">
+      USA Free Tools
+    </a>
+
+    <nav class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </div>
+
+  <div class="hero">
+
+    <h1>Free Online Calculators</h1>
+
+    <p>
+      Simple, fast and easy-to-use calculators for everyday calculations.
+      No installation required.
+    </p>
+
+    <div class="search-box">
+      <input
+        type="search"
+        id="toolSearch"
+        placeholder="Search calculators..."
+        onkeyup="searchTools()"
+        aria-label="Search calculators"
+      >
+    </div>
+
+  </div>
+
 </header>
 
-<div class="container">
 
-<div class="tools">
+<main class="container">
 
-<!-- TIP CALCULATOR -->
-<div class="card">
-<h2>💰 Tip Calculator</h2>
-<p>Calculate restaurant tip and total bill.</p>
+  <div class="section-title" id="tools">
 
-<input type="number" id="bill" placeholder="Bill amount ($)">
-<input type="number" id="tip" placeholder="Tip percentage (%)">
+    <h2>Our Free Tools</h2>
 
-<button onclick="calculateTip()">Calculate</button>
+    <p>
+      Choose a calculator below and get your result instantly.
+    </p>
 
-<div class="result" id="tipResult"></div>
-</div>
+  </div>
 
 
-<!-- PERCENTAGE CALCULATOR -->
-<div class="card">
-<h2>🧮 Percentage Calculator</h2>
-<p>Find a percentage of any number.</p>
-
-<input type="number" id="number" placeholder="Number">
-<input type="number" id="percent" placeholder="Percentage (%)">
-
-<button onclick="calculatePercent()">Calculate</button>
-
-<div class="result" id="percentResult"></div>
-</div>
+  <div class="tools" id="toolGrid">
 
 
-<!-- AGE CALCULATOR -->
-<div class="card">
-<h2>🎂 Age Calculator</h2>
-<p>Calculate your age from your birth date.</p>
+    <!-- TIP -->
 
-<input type="date" id="birthdate">
+    <div class="card tool-card">
 
-<button onclick="calculateAge()">Calculate Age</button>
+      <div class="card-icon">💰</div>
 
-<div class="result" id="ageResult"></div>
-</div>
+      <h3>Tip Calculator</h3>
 
+      <p>
+        Calculate restaurant tip and total bill quickly.
+      </p>
 
-<!-- DISCOUNT CALCULATOR -->
-<div class="card">
-<h2>🏷️ Discount Calculator</h2>
-<p>Calculate sale price and how much you save.</p>
+      <input
+        type="number"
+        id="bill"
+        placeholder="Bill amount ($)"
+        min="0"
+      >
 
-<input type="number" id="price" placeholder="Original price ($)">
-<input type="number" id="discount" placeholder="Discount (%)">
+      <input
+        type="number"
+        id="tip"
+        placeholder="Tip percentage (%)"
+        min="0"
+      >
 
-<button onclick="calculateDiscount()">Calculate</button>
+      <button onclick="calculateTip()">
+        Calculate Tip
+      </button>
 
-<div class="result" id="discountResult"></div>
-</div>
+      <div class="result" id="tipResult"></div>
 
-
-<!-- AVERAGE CALCULATOR -->
-<div class="card">
-<h2>📊 Average Calculator</h2>
-<p>Calculate the average of multiple numbers.</p>
-
-<input type="text" id="numbers" placeholder="Example: 10, 20, 30, 40">
-
-<button onclick="calculateAverage()">Calculate</button>
-
-<div class="result" id="averageResult"></div>
-</div>
+    </div>
 
 
-<!-- SIMPLE INTEREST -->
-<div class="card">
-<h2>💵 Interest Calculator</h2>
-<p>Calculate simple interest quickly.</p>
+    <!-- PERCENTAGE -->
 
-<input type="number" id="principal" placeholder="Principal amount ($)">
-<input type="number" id="rate" placeholder="Annual interest rate (%)">
-<input type="number" id="years" placeholder="Years">
+    <div class="card tool-card">
 
-<button onclick="calculateInterest()">Calculate</button>
+      <div class="card-icon">🧮</div>
 
-<div class="result" id="interestResult"></div>
-</div>
+      <h3>Percentage Calculator</h3>
 
-</div>
-</div>
+      <p>
+        Find a percentage of any number.
+      </p>
+
+      <input
+        type="number"
+        id="number"
+        placeholder="Number"
+      >
+
+      <input
+        type="number"
+        id="percent"
+        placeholder="Percentage (%)"
+      >
+
+      <button onclick="calculatePercent()">
+        Calculate Percentage
+      </button>
+
+      <div class="result" id="percentResult"></div>
+
+    </div>
+
+
+    <!-- AGE -->
+
+    <div class="card tool-card">
+
+      <div class="card-icon">🎂</div>
+
+      <h3>Age Calculator</h3>
+
+      <p>
+        Calculate your age from your date of birth.
+      </p>
+
+      <input
+        type="date"
+        id="birthdate"
+      >
+
+      <button onclick="calculateAge()">
+        Calculate Age
+      </button>
+
+      <div class="result" id="ageResult"></div>
+
+    </div>
+
+
+    <!-- DISCOUNT -->
+
+    <div class="card tool-card">
+
+      <div class="card-icon">🏷️</div>
+
+      <h3>Discount Calculator</h3>
+
+      <p>
+        Calculate your sale price and total savings.
+      </p>
+
+      <input
+        type="number"
+        id="price"
+        placeholder="Original price ($)"
+        min="0"
+      >
+
+      <input
+        type="number"
+        id="discount"
+        placeholder="Discount (%)"
+        min="0"
+        max="100"
+      >
+
+      <button onclick="calculateDiscount()">
+        Calculate Discount
+      </button>
+
+      <div class="result" id="discountResult"></div>
+
+    </div>
+
+
+    <!-- AVERAGE -->
+
+    <div class="card tool-card">
+
+      <div class="card-icon">📊</div>
+
+      <h3>Average Calculator</h3>
+
+      <p>
+        Calculate the average of multiple numbers.
+      </p>
+
+      <input
+        type="text"
+        id="numbers"
+        placeholder="Example: 10, 20, 30"
+      >
+
+      <button onclick="calculateAverage()">
+        Calculate Average
+      </button>
+
+      <div class="result" id="averageResult"></div>
+
+    </div>
+
+
+    <!-- INTEREST -->
+
+    <div class="card tool-card">
+
+      <div class="card-icon">💵</div>
+
+      <h3>Simple Interest Calculator</h3>
+
+      <p>
+        Calculate simple interest and final amount.
+      </p>
+
+      <input
+        type="number"
+        id="principal"
+        placeholder="Principal amount ($)"
+        min="0"
+      >
+
+      <input
+        type="number"
+        id="rate"
+        placeholder="Annual interest rate (%)"
+        min="0"
+      >
+
+      <input
+        type="number"
+        id="years"
+        placeholder="Years"
+        min="0"
+      >
+
+      <button onclick="calculateInterest()">
+        Calculate Interest
+      </button>
+
+      <div class="result" id="interestResult"></div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- ABOUT -->
+
+  <section class="info-section">
+
+    <h2>Free Online Calculators</h2>
+
+    <p>
+      USA Free Tools provides simple online calculators designed
+      for everyday use. Our tools work directly in your web browser
+      and are designed to be easy to use on phones, tablets and computers.
+    </p>
+
+    <h3>Why Use Our Calculators?</h3>
+
+    <p>
+      Our calculators are designed to provide quick results without
+      requiring downloads or software installation. Simply enter your
+      numbers and select the calculate button.
+    </p>
+
+    <h3>Important Information</h3>
+
+    <p>
+      These calculators are provided for general informational and
+      educational purposes. Results should be checked independently
+      when accuracy is important, especially for financial decisions.
+    </p>
+
+  </section>
+
+
+  <!-- FAQ -->
+
+  <section class="faq">
+
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-item">
+
+      <h3>Are these calculators free?</h3>
+
+      <p>
+        Yes. The calculators on USA Free Tools are free to use.
+      </p>
+
+    </div>
+
+    <div class="faq-item">
+
+      <h3>Do I need to install an app?</h3>
+
+      <p>
+        No. The calculators work directly in your web browser.
+      </p>
+
+    </div>
+
+    <div class="faq-item">
+
+      <h3>Can I use these tools on my phone?</h3>
+
+      <p>
+        Yes. The website is designed to work on mobile devices,
+        tablets and desktop computers.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
 
 
 <footer>
-  <p>© 2026 USA Free Tools</p>
-  <p>Free online tools for everyone.</p>
 
-  <p>
-    <a href="about.html">About Us</a> |
-    <a href="contact.html">Contact Us</a> |
-    <a href="privacy.html">Privacy Policy</a>
-  </p>
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+
+      <h3>USA Free Tools</h3>
+
+      <p>
+        Simple and useful online calculators for everyday needs.
+      </p>
+
+    </div>
+
+    <div class="footer-links">
+
+      <a href="about.html">About Us</a>
+
+      <a href="contact.html">Contact Us</a>
+
+      <a href="privacy.html">Privacy Policy</a>
+
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 USA Free Tools. All rights reserved.
+  </div>
+
 </footer>
 
 
 <script>
 
+/* TIP CALCULATOR */
+
 function calculateTip(){
 
-let bill=parseFloat(document.getElementById("bill").value);
-let tip=parseFloat(document.getElementById("tip").value);
+  const bill =
+    parseFloat(document.getElementById("bill").value);
 
-if(isNaN(bill)||isNaN(tip)){
-document.getElementById("tipResult").innerText="Please enter both values.";
-return;
+  const tip =
+    parseFloat(document.getElementById("tip").value);
+
+  if(
+    isNaN(bill) ||
+    isNaN(tip) ||
+    bill < 0 ||
+    tip < 0
+  ){
+
+    document.getElementById("tipResult").innerText =
+      "Please enter valid values.";
+
+    return;
+  }
+
+  const tipAmount = bill * tip / 100;
+
+  const total = bill + tipAmount;
+
+  document.getElementById("tipResult").innerText =
+    "Tip: $" + tipAmount.toFixed(2) +
+    " | Total: $" + total.toFixed(2);
 }
 
-let tipAmount=bill*tip/100;
-let total=bill+tipAmount;
 
-document.getElementById("tipResult").innerText=
-"Tip: $"+tipAmount.toFixed(2)+" | Total: $"+total.toFixed(2);
-}
-
+/* PERCENTAGE */
 
 function calculatePercent(){
 
-let number=parseFloat(document.getElementById("number").value);
-let percent=parseFloat(document.getElementById("percent").value);
+  const number =
+    parseFloat(document.getElementById("number").value);
 
-if(isNaN(number)||isNaN(percent)){
-document.getElementById("percentResult").innerText="Please enter both values.";
-return;
+  const percent =
+    parseFloat(document.getElementById("percent").value);
+
+  if(
+    isNaN(number) ||
+    isNaN(percent)
+  ){
+
+    document.getElementById("percentResult").innerText =
+      "Please enter both values.";
+
+    return;
+  }
+
+  const result = number * percent / 100;
+
+  document.getElementById("percentResult").innerText =
+    percent + "% of " +
+    number +
+    " = " +
+    result.toFixed(2);
 }
 
-let result=number*percent/100;
 
-document.getElementById("percentResult").innerText=
-percent+"% of "+number+" = "+result.toFixed(2);
-}
-
+/* AGE */
 
 function calculateAge(){
 
-let birth=document.getElementById("birthdate").value;
+  const birth =
+    document.getElementById("birthdate").value;
 
-if(!birth){
-document.getElementById("ageResult").innerText="Please select your birth date.";
-return;
+  if(!birth){
+
+    document.getElementById("ageResult").innerText =
+      "Please select your birth date.";
+
+    return;
+  }
+
+  const birthDate = new Date(birth);
+
+  const today = new Date();
+
+  let age =
+    today.getFullYear() -
+    birthDate.getFullYear();
+
+  const month =
+    today.getMonth() -
+    birthDate.getMonth();
+
+  if(
+    month < 0 ||
+    (
+      month === 0 &&
+      today.getDate() < birthDate.getDate()
+    )
+  ){
+
+    age--;
+
+  }
+
+  document.getElementById("ageResult").innerText =
+    "Your age is " +
+    age +
+    " years.";
 }
 
-let birthDate=new Date(birth);
-let today=new Date();
 
-let age=today.getFullYear()-birthDate.getFullYear();
-
-let month=today.getMonth()-birthDate.getMonth();
-
-if(month<0||(month===0&&today.getDate()<birthDate.getDate())){
-age--;
-}
-
-document.getElementById("ageResult").innerText=
-"Your age is "+age+" years.";
-}
-
+/* DISCOUNT */
 
 function calculateDiscount(){
 
-let price=parseFloat(document.getElementById("price").value);
-let discount=parseFloat(document.getElementById("discount").value);
+  const price =
+    parseFloat(document.getElementById("price").value);
 
-if(isNaN(price)||isNaN(discount)){
-document.getElementById("discountResult").innerText="Please enter both values.";
-return;
+  const discount =
+    parseFloat(document.getElementById("discount").value);
+
+  if(
+    isNaN(price) ||
+    isNaN(discount) ||
+    price < 0 ||
+    discount < 0 ||
+    discount > 100
+  ){
+
+    document.getElementById("discountResult").innerText =
+      "Enter a price and discount from 0% to 100%.";
+
+    return;
+  }
+
+  const saved =
+    price * discount / 100;
+
+  const finalPrice =
+    price - saved;
+
+  document.getElementById("discountResult").innerText =
+    "You save: $" +
+    saved.toFixed(2) +
+    " | Sale price: $" +
+    finalPrice.toFixed(2);
 }
 
-let saved=price*discount/100;
-let finalPrice=price-saved;
 
-document.getElementById("discountResult").innerText=
-"You save: $"+saved.toFixed(2)+
-" | Sale price: $"+finalPrice.toFixed(2);
-}
-
+/* AVERAGE */
 
 function calculateAverage(){
 
-let text=document.getElementById("numbers").value;
+  const text =
+    document.getElementById("numbers").value;
 
-let values=text.split(",")
-.map(x=>parseFloat(x.trim()))
-.filter(x=>!isNaN(x));
+  const values =
+    text
+    .split(",")
+    .map(function(value){
+      return parseFloat(value.trim());
+    })
+    .filter(function(value){
+      return !isNaN(value);
+    });
 
-if(values.length===0){
-document.getElementById("averageResult").innerText=
-"Enter numbers separated by commas.";
-return;
+  if(values.length === 0){
+
+    document.getElementById("averageResult").innerText =
+      "Enter numbers separated by commas.";
+
+    return;
+  }
+
+  const total =
+    values.reduce(function(a,b){
+      return a + b;
+    },0);
+
+  const average =
+    total / values.length;
+
+  document.getElementById("averageResult").innerText =
+    "Average: " +
+    average.toFixed(2);
 }
 
-let total=values.reduce((a,b)=>a+b,0);
-let average=total/values.length;
 
-document.getElementById("averageResult").innerText=
-"Average: "+average.toFixed(2);
-}
-
+/* SIMPLE INTEREST */
 
 function calculateInterest(){
 
-let principal=parseFloat(document.getElementById("principal").value);
-let rate=parseFloat(document.getElementById("rate").value);
-let years=parseFloat(document.getElementById("years").value);
+  const principal =
+    parseFloat(document.getElementById("principal").value);
 
-if(isNaN(principal)||isNaN(rate)||isNaN(years)){
-document.getElementById("interestResult").innerText=
-"Please enter all values.";
-return;
+  const rate =
+    parseFloat(document.getElementById("rate").value);
+
+  const years =
+    parseFloat(document.getElementById("years").value);
+
+  if(
+    isNaN(principal) ||
+    isNaN(rate) ||
+    isNaN(years) ||
+    principal < 0 ||
+    rate < 0 ||
+    years < 0
+  ){
+
+    document.getElementById("interestResult").innerText =
+      "Please enter valid values.";
+
+    return;
+  }
+
+  const interest =
+    principal * rate * years / 100;
+
+  const total =
+    principal + interest;
+
+  document.getElementById("interestResult").innerText =
+    "Interest: $" +
+    interest.toFixed(2) +
+    " | Total: $" +
+    total.toFixed(2);
 }
 
-let interest=principal*rate*years/100;
-let total=principal+interest;
 
-document.getElementById("interestResult").innerText=
-"Interest: $"+interest.toFixed(2)+
-" | Total: $"+total.toFixed(2);
+/* SEARCH */
+
+function searchTools(){
+
+  const search =
+    document
+    .getElementById("toolSearch")
+    .value
+    .toLowerCase();
+
+  const cards =
+    document.querySelectorAll(".tool-card");
+
+  cards.forEach(function(card){
+
+    const text =
+      card.innerText.toLowerCase();
+
+    if(text.includes(search)){
+
+      card.style.display = "";
+
+    }else{
+
+      card.style.display = "none";
+
+    }
+
+  });
+
 }
 
 </script>
