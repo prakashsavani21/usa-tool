@@ -283,6 +283,53 @@ header {
 <article class="card tool-card"><div class="card-icon">🏷️</div><h3>Discount Calculator</h3><p>Calculate sale price and total savings.</p><input class="input" type="number" id="price" placeholder="Original price ($)" min="0" step=".01"><input class="input" type="number" id="discount" placeholder="Discount (%)" min="0" max="100" step=".1"><button onclick="calculateDiscount()">Calculate Discount</button><div class="result" id="discountResult" aria-live="polite"></div></article>
 <article class="card tool-card"><div class="card-icon">📊</div><h3>Average Calculator</h3><p>Calculate the average of multiple numbers.</p><input class="input" type="text" id="numbers" placeholder="Example: 10, 20, 30"><button onclick="calculateAverage()">Calculate Average</button><div class="result" id="averageResult" aria-live="polite"></div></article>
 <article class="card tool-card"><div class="card-icon">💵</div><h3>Simple Interest Calculator</h3><p>Calculate simple interest and final amount.</p><input class="input" type="number" id="principal" placeholder="Principal amount ($)" min="0" step=".01"><input class="input" type="number" id="rate" placeholder="Annual interest rate (%)" min="0" step=".01"><input class="input" type="number" id="years" placeholder="Years" min="0" step=".1"><button onclick="calculateInterest()">Calculate Interest</button><div class="result" id="interestResult" aria-live="polite"></div></article>
+  <article class="card tool-card">
+  <div class="card-icon">🏠</div>
+
+  <h3>Mortgage Calculator</h3>
+
+  <p>
+    Estimate your monthly mortgage payment based on loan amount,
+    interest rate and loan term.
+  </p>
+
+  <input
+    class="input"
+    type="number"
+    id="mortgageAmount"
+    placeholder="Loan amount ($)"
+    min="0"
+    step="0.01"
+  >
+
+  <input
+    class="input"
+    type="number"
+    id="mortgageRate"
+    placeholder="Annual interest rate (%)"
+    min="0"
+    step="0.01"
+  >
+
+  <input
+    class="input"
+    type="number"
+    id="mortgageYears"
+    placeholder="Loan term (years)"
+    min="1"
+    step="1"
+  >
+
+  <button onclick="calculateMortgage()">
+    Calculate Mortgage
+  </button>
+
+  <div
+    class="result"
+    id="mortgageResult"
+    aria-live="polite"
+  ></div>
+</article>
 <div class="empty" id="emptyMessage">No calculator found. Try another search.</div>
 </div></section>
 <section class="info-section"><h2>Free Online Calculators</h2><p>USA Free Tools provides simple online calculators designed for everyday use. Our tools work directly in your web browser on phones, tablets and computers.</p><h3>Why Use Our Calculators?</h3><p>Get quick results without downloading an app or installing software. Enter your values and select the calculator button.</p><h3>Privacy-Friendly by Design</h3><p>The calculators perform calculations directly in your browser. Do not enter sensitive personal or financial information into the tools.</p><h3>Important Information</h3><p>Results are provided for general informational and educational purposes. Check important calculations independently, especially for financial decisions.</p></section>
@@ -342,6 +389,48 @@ function calculateTip(){
     "Tip: $" + tipAmount.toFixed(2) +
     "<br>Total Bill: $" + total.toFixed(2) +
     "<br>Per Person: $" + perPerson.toFixed(2);
+}
+  function calculateMortgage(){
+  const amount = parseFloat(document.getElementById("mortgageAmount").value);
+  const annualRate = parseFloat(document.getElementById("mortgageRate").value);
+  const years = parseFloat(document.getElementById("mortgageYears").value);
+
+  const result = document.getElementById("mortgageResult");
+
+  if (
+    !Number.isFinite(amount) ||
+    !Number.isFinite(annualRate) ||
+    !Number.isFinite(years) ||
+    amount <= 0 ||
+    annualRate < 0 ||
+    years <= 0
+  ){
+    result.innerText = "Please enter valid mortgage values.";
+    return;
+  }
+
+  const monthlyRate = annualRate / 100 / 12;
+  const months = years * 12;
+
+  let monthlyPayment;
+
+  if(monthlyRate === 0){
+    monthlyPayment = amount / months;
+  } else {
+    monthlyPayment =
+      amount *
+      monthlyRate *
+      Math.pow(1 + monthlyRate, months) /
+      (Math.pow(1 + monthlyRate, months) - 1);
+  }
+
+  const totalPayment = monthlyPayment * months;
+  const totalInterest = totalPayment - amount;
+
+  result.innerHTML =
+    "Monthly Payment: $" + monthlyPayment.toFixed(2) +
+    "<br>Total Payment: $" + totalPayment.toFixed(2) +
+    "<br>Total Interest: $" + totalInterest.toFixed(2);
 }
 function calculatePercent(){const x=n("number"),p=n("percent");if(!Number.isFinite(x)||!Number.isFinite(p))return setResult("percentResult","Please enter both values.","error");setResult("percentResult",`${p}% of ${x} = ${(x*p/100).toFixed(2)}`)}
 function calculateAge(){const v=document.getElementById("birthdate").value;if(!v)return setResult("ageResult","Please select your birth date.","error");const b=new Date(v+"T00:00:00"),d=new Date();if(b>d)return setResult("ageResult","Birth date cannot be in the future.","error");let a=d.getFullYear()-b.getFullYear(),m=d.getMonth()-b.getMonth();if(m<0||(m===0&&d.getDate()<b.getDate()))a--;setResult("ageResult",`Your age is ${a} years.`)}
