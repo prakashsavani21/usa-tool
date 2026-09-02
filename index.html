@@ -33,6 +33,178 @@ header{color:#fff;background:linear-gradient(135deg,#0f172a,#1d4ed8)}
 .info-section,.faq{max-width:900px;margin:65px auto 0}.info-section{background:#fff;padding:34px;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 8px 30px #0f172a0d}.info-section h2{margin-top:0;font-size:30px}.info-section h3{margin-top:28px}.info-section p{color:#475467}.faq-item{background:#fff;margin-bottom:12px;padding:20px;border:1px solid #e5e7eb;border-radius:14px}.faq-item h3{margin:0 0 6px;font-size:18px}.faq-item p{margin:0;color:#667085}
 footer{margin-top:70px;background:#0f172a;color:#fff;padding:45px 20px 25px}.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footer-brand{max-width:430px}.footer-brand h3{margin-top:0;font-size:22px}.footer-brand p{color:#cbd5e1}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-links a{color:#fff;text-decoration:none}.footer-links a:hover{text-decoration:underline}.copyright{max-width:1180px;margin:28px auto 0;padding-top:20px;border-top:1px solid #334155;color:#94a3b8;font-size:14px}.empty{display:none;text-align:center;padding:25px;color:#667085;grid-column:1/-1}
 @media(max-width:950px){.tools{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.navbar{flex-direction:column;padding:18px}.nav-links{gap:16px}.hero{padding:55px 18px 65px}.hero p{font-size:17px}.tools{grid-template-columns:1fr}.container{padding:45px 15px}.card{padding:24px}.section-title h2{font-size:30px}.info-section{padding:25px}.footer-inner{flex-direction:column}}
+  /* ===== PREMIUM UI UPDATE ===== */
+
+body {
+  background: #f4f7fb;
+}
+
+header {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8, #2563eb);
+}
+
+.hero {
+  max-width: 1000px;
+  margin: auto;
+  padding: 85px 20px 75px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin: 20px 0 15px;
+  font-weight: 800;
+}
+
+.hero p {
+  font-size: 19px;
+  max-width: 650px;
+  margin: auto;
+  opacity: .92;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.25);
+  font-weight: 600;
+}
+
+/* Calculator cards */
+
+.tool-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px !important;
+  box-shadow: 0 8px 25px rgba(15,23,42,.07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15,23,42,.13);
+}
+
+.card-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: #eff6ff;
+  font-size: 32px;
+  margin-bottom: 22px;
+}
+
+.tool-card h3 {
+  font-size: 24px;
+  margin: 8px 0 12px;
+  color: #111827;
+}
+
+.tool-card p {
+  color: #64748b;
+  line-height: 1.6;
+  min-height: 50px;
+}
+
+/* Inputs */
+
+.tool-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 16px;
+  margin: 7px 0;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #f8fafc;
+  outline: none;
+}
+
+.tool-card input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+  background: #fff;
+}
+
+/* Buttons */
+
+.tool-card button {
+  width: 100%;
+  padding: 15px 18px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#2563eb,#1d4ed8);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.tool-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37,99,235,.25);
+}
+
+/* Results */
+
+.result {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #1e40af;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+/* Section headings */
+
+.section-title h2 {
+  font-size: 32px;
+  color: #111827;
+}
+
+.section-title p {
+  color: #64748b;
+  font-size: 17px;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .hero {
+    padding: 60px 18px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  .tool-card {
+    padding: 24px !important;
+    border-radius: 18px;
+  }
+
+  .tool-card h3 {
+    font-size: 22px;
+  }
+
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"USA Free Tools","url":"https://prakashsavani21.github.io/usa-tool/","description":"Free online calculators for everyday calculations."}
