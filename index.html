@@ -727,15 +727,17 @@ function addSaveButtons() {
       characterData: true
     });
 
-    button.onclick = function() {
+    button.addEventListener("click", function(event) {
+  event.preventDefault();
+  event.stopPropagation();
 
-      const card = result.closest(".tool-card");
+  const card = result.closest(".tool-card");
 
-      const name =
-        card ? card.querySelector("h3").textContent : "Calculation";
+  const name =
+    card ? card.querySelector("h3").textContent : "Calculation";
 
-      saveCalculation(name, result.textContent);
-    };
+  saveCalculation(name, result.textContent);
+});
   });
 }
 
