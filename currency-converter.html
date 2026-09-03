@@ -544,103 +544,75 @@
   </footer>
 
   <script>
-    async function convertCurrency() {
+   
+        async function convertCurrency() {
 
-      const amount = parseFloat(document.getElementById("amount").value);
-      const from = document.getElementById("fromCurrency").value;
-      const to = document.getElementById("toCurrency").value;
+  const amount = parseFloat(document.getElementById("amount").value);
+  const from = document.getElementById("fromCurrency").value;
+  const to = document.getElementById("toCurrency").value;
 
-      const loading = document.getElementById("loading");
-      const error = document.getElementById("error");
-      const result = document.getElementById("result");
+  const loading = document.getElementById("loading");
+  const error = document.getElementById("error");
+  const result = document.getElementById("result");
 
-      error.style.display = "none";
-      result.style.display = "none";
+  error.style.display = "none";
+  result.style.display = "none";
 
-      if (!amount || amount < 0) {
-        error.textContent = "Please enter a valid amount.";
-        error.style.display = "block";
-        return;
-      }
+  if (isNaN(amount) || amount < 0) {
+    error.textContent = "Please enter a valid amount.";
+    error.style.display = "block";
+    return;
+  }
 
-      if (from === to) {
-        document.getElementById("convertedAmount").textContent =
-          amount.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-          }) + " " + to;
+  loading.style.display = "block";
 
-        document.getElementById("rateInfo").textContent =
-          "1 " + from + " = 1 " + to;
+  try {
 
-        result.style.display = "block";
-        return;
-      }
+    const response = await fetch(
+      "https://open.er-api.com/v6/latest/" + encodeURIComponent(from)
+    );
 
-      loading.style.display = "block";
-
-      try {
-
-        const response = await fetch(
-          "https://api.frankfurter.app/latest?amount=" +
-          encodeURIComponent(amount) +
-          "&from=" +
-          encodeURIComponent(from) +
-          "&to=" +
-          encodeURIComponent(to)
-        );
-
-        if (!response.ok) {
-          throw new Error("Unable to get exchange rate.");
-        }
-
-        const data = await response.json();
-
-        if (!data.rates || data.rates[to] === undefined) {
-          throw new Error("Exchange rate unavailable.");
-        }
-
-        const converted = data.rates[to];
-
-        const oneUnitResponse = await fetch(
-          "https://api.frankfurter.app/latest?amount=1&from=" +
-          encodeURIComponent(from) +
-          "&to=" +
-          encodeURIComponent(to)
-        );
-
-        const oneUnitData = await oneUnitResponse.json();
-        const rate = oneUnitData.rates[to];
-
-        document.getElementById("convertedAmount").textContent =
-          converted.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-          }) + " " + to;
-
-        document.getElementById("rateInfo").textContent =
-          "1 " + from + " = " +
-          Number(rate).toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 6
-          }) +
-          " " + to;
-
-        result.style.display = "block";
-
-      } catch (err) {
-
-        error.textContent =
-          "Sorry, the exchange rate could not be loaded. Please try again.";
-
-        error.style.display = "block";
-
-      } finally {
-        loading.style.display = "none";
-      }
+    if (!response.ok) {
+      throw new Error("Network error");
     }
 
-    function swapCurrencies() {
+    const data = await response.json();
+
+    if (data.result !== "success" || !data.rates || data.rates[to] === undefined) {
+      throw new Error("Rate unavailable");
+    }
+
+    const rate = data.rates[to];
+    const converted = amount * rate;
+
+    document.getElementById("convertedAmount").textContent =
+      converted.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }) + " " + to;
+
+    document.getElementById("rateInfo").textContent =
+      "1 " + from + " = " +
+      Number(rate).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 6
+      }) + " " + to;
+
+    result.style.display = "block";
+
+  } catch (err) {
+
+    error.textContent =
+      "Sorry, the exchange rate could not be loaded. Please try again.";
+
+    error.style.display = "block";
+
+  } finally {
+
+    loading.style.display = "none";
+  }
+}
+function swapCurrencies() {
 
       const from = document.getElementById("fromCurrency");
       const to = document.getElementById("toCurrency");
