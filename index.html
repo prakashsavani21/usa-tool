@@ -414,6 +414,19 @@ header {
 
 <div class="empty" id="emptyMessage">No calculator found. Try another search.</div>
 </div></section>
+  <!-- CALCULATION HISTORY -->
+<section class="info-section" id="historySection" style="display:none;">
+  <h2>My Calculations</h2>
+
+  <div id="calculationHistory"></div>
+
+  <button
+    onclick="clearCalculationHistory()"
+    style="margin-top:20px;background:#dc2626;color:white;border:none;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:600;"
+  >
+    Clear History
+  </button>
+</section>
 <section class="info-section"><h2>Free Online Calculators</h2><p>USA Free Tools provides simple online calculators designed for everyday use. Our tools work directly in your web browser on phones, tablets and computers.</p><h3>Why Use Our Calculators?</h3><p>Get quick results without downloading an app or installing software. Enter your values and select the calculator button.</p><h3>Privacy-Friendly by Design</h3><p>The calculators perform calculations directly in your browser. Do not enter sensitive personal or financial information into the tools.</p><h3>Important Information</h3><p>Results are provided for general informational and educational purposes. Check important calculations independently, especially for financial decisions.</p></section>
   <p>
 USA Free Tools offers free online calculators for everyday calculations.
@@ -625,6 +638,110 @@ function calculateDiscount(){const p=n("price"),d=n("discount");if(!Number.isFin
 function calculateAverage(){const v=document.getElementById("numbers").value.split(",").map(x=>parseFloat(x.trim())).filter(Number.isFinite);if(!v.length)return setResult("averageResult","Enter numbers separated by commas.","error");setResult("averageResult",`Average: ${(v.reduce((a,b)=>a+b,0)/v.length).toFixed(2)}`)}
 function calculateInterest(){const p=n("principal"),r=n("rate"),y=n("years");if(!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(y)||p<0||r<0||y<0)return setResult("interestResult","Please enter valid values.","error");const i=p*r*y/100;setResult("interestResult",`Interest: $${i.toFixed(2)} | Total: $${(p+i).toFixed(2)}`)}
 function searchTools(){const q=document.getElementById("toolSearch").value.toLowerCase().trim();let c=0;document.querySelectorAll(".tool-card").forEach(x=>{const ok=x.innerText.toLowerCase().includes(q);x.style.display=ok?"":"none";if(ok)c++});document.getElementById("emptyMessage").style.display=c?"none":"block"}
+  function loadCalculationHistory() {
+  const history = JSON.parse(localStorage.getItem("usaFreeToolsHistory") || "[]");
+  const section = document.getElementById("historySection");
+  const container = document.getElementById("calculationHistory");
+
+  if (!history.length) {
+    section.style.display = "none";
+    return;
+  }
+
+  section.style.display = "block";
+
+  container.innerHTML = history.map((item, index) => `
+    <div style="padding:14px 0;border-bottom:1px solid #e5e7eb;">
+      <strong>${item.name}</strong>
+      <p style="margin:6px 0;color:#667085;">${item.result}</p>
+      <button onclick="deleteCalculation(${index})"
+        style="background:#f3f4f6;color:#374151;border:none;padding:7px 12px;border-radius:7px;cursor:pointer;">
+        Delete
+      </button>
+    </div>
+  `).join("");
+}
+
+function saveCalculation(name, result) {
+  if (!result || result.trim() === "") return;
+
+  const history = JSON.parse(localStorage.getItem("usaFreeToolsHistory") || "[]");
+
+  history.unshift({
+    name: name,
+    result: result,
+    time: new Date().toLocaleString()
+  });
+
+  if (history.length > 10) {
+    history.pop();
+  }
+
+  localStorage.setItem("usaFreeToolsHistory", JSON.stringify(history));
+  loadCalculationHistory();
+}
+
+function deleteCalculation(index) {
+  const history = JSON.parse(localStorage.getItem("usaFreeToolsHistory") || "[]");
+  history.splice(index, 1);
+  localStorage.setItem("usaFreeToolsHistory", JSON.stringify(history));
+  loadCalculationHistory();
+}
+
+function clearCalculationHistory() {
+  localStorage.removeItem("usaFreeToolsHistory");
+  loadCalculationHistory();
+}
+
+function addSaveButtons() {
+  const results = document.querySelectorAll(".result");
+
+  results.forEach(function(result) {
+
+    if (result.dataset.saveReady === "true") return;
+
+    result.dataset.saveReady = "true";
+
+    const button = document.createElement("button");
+
+    button.textContent = "Save Result";
+    button.style.cssText =
+      "margin-top:10px;background:#0b63f6;color:white;border:none;padding:9px 14px;border-radius:8px;cursor:pointer;font-weight:600;display:none;";
+
+    result.parentNode.insertBefore(button, result.nextSibling);
+
+    const observer = new MutationObserver(function() {
+
+      if (result.textContent.trim() !== "") {
+        button.style.display = "inline-block";
+      } else {
+        button.style.display = "none";
+      }
+
+    });
+
+    observer.observe(result, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    button.onclick = function() {
+
+      const card = result.closest(".tool-card");
+
+      const name =
+        card ? card.querySelector("h3").textContent : "Calculation";
+
+      saveCalculation(name, result.textContent);
+    };
+  });
+}
+
+window.addEventListener("load", function() {
+  addSaveButtons();
+  loadCalculationHistory();
+});
 </script>
 </body>
 </html>
