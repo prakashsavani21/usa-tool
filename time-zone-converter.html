@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQKEXJQBS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZQKEXJQBS4');
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6554717322177499"
+       crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Time Zone Converter | USA Free Tools</title>
+
+  <meta name="description"
+        content="Free Time Zone Converter to convert date and time between different time zones including USA, India, UK and more.">
+
+  <link rel="canonical" href="https://usafreetool.com/time-zone-converter.html">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+      color: #172033;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b63f6, #1746c7);
+      color: white;
+      text-align: center;
+      padding: 55px 20px 90px;
+    }
+
+    header h1 {
+      margin: 0 0 15px;
+      font-size: 38px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: -55px auto 50px;
+      padding: 0 20px;
+    }
+
+    .converter-card {
+      background: white;
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.10);
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 9px;
+      font-size: 16px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #d7dfed;
+      border-radius: 11px;
+      font-size: 16px;
+      background: #fff;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 11px;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #0b63f6, #1746c7);
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    .result {
+      margin-top: 28px;
+      padding: 25px;
+      border-radius: 16px;
+      background: #eef5ff;
+      border: 1px solid #d7e5ff;
+      text-align: center;
+      display: none;
+    }
+
+    .result-title {
+      font-size: 16px;
+      color: #58708f;
+      margin-bottom: 10px;
+    }
+
+    .result-time {
+      font-size: 30px;
+      font-weight: 800;
+      color: #0b63f6;
+      margin-bottom: 8px;
+    }
+
+    .result-date {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .error {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #fff1f1;
+      color: #c62828;
+      display: none;
+      text-align: center;
+    }
+
+    .info {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+
+    .info h2 {
+      margin-top: 0;
+    }
+
+    .info h3 {
+      margin-top: 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #172033;
+      color: white;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .converter-card {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Time Zone Converter</h1>
+  <p>Convert date and time between different time zones quickly and easily.</p>
+</header>
+
+<div class="container">
+
+  <div class="converter-card">
+
+    <div class="field">
+      <label for="dateTime">Date & Time</label>
+      <input type="datetime-local" id="dateTime">
+    </div>
+
+    <div class="row">
+
+      <div class="field">
+        <label for="fromZone">Convert From</label>
+        <select id="fromZone">
+          <option value="America/New_York">🇺🇸 Eastern Time (New York)</option>
+          <option value="America/Chicago">🇺🇸 Central Time (Chicago)</option>
+          <option value="America/Denver">🇺🇸 Mountain Time (Denver)</option>
+          <option value="America/Los_Angeles">🇺🇸 Pacific Time (Los Angeles)</option>
+          <option value="America/Phoenix">🇺🇸 Arizona (Phoenix)</option>
+          <option value="Pacific/Honolulu">🇺🇸 Hawaii (Honolulu)</option>
+          <option value="Europe/London">🇬🇧 London</option>
+          <option value="Europe/Paris">🇫🇷 Paris</option>
+          <option value="Asia/Dubai">🇦🇪 Dubai</option>
+          <option value="Asia/Kolkata" selected>🇮🇳 India (IST)</option>
+          <option value="Asia/Singapore">🇸🇬 Singapore</option>
+          <option value="Asia/Tokyo">🇯🇵 Tokyo</option>
+          <option value="Australia/Sydney">🇦🇺 Sydney</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="toZone">Convert To</label>
+        <select id="toZone">
+          <option value="America/New_York" selected>🇺🇸 Eastern Time (New York)</option>
+          <option value="America/Chicago">🇺🇸 Central Time (Chicago)</option>
+          <option value="America/Denver">🇺🇸 Mountain Time (Denver)</option>
+          <option value="America/Los_Angeles">🇺🇸 Pacific Time (Los Angeles)</option>
+          <option value="America/Phoenix">🇺🇸 Arizona (Phoenix)</option>
+          <option value="Pacific/Honolulu">🇺🇸 Hawaii (Honolulu)</option>
+          <option value="Europe/London">🇬🇧 London</option>
+          <option value="Europe/Paris">🇫🇷 Paris</option>
+          <option value="Asia/Dubai">🇦🇪 Dubai</option>
+          <option value="Asia/Kolkata">🇮🇳 India (IST)</option>
+          <option value="Asia/Singapore">🇸🇬 Singapore</option>
+          <option value="Asia/Tokyo">🇯🇵 Tokyo</option>
+          <option value="Australia/Sydney">🇦🇺 Sydney</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button onclick="convertTime()">Convert Time Zone</button>
+
+    <div class="error" id="error"></div>
+
+    <div class="result" id="result">
+      <div class="result-title">Converted Time</div>
+      <div class="result-time" id="resultTime"></div>
+      <div class="result-date" id="resultDate"></div>
+    </div>
+
+  </div>
+
+  <div class="info">
+
+    <h2>Time Zone Converter</h2>
+
+    <p>
+      Use this free Time Zone Converter to quickly convert a date and time
+      between different time zones around the world.
+    </p>
+
+    <h3>How to use the Time Zone Converter</h3>
+
+    <p>
+      Select the date and time, choose the time zone you are converting from,
+      select the destination time zone, and click Convert Time Zone.
+    </p>
+
+    <h3>Popular Time Zones</h3>
+
+    <p>
+      Convert between US Eastern, Central, Mountain and Pacific time,
+      as well as India, London, Dubai, Tokyo, Singapore and Sydney time.
+    </p>
+
+    <h3>Daylight Saving Time</h3>
+
+    <p>
+      US and several other regions change their clocks during parts of the
+      year. This converter uses the browser's built-in time zone database
+      to account for applicable daylight saving time changes.
+    </p>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <p><strong>Is this Time Zone Converter free?</strong><br>
+    Yes. You can use it for free without creating an account.</p>
+
+    <p><strong>Does it work for US time zones?</strong><br>
+    Yes. Eastern, Central, Mountain and Pacific US time zones are included.</p>
+
+    <p><strong>Does it account for daylight saving time?</strong><br>
+    Yes, where applicable, the browser's time zone rules are used.</p>
+
+  </div>
+
+</div>
+
+<footer>
+
+  <p>© 2026 USA Free Tools. All rights reserved.</p>
+
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="privacy.html">Privacy Policy</a>
+
+</footer>
+
+<script>
+
+function getTimeZoneOffset(timeZone, date) {
+
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23"
+  }).formatToParts(date);
+
+  const values = {};
+
+  parts.forEach(function(part) {
+    if (part.type !== "literal") {
+      values[part.type] = part.value;
+    }
+  });
+
+  const asUTC = Date.UTC(
+    Number(values.year),
+    Number(values.month) - 1,
+    Number(values.day),
+    Number(values.hour),
+    Number(values.minute),
+    Number(values.second)
+  );
+
+  return (asUTC - date.getTime()) / 60000;
+}
+
+
+function convertTime() {
+
+  const input = document.getElementById("dateTime").value;
+  const fromZone = document.getElementById("fromZone").value;
+  const toZone = document.getElementById("toZone").value;
+
+  const result = document.getElementById("result");
+  const error = document.getElementById("error");
+
+  result.style.display = "none";
+  error.style.display = "none";
+
+  if (!input) {
+    error.textContent = "Please select a date and time.";
+    error.style.display = "block";
+    return;
+  }
+
+  const parts = input.split(/[-T:]/);
+
+  const year = Number(parts[0]);
+  const month = Number(parts[1]);
+  const day = Number(parts[2]);
+  const hour = Number(parts[3]);
+  const minute = Number(parts[4]);
+
+  const wallTimeAsUTC = Date.UTC(
+    year,
+    month - 1,
+    day,
+    hour,
+    minute,
+    0
+  );
+
+  let timestamp = wallTimeAsUTC;
+
+  for (let i = 0; i < 3; i++) {
+    const date = new Date(timestamp);
+    const offset = getTimeZoneOffset(fromZone, date);
+    timestamp = wallTimeAsUTC - offset * 60000;
+  }
+
+  const convertedDate = new Date(timestamp);
+
+  const timeFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: toZone,
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  });
+
+  const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: toZone,
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+  document.getElementById("resultTime").textContent =
+    timeFormatter.format(convertedDate);
+
+  document.getElementById("resultDate").textContent =
+    dateFormatter.format(convertedDate);
+
+  result.style.display = "block";
+}
+
+
+window.addEventListener("load", function() {
+
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hour = String(now.getHours()).padStart(2, "0");
+  const minute = String(now.getMinutes()).padStart(2, "0");
+
+  document.getElementById("dateTime").value =
+    year + "-" + month + "-" + day + "T" + hour + ":" + minute;
+
+});
+
+</script>
+
+</body>
+</html>
