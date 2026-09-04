@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Which One Is Better? - Decision Tool | USA Free Tools</title>
+
+<meta name="description" content="Compare multiple options and find the best choice using our free decision making tool.">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+header {
+  background: linear-gradient(135deg, #0b63f6, #174ea6);
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+}
+
+header p {
+  margin: 0;
+  font-size: 17px;
+  opacity: 0.95;
+}
+
+.container {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 0 18px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.option {
+  border: 1px solid #e5e7eb;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.option h3 {
+  margin-top: 0;
+}
+
+input {
+  width: 100%;
+  padding: 11px;
+  margin: 6px 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 5px;
+}
+
+.add-btn {
+  background: #e8f0fe;
+  color: #174ea6;
+}
+
+.compare-btn {
+  background: #0b63f6;
+  color: white;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.remove-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.result {
+  display: none;
+}
+
+.winner {
+  background: #ecfdf3;
+  border: 2px solid #22c55e;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.winner h2 {
+  color: #15803d;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+.info {
+  line-height: 1.7;
+}
+
+@media(max-width:600px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Which One Is Better?</h1>
+  <p>Compare your options and find the best choice instantly.</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Compare Options</h2>
+
+<div id="options">
+
+<div class="option">
+<h3>Option 1</h3>
+
+<input type="text" class="name" placeholder="Option name">
+
+<label>Price</label>
+<input type="number" class="price" placeholder="Price">
+
+<label>Quality Score (1-10)</label>
+<input type="number" class="quality" min="1" max="10" placeholder="1-10">
+
+<label>Performance Score (1-10)</label>
+<input type="number" class="performance" min="1" max="10" placeholder="1-10">
+
+</div>
+
+<div class="option">
+<h3>Option 2</h3>
+
+<input type="text" class="name" placeholder="Option name">
+
+<label>Price</label>
+<input type="number" class="price" placeholder="Price">
+
+<label>Quality Score (1-10)</label>
+<input type="number" class="quality" min="1" max="10" placeholder="1-10">
+
+<label>Performance Score (1-10)</label>
+<input type="number" class="performance" min="1" max="10" placeholder="1-10">
+
+</div>
+
+</div>
+
+<button class="add-btn" onclick="addOption()">+ Add Option</button>
+
+<button class="compare-btn" onclick="compareOptions()">
+Compare Options
+</button>
+
+</div>
+
+<div class="card result" id="result">
+
+<div class="winner">
+<h2>🏆 Best Overall</h2>
+<h3 id="winnerName"></h3>
+<p id="winnerScore"></p>
+</div>
+
+<h2>Comparison</h2>
+
+<div id="tableContainer"></div>
+
+</div>
+
+<div class="card info">
+
+<h2>How This Decision Tool Works</h2>
+
+<p>
+Enter the price, quality and performance score for each option.
+The tool calculates a combined score and helps you identify
+the best overall choice.
+</p>
+
+<p>
+This free decision tool can be useful for comparing products,
+services, purchases, plans and other options.
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+let optionCount = 2;
+
+function addOption() {
+
+  optionCount++;
+
+  const div = document.createElement("div");
+
+  div.className = "option";
+
+  div.innerHTML = `
+    <h3>Option ${optionCount}</h3>
+
+    <input type="text" class="name" placeholder="Option name">
+
+    <label>Price</label>
+    <input type="number" class="price" placeholder="Price">
+
+    <label>Quality Score (1-10)</label>
+    <input type="number" class="quality" min="1" max="10" placeholder="1-10">
+
+    <label>Performance Score (1-10)</label>
+    <input type="number" class="performance" min="1" max="10" placeholder="1-10">
+
+    <button class="remove-btn" onclick="this.parentElement.remove()">
+      Remove
+    </button>
+  `;
+
+  document.getElementById("options").appendChild(div);
+}
+
+
+function compareOptions() {
+
+  const options = document.querySelectorAll(".option");
+
+  if (options.length < 2) {
+    alert("Please add at least 2 options.");
+    return;
+  }
+
+  let data = [];
+
+  options.forEach((option, index) => {
+
+    const name =
+      option.querySelector(".name").value.trim()
+      || "Option " + (index + 1);
+
+    const price =
+      parseFloat(option.querySelector(".price").value) || 0;
+
+    const quality =
+      parseFloat(option.querySelector(".quality").value) || 0;
+
+    const performance =
+      parseFloat(option.querySelector(".performance").value) || 0;
+
+    /*
+      Score calculation:
+      Quality = 40%
+      Performance = 40%
+      Price = 20%
+    */
+
+    const maxPrice = Math.max(
+      ...Array.from(options).map(o =>
+        parseFloat(o.querySelector(".price").value) || 0
+      )
+    );
+
+    let priceScore = 0;
+
+    if (maxPrice > 0 && price > 0) {
+      priceScore = ((maxPrice - price) / maxPrice) * 10;
+    }
+
+    const score =
+      (quality * 0.4) +
+      (performance * 0.4) +
+      (priceScore * 0.2);
+
+    data.push({
+      name,
+      price,
+      quality,
+      performance,
+      score
+    });
+
+  });
+
+  data.sort((a,b) => b.score - a.score);
+
+  const winner = data[0];
+
+  document.getElementById("winnerName").textContent =
+    winner.name;
+
+  document.getElementById("winnerScore").textContent =
+    "Overall Score: " + winner.score.toFixed(2) + " / 10";
+
+  let html = `
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Option</th>
+      <th>Price</th>
+      <th>Quality</th>
+      <th>Performance</th>
+      <th>Score</th>
+    </tr>
+  `;
+
+  data.forEach((item, index) => {
+
+    html += `
+      <tr>
+        <td>${index + 1}</td>
+        <td><strong>${item.name}</strong></td>
+        <td>${item.price || "-"}</td>
+        <td>${item.quality}/10</td>
+        <td>${item.performance}/10</td>
+        <td><strong>${item.score.toFixed(2)}</strong></td>
+      </tr>
+    `;
+
+  });
+
+  html += "</table>";
+
+  document.getElementById("tableContainer").innerHTML = html;
+
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("result").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+</script>
+
+</body>
+</html>
