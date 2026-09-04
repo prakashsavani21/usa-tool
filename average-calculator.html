@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Average Calculator - Calculate Mean Online | USA Free Tools</title>
+
+  <meta name="description" content="Free online average calculator to calculate the mean of numbers quickly and easily. Enter numbers and get the average instantly.">
+
+  <link rel="canonical" href="https://usafreetool.com/average-calculator.html">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f8fc;
+      color: #172033;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b63f6, #174ea6);
+      color: white;
+      padding: 18px 20px;
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b63f6, #174ea6);
+      color: white;
+      text-align: center;
+      padding: 55px 20px 70px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .calculator {
+      max-width: 520px;
+      margin: -35px auto 40px;
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      font-weight: 600;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 13px;
+      border: 1px solid #d5dbe7;
+      border-radius: 8px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #0b63f6;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 18px;
+      background: #f1f6ff;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .result-label {
+      color: #667085;
+      margin-bottom: 8px;
+    }
+
+    .result-amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b63f6;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .content-section {
+      background: white;
+      padding: 28px;
+      margin-bottom: 22px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #172033;
+      color: white;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQKEXJQBS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQKEXJQBS4');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6554717322177499"
+       crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Average Calculator",
+    "url": "https://usafreetool.com/average-calculator.html",
+    "applicationCategory": "CalculatorApplication",
+    "operatingSystem": "All",
+    "description": "Free online average calculator to calculate the mean of numbers.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <strong>USA Free Tools</strong>
+
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Average Calculator</h1>
+  <p>Calculate the average (mean) of numbers quickly and easily.</p>
+</section>
+
+<main>
+
+<section class="calculator">
+
+  <label for="numbers">Enter Numbers</label>
+
+  <textarea
+    id="numbers"
+    placeholder="Example: 10, 20, 30, 40, 50"
+  ></textarea>
+
+  <button onclick="calculateAverage()">
+    Calculate Average
+  </button>
+
+  <div class="result">
+    <div class="result-label">Average</div>
+    <div class="result-amount" id="averageResult">--</div>
+  </div>
+
+</section>
+
+<section class="content">
+
+  <div class="content-section">
+    <h2>Free Online Average Calculator</h2>
+
+    <p>
+      Our free average calculator calculates the arithmetic mean of a
+      list of numbers quickly and accurately.
+    </p>
+
+    <p>
+      Enter numbers separated by commas, spaces or new lines and click
+      the calculate button to get the average instantly.
+    </p>
+  </div>
+
+  <div class="content-section">
+    <h2>How to Calculate an Average</h2>
+
+    <p>
+      To calculate an average, add all the numbers together and divide
+      the total by the number of values.
+    </p>
+
+    <p>
+      For example, the average of 10, 20 and 30 is:
+    </p>
+
+    <p>
+      (10 + 20 + 30) ÷ 3 = 20
+    </p>
+  </div>
+
+  <div class="content-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is an average?</h3>
+    <p>
+      An average, also called the arithmetic mean, is calculated by
+      adding all values and dividing the sum by the number of values.
+    </p>
+
+    <h3>How do I calculate the average of numbers?</h3>
+    <p>
+      Add all the numbers together and divide the result by how many
+      numbers there are.
+    </p>
+
+    <h3>Is this average calculator free?</h3>
+    <p>
+      Yes. USA Free Tools provides this average calculator free to use online.
+    </p>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 USA Free Tools. All rights reserved.</p>
+
+  <p>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+</footer>
+
+<script>
+function calculateAverage() {
+
+  const input = document.getElementById("numbers").value.trim();
+
+  if (!input) {
+    document.getElementById("averageResult").textContent =
+      "Enter numbers";
+    return;
+  }
+
+  const numbers = input
+    .split(/[\s,]+/)
+    .map(Number)
+    .filter(n => !isNaN(n));
+
+  if (!numbers.length) {
+    document.getElementById("averageResult").textContent =
+      "Enter valid numbers";
+    return;
+  }
+
+  const sum = numbers.reduce((total, number) => total + number, 0);
+  const average = sum / numbers.length;
+
+  document.getElementById("averageResult").textContent =
+    average.toFixed(2);
+}
+</script>
+
+</body>
+</html>
