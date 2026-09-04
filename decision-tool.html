@@ -280,8 +280,6 @@ function addOption() {
 
   document.getElementById("options").appendChild(div);
 }
-
-
 function compareOptions() {
 
   const options = document.querySelectorAll(".option");
@@ -308,60 +306,94 @@ function compareOptions() {
     const performance =
       parseFloat(option.querySelector(".performance").value) || 0;
 
-    /*
-      Score calculation:
-      Quality = 40%
-      Performance = 40%
-      Price = 20%
-    */
-
-    const maxPrice = Math.max(
-      ...Array.from(options).map(o =>
-        parseFloat(o.querySelector(".price").value) || 0
-      )
-    );
-
-    let priceScore = 0;
-
-    if (maxPrice > 0 && price > 0) {
-      priceScore = ((maxPrice - price) / maxPrice) * 10;
-    }
-
-    const score =
-      (quality * 0.4) +
-      (performance * 0.4) +
-      (priceScore * 0.2);
-
     data.push({
       name,
       price,
       quality,
-      performance,
-      score
+      performance
     });
 
   });
 
-  data.sort((a,b) => b.score - a.score);
+  const prices = data
+    .map(item => item.price)
+    .filter(price => price > 0);
+
+  const maxPrice = prices.length
+    ? Math.max(...prices)
+    : 0;
+
+  data.forEach(item => {
+
+    let valueScore = 0;
+
+    if (maxPrice > 0 && item.price > 0) {
+      valueScore =
+        ((maxPrice - item.price) / maxPrice) * 10;
+    }
+
+    item.valueScore = valueScore;
+
+    item.overall =
+      (item.quality * 0.4) +
+      (item.performance * 0.4) +
+      (item.valueScore * 0.2);
+
+  });
+
+  data.sort((a, b) => b.overall - a.overall);
 
   const winner = data[0];
+
+  const bestValue = [...data]
+    .sort((a, b) => b.valueScore - a.valueScore)[0];
+
+  const bestPerformance = [...data]
+    .sort((a, b) => b.performance - a.performance)[0];
+
+  const bestQuality = [...data]
+    .sort((a, b) => b.quality - a.quality)[0];
 
   document.getElementById("winnerName").textContent =
     winner.name;
 
   document.getElementById("winnerScore").textContent =
-    "Overall Score: " + winner.score.toFixed(2) + " / 10";
+    "Overall Score: " + winner.overall.toFixed(2) + " / 10";
 
   let html = `
-  <table>
-    <tr>
-      <th>Rank</th>
-      <th>Option</th>
-      <th>Price</th>
-      <th>Quality</th>
-      <th>Performance</th>
-      <th>Score</th>
-    </tr>
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:12px;
+      margin-bottom:25px;
+    ">
+
+      <div style="padding:16px;background:#f8fafc;border-radius:10px;text-align:center;">
+        <strong>💰 Best Value</strong>
+        <div style="margin-top:8px;">${bestValue.name}</div>
+      </div>
+
+      <div style="padding:16px;background:#f8fafc;border-radius:10px;text-align:center;">
+        <strong>⚡ Best Performance</strong>
+        <div style="margin-top:8px;">${bestPerformance.name}</div>
+      </div>
+
+      <div style="padding:16px;background:#f8fafc;border-radius:10px;text-align:center;">
+        <strong>💎 Best Quality</strong>
+        <div style="margin-top:8px;">${bestQuality.name}</div>
+      </div>
+
+    </div>
+
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Option</th>
+        <th>Price</th>
+        <th>Quality</th>
+        <th>Performance</th>
+        <th>Overall</th>
+      </tr>
   `;
 
   data.forEach((item, index) => {
@@ -370,16 +402,30 @@ function compareOptions() {
       <tr>
         <td>${index + 1}</td>
         <td><strong>${item.name}</strong></td>
-        <td>${item.price || "-"}</td>
+        <td>${item.price > 0 ? item.price : "-"}</td>
         <td>${item.quality}/10</td>
         <td>${item.performance}/10</td>
-        <td><strong>${item.score.toFixed(2)}</strong></td>
+        <td><strong>${item.overall.toFixed(2)}</strong></td>
       </tr>
     `;
 
   });
 
-  html += "</table>";
+  html += `
+    </table>
+
+    <button
+      type="button"
+      onclick="shareResult()"
+      style="
+        background:#111827;
+        color:white;
+        margin-top:20px;
+      "
+    >
+      🔗 Share Result
+    </button>
+  `;
 
   document.getElementById("tableContainer").innerHTML = html;
 
@@ -388,6 +434,39 @@ function compareOptions() {
   document.getElementById("result").scrollIntoView({
     behavior: "smooth"
   });
+}
+
+
+function shareResult() {
+
+  const winner =
+    document.getElementById("winnerName").textContent;
+
+  const score =
+    document.getElementById("winnerScore").textContent;
+
+  const text =
+    "🏆 Best Overall: " + winner + "\n" +
+    score + "\n\n" +
+    "Compare options with USA Free Tools.";
+
+  if (navigator.share) {
+
+    navigator.share({
+      title: "Which One Is Better?",
+      text: text,
+      url: window.location.href
+    });
+
+  } else {
+
+    navigator.clipboard.writeText(
+      text + "\n" + window.location.href
+    );
+
+    alert("Result copied! You can now share it.");
+
+  }
 }
 
 </script>
