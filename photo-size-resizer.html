@@ -1,1 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Photo Size & KB Resizer - Free Online Tool | USA Free Tools</title>
+
+<meta name="description" content="Resize and compress images online for free. Change photo dimensions, reduce file size in KB, preview your image, and download the result. Processing happens directly in your browser.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://usafreetool.com/photo-size-resizer.html">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f8fb;
+  color: #1f2937;
+}
+
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 20px;
+}
+
+.header-inner {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b63f6;
+  text-decoration: none;
+}
+
+nav a {
+  margin-left: 15px;
+  color: #374151;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 34px;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.7;
+  color: #667085;
+}
+
+.tool-card,
+.info-section {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+
+.upload-box {
+  border: 2px dashed #b8c2d1;
+  border-radius: 12px;
+  padding: 35px 20px;
+  text-align: center;
+  background: #fafcff;
+}
+
+.upload-box input {
+  margin-top: 15px;
+}
+
+.preview-area {
+  display: none;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.preview-area img {
+  max-width: 100%;
+  max-height: 350px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.controls {
+  display: none;
+  margin-top: 25px;
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+input[type="number"],
+input[type="range"],
+select {
+  width: 100%;
+}
+
+input[type="number"],
+select {
+  padding: 11px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.dimensions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-row input {
+  width: auto;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #0b63f6;
+  color: white;
+  width: 100%;
+}
+
+.download-btn {
+  background: #16a34a;
+  color: white;
+  width: 100%;
+  margin-top: 12px;
+  display: none;
+}
+
+.result-box {
+  display: none;
+  margin-top: 25px;
+  padding: 18px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.result-item {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.result-item strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.info-section h2 {
+  color: #111827;
+  margin-top: 0;
+}
+
+.info-section p,
+.info-section li {
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #667085;
+  font-size: 14px;
+}
+
+@media (max-width: 650px) {
+  .header-inner {
+    flex-direction: column;
+  }
+
+  nav a {
+    margin: 0 7px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .dimensions,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a href="index.html" class="logo">USA Free Tools</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+
+<h1>Photo Size & KB Resizer</h1>
+
+<p>
+Resize and compress your photo online for free. Change image dimensions,
+reduce file size, preview the result, and download the resized image.
+Your photo is processed directly in your browser.
+</p>
+
+</section>
+
+
+<section class="tool-card">
+
+<div class="upload-box">
+
+<h2>Select Your Photo</h2>
+
+<p>Choose a JPG, PNG or WebP image from your device.</p>
+
+<input
+  type="file"
+  id="imageInput"
+  accept="image/jpeg,image/png,image/webp"
+>
+
+</div>
+
+
+<div class="preview-area" id="previewArea">
+
+<h3>Original Photo</h3>
+
+<img id="originalPreview" alt="Original uploaded photo">
+
+<p id="originalInfo"></p>
+
+</div>
+
+
+<div class="controls" id="controls">
+
+<div class="control-group">
+
+<label for="preset">Quick Size Preset</label>
+
+<select id="preset" onchange="applyPreset()">
+
+<option value="">Custom Size</option>
+<option value="passport">Passport Photo</option>
+<option value="square">Square 500 × 500</option>
+<option value="instagram">Instagram 1080 × 1080</option>
+<option value="facebook">Facebook 1200 × 630</option>
+<option value="custom100">1000 × 1000</option>
+
+</select>
+
+</div>
+
+
+<div class="control-group">
+
+<label>Image Dimensions</label>
+
+<div class="dimensions">
+
+<div>
+<label for="width">Width (px)</label>
+<input type="number" id="width" min="1">
+</div>
+
+<div>
+<label for="height">Height (px)</label>
+<input type="number" id="height" min="1">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="checkbox-row control-group">
+
+<input type="checkbox" id="keepRatio" checked>
+
+<label for="keepRatio">Keep original aspect ratio</label>
+
+</div>
+
+
+<div class="control-group">
+
+<label for="quality">
+Compression Quality:
+<span id="qualityValue">80</span>%
+</label>
+
+<input
+  type="range"
+  id="quality"
+  min="10"
+  max="100"
+  value="80"
+  oninput="document.getElementById('qualityValue').textContent=this.value"
+>
+
+</div>
+
+
+<button class="primary-btn" type="button" onclick="resizeImage()">
+Resize & Compress Photo
+</button>
+
+
+<div class="result-box" id="resultBox">
+
+<h3>Result</h3>
+
+<div class="result-grid">
+
+<div class="result-item">
+<strong id="resultSize">-</strong>
+<span>New File Size</span>
+</div>
+
+<div class="result-item">
+<strong id="savedPercent">-</strong>
+<span>Size Reduced</span>
+</div>
+
+<div class="result-item">
+<strong id="resultDimensions">-</strong>
+<span>Dimensions</span>
+</div>
+
+</div>
+
+</div>
+
+
+<button
+  class="download-btn"
+  id="downloadBtn"
+  type="button"
+>
+Download Resized Photo
+</button>
+
+</div>
+
+</section>
+
+
+<section class="info-section">
+
+<h2>What Is a Photo Size & KB Resizer?</h2>
+
+<p>
+A photo size and KB resizer is an online tool that allows you to change
+the dimensions and file size of an image. It can be useful when a website,
+application form, job portal or document upload requires a specific image
+size or file-size limit.
+</p>
+
+<p>
+For example, if a website requires an image to be smaller than 100 KB,
+you can use this tool to reduce the image size and download the compressed
+version.
+</p>
+
+
+<h2>How to Resize a Photo</h2>
+
+<ol>
+<li>Select a photo from your device.</li>
+<li>Choose a preset size or enter your own dimensions.</li>
+<li>Adjust the compression quality if needed.</li>
+<li>Click "Resize & Compress Photo".</li>
+<li>Check the new file size and dimensions.</li>
+<li>Download the resized photo.</li>
+</ol>
+
+
+<h2>Why Reduce Photo File Size?</h2>
+
+<p>
+Smaller images can be easier to upload, share and store. Many websites
+and online forms also place limits on the maximum file size of uploaded
+photos.
+</p>
+
+<ul>
+<li>Online application forms</li>
+<li>Job applications</li>
+<li>Document submissions</li>
+<li>Profile photos</li>
+<li>Website uploads</li>
+<li>Email attachments</li>
+</ul>
+
+
+<h2>Does This Tool Upload My Photo?</h2>
+
+<p>
+No. Image processing is performed directly in your web browser.
+The selected photo is not intentionally uploaded to a server by this tool.
+This can be useful when working with personal images that you prefer to
+process locally on your device.
+</p>
+
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Can I make a photo smaller than 100 KB?</h3>
+
+<p>
+You can reduce the image dimensions and compression quality to make the
+file smaller. The final size depends on the original image and its
+contents.
+</p>
+
+<h3>Can I resize JPG images?</h3>
+
+<p>
+Yes. JPG images are supported by this tool.
+</p>
+
+<h3>Can I resize PNG images?</h3>
+
+<p>
+Yes. PNG images can also be selected and resized.
+</p>
+
+<h3>Does resizing change image quality?</h3>
+
+<p>
+Reducing dimensions or compression quality can reduce image quality.
+Higher quality settings generally preserve more detail but may produce
+a larger file.
+</p>
+
+<h3>Is the photo processed online?</h3>
+
+<p>
+The resizing and compression are performed in your browser using the
+HTML canvas feature. The tool does not need to send the image to a
+server for processing.
+</p>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<p>
+© 2026 USA Free Tools. All rights reserved.
+</p>
+
+<p>
+<a href="privacy.html">Privacy Policy</a> |
+<a href="contact.html">Contact</a>
+</p>
+
+</footer>
+
+
+<script>
+
+let originalImage = null;
+let originalFile = null;
+let downloadURL = null;
+
+
+document.getElementById("imageInput").addEventListener("change", function(event) {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  originalFile = file;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+
+    const img = new Image();
+
+    img.onload = function() {
+
+      originalImage = img;
+
+      document.getElementById("originalPreview").src = e.target.result;
+
+      document.getElementById("originalInfo").textContent =
+        `${img.width} × ${img.height} px • ${formatBytes(file.size)}`;
+
+      document.getElementById("width").value = img.width;
+      document.getElementById("height").value = img.height;
+
+      document.getElementById("previewArea").style.display = "block";
+      document.getElementById("controls").style.display = "block";
+
+      document.getElementById("resultBox").style.display = "none";
+      document.getElementById("downloadBtn").style.display = "none";
+
+    };
+
+    img.src = e.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+
+document.getElementById("width").addEventListener("input", function() {
+
+  if (!originalImage) return;
+
+  if (document.getElementById("keepRatio").checked) {
+
+    const ratio = originalImage.height / originalImage.width;
+
+    document.getElementById("height").value =
+      Math.round(this.value * ratio);
+
+  }
+
+});
+
+
+document.getElementById("height").addEventListener("input", function() {
+
+  if (!originalImage) return;
+
+  if (document.getElementById("keepRatio").checked) {
+
+    const ratio = originalImage.width / originalImage.height;
+
+    document.getElementById("width").value =
+      Math.round(this.value * ratio);
+
+  }
+
+});
+
+
+function applyPreset() {
+
+  const preset = document.getElementById("preset").value;
+
+  if (!originalImage || !preset) return;
+
+  let width;
+  let height;
+
+  if (preset === "passport") {
+    width = 600;
+    height = 600;
+  }
+
+  if (preset === "square") {
+    width = 500;
+    height = 500;
+  }
+
+  if (preset === "instagram") {
+    width = 1080;
+    height = 1080;
+  }
+
+  if (preset === "facebook") {
+    width = 1200;
+    height = 630;
+  }
+
+  if (preset === "custom100") {
+    width = 1000;
+    height = 1000;
+  }
+
+  document.getElementById("width").value = width;
+  document.getElementById("height").value = height;
+
+  document.getElementById("keepRatio").checked = false;
+}
+
+
+function resizeImage() {
+
+  if (!originalImage || !originalFile) {
+    alert("Please select a photo first.");
+    return;
+  }
+
+  const width = parseInt(document.getElementById("width").value);
+  const height = parseInt(document.getElementById("height").value);
+  const quality = parseInt(document.getElementById("quality").value) / 100;
+
+  if (!width || !height || width < 1 || height < 1) {
+    alert("Please enter valid image dimensions.");
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext("2d");
+
+  ctx.drawImage(
+    originalImage,
+    0,
+    0,
+    width,
+    height
+  );
+
+  canvas.toBlob(function(blob) {
+
+    if (!blob) {
+      alert("Could not process this image.");
+      return;
+    }
+
+    if (downloadURL) {
+      URL.revokeObjectURL(downloadURL);
+    }
+
+    downloadURL = URL.createObjectURL(blob);
+
+    const newSize = blob.size;
+    const oldSize = originalFile.size;
+
+    let saved = ((oldSize - newSize) / oldSize) * 100;
+
+    if (saved < 0) {
+      saved = 0;
+    }
+
+    document.getElementById("resultSize").textContent =
+      formatBytes(newSize);
+
+    document.getElementById("savedPercent").textContent =
+      saved.toFixed(1) + "%";
+
+    document.getElementById("resultDimensions").textContent =
+      width + " × " + height;
+
+    document.getElementById("resultBox").style.display = "block";
+
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    downloadBtn.style.display = "block";
+
+    downloadBtn.onclick = function() {
+
+      const link = document.createElement("a");
+
+      link.href = downloadURL;
+
+      link.download = "resized-photo.jpg";
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      document.body.removeChild(link);
+
+    };
+
+  }, "image/jpeg", quality);
+
+}
+
+
+function formatBytes(bytes) {
+
+  if (bytes === 0) return "0 Bytes";
+
+  const units = [
+    "Bytes",
+    "KB",
+    "MB",
+    "GB"
+  ];
+
+  const i = Math.floor(
+    Math.log(bytes) / Math.log(1024)
+  );
+
+  return (
+    parseFloat(
+      (bytes / Math.pow(1024, i)).toFixed(2)
+    ) +
+    " " +
+    units[i]
+  );
+
+}
+
+</script>
+
+</body>
+</html>
