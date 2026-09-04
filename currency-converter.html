@@ -535,7 +535,50 @@
     </div>
 
   </section>
+<!-- POPULAR CURRENCY CONVERSIONS -->
+<section class="content">
+  <div class="content-section">
+    <h2>Popular Currency Conversions</h2>
 
+    <p>
+      Quickly convert popular currency pairs using the latest available exchange rates.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px;">
+
+      <button onclick="setPopularCurrency('USD','INR')"
+        style="padding:13px;border:1px solid #d8e5ff;border-radius:10px;background:#f1f6ff;color:#0b63f6;font-weight:700;cursor:pointer;">
+        USD → INR
+      </button>
+
+      <button onclick="setPopularCurrency('INR','USD')"
+        style="padding:13px;border:1px solid #d8e5ff;border-radius:10px;background:#f1f6ff;color:#0b63f6;font-weight:700;cursor:pointer;">
+        INR → USD
+      </button>
+
+      <button onclick="setPopularCurrency('USD','EUR')"
+        style="padding:13px;border:1px solid #d8e5ff;border-radius:10px;background:#f1f6ff;color:#0b63f6;font-weight:700;cursor:pointer;">
+        USD → EUR
+      </button>
+
+      <button onclick="setPopularCurrency('USD','GBP')"
+        style="padding:13px;border:1px solid #d8e5ff;border-radius:10px;background:#f1f6ff;color:#0b63f6;font-weight:700;cursor:pointer;">
+        USD → GBP
+      </button>
+
+      <button onclick="setPopularCurrency('EUR','INR')"
+        style="padding:13px;border:1px solid #d8e5ff;border-radius:10px;background:#f1f6ff;color:#0b63f6;font-weight:700;cursor:pointer;">
+        EUR → INR
+      </button>
+
+      <button onclick="setPopularCurrency('GBP','INR')"
+        style="padding:13px;border:1px solid #d8e5ff;border-radius:10px;background:#f1f6ff;color:#0b63f6;font-weight:700;cursor:pointer;">
+        GBP → INR
+      </button>
+
+    </div>
+  </div>
+</section>
   <footer>
     <p>© 2026 USA Free Tools. All rights reserved.</p>
     <a href="about.html">About Us</a>
@@ -639,6 +682,17 @@ function swapCurrencies() {
     window.addEventListener("load", function() {
       convertCurrency();
     });
+    function setPopularCurrency(from, to) {
+  document.getElementById("fromCurrency").value = from;
+  document.getElementById("toCurrency").value = to;
+
+  document.getElementById("amount").focus();
+
+  document.getElementById("amount").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
   </script>
 
 </body>
