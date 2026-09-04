@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQKEXJQBS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQKEXJQBS4');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6554717322177499"
+       crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Age Calculator - Calculate Your Exact Age Online Free</title>
+
+  <meta name="description"
+        content="Free online age calculator. Calculate your exact age in years, months and days from your date of birth.">
+
+  <meta name="keywords"
+        content="age calculator, calculate age, age calculator online, exact age calculator, date of birth calculator">
+
+  <link rel="canonical" href="https://usafreetool.com/age-calculator.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Age Calculator - Free Online Calculator">
+  <meta property="og:description" content="Calculate your exact age in years, months and days with this free online age calculator.">
+  <meta property="og:url" content="https://usafreetool.com/age-calculator.html">
+  <meta property="og:type" content="website">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator",
+    "url": "https://usafreetool.com/age-calculator.html",
+    "applicationCategory": "Calculator",
+    "operatingSystem": "All",
+    "description": "Free online age calculator that calculates age in years, months and days.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f9ff;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b63f6, #1746a2);
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b63f6, #1746a2);
+      color: white;
+      text-align: center;
+      padding: 55px 20px 70px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .calculator {
+      max-width: 650px;
+      margin: -35px auto 45px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(20, 60, 120, 0.12);
+      position: relative;
+    }
+
+    .calculator h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd6e5;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #0b63f6;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 9px;
+      background: #0b63f6;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: 10px;
+      background: #f1f6ff;
+      text-align: center;
+    }
+
+    .result-label {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .result-amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0b63f6;
+      margin-top: 8px;
+    }
+
+    .content {
+      max-width: 950px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .content-section {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 18px rgba(20, 60, 120, 0.06);
+    }
+
+    h2 {
+      color: #172033;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    .example {
+      background: #f6f9ff;
+      border-left: 4px solid #0b63f6;
+      padding: 14px 18px;
+      margin: 15px 0;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 700px) {
+
+      .nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .calculator {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 22px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="nav">
+
+    <a class="logo" href="index.html">
+      USA Free Tools
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+
+  </div>
+
+</header>
+
+<section class="hero">
+
+  <h1>Age Calculator</h1>
+
+  <p>
+    Calculate your exact age in years, months and days with our free online age calculator.
+  </p>
+
+</section>
+
+<section class="calculator">
+
+  <h2>Calculate Your Age</h2>
+
+  <div class="input-group">
+
+    <label for="birthDate">
+      Date of Birth
+    </label>
+
+    <input
+      type="date"
+      id="birthDate"
+    >
+
+  </div>
+
+  <div class="input-group">
+
+    <label for="todayDate">
+      Calculate Age On
+    </label>
+
+    <input
+      type="date"
+      id="todayDate"
+    >
+
+  </div>
+
+  <button onclick="calculateAge()">
+    Calculate Age
+  </button>
+
+  <div class="result" id="result">
+
+    <div class="result-label">
+      Your Exact Age
+    </div>
+
+    <div class="result-amount" id="resultAmount">
+      Enter your dates above
+    </div>
+
+  </div>
+
+</section>
+
+<section class="content">
+
+  <div class="content-section">
+
+    <h2>Free Online Age Calculator</h2>
+
+    <p>
+      Our free age calculator helps you find your exact age from your date
+      of birth. Enter your birth date and the date you want to calculate
+      your age on to get the result in years, months and days.
+    </p>
+
+    <p>
+      This calculator can be useful for checking your current age,
+      calculating an age for a specific date, or finding the exact time
+      between two dates.
+    </p>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>How to Use the Age Calculator</h2>
+
+    <h3>Step 1: Enter your date of birth</h3>
+
+    <p>
+      Select your date of birth using the date field.
+    </p>
+
+    <h3>Step 2: Select the calculation date</h3>
+
+    <p>
+      Choose the date on which you want to calculate your age.
+    </p>
+
+    <h3>Step 3: Calculate your age</h3>
+
+    <p>
+      Click the Calculate Age button to see your exact age in years,
+      months and days.
+    </p>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>Age Calculator Examples</h2>
+
+    <div class="example">
+      <strong>
+        If you were born on January 1, 2000, your age depends on the
+        date you choose for the calculation.
+      </strong>
+    </div>
+
+    <div class="example">
+      <strong>
+        You can also choose a future or past date to calculate your age
+        on a specific date.
+      </strong>
+    </div>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How does an age calculator work?</h3>
+
+    <p>
+      An age calculator compares your date of birth with another date
+      and calculates the difference in years, months and days.
+    </p>
+
+    <h3>Can I calculate my exact age?</h3>
+
+    <p>
+      Yes. This calculator provides your age in years, months and days
+      based on the dates you enter.
+    </p>
+
+    <h3>Can I calculate my age on a specific date?</h3>
+
+    <p>
+      Yes. Enter your date of birth and select the date on which you
+      want to know your age.
+    </p>
+
+    <h3>Is this age calculator free?</h3>
+
+    <p>
+      Yes. The age calculator is free to use online.
+    </p>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>More Free Calculators</h2>
+
+    <p>
+      Explore more free tools from USA Free Tools:
+    </p>
+
+    <p>
+      <a href="index.html">All Calculators</a> |
+      <a href="percentage-calculator.html">Percentage Calculator</a> |
+      <a href="currency-converter.html">Currency Converter</a>
+    </p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>
+    © 2026 USA Free Tools. All rights reserved.
+  </p>
+
+  <p>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+
+</footer>
+
+<script>
+
+function calculateAge() {
+
+  const birthInput = document.getElementById("birthDate").value;
+  const todayInput = document.getElementById("todayDate").value;
+  const resultAmount = document.getElementById("resultAmount");
+
+  if (!birthInput || !todayInput) {
+    resultAmount.textContent = "Please enter both dates";
+    return;
+  }
+
+  const birthParts = birthInput.split("-").map(Number);
+  const todayParts = todayInput.split("-").map(Number);
+
+  const birthYear = birthParts[0];
+  const birthMonth = birthParts[1];
+  const birthDay = birthParts[2];
+
+  const todayYear = todayParts[0];
+  const todayMonth = todayParts[1];
+  const todayDay = todayParts[2];
+
+  const birthDate = new Date(
+    birthYear,
+    birthMonth - 1,
+    birthDay
+  );
+
+  const todayDate = new Date(
+    todayYear,
+    todayMonth - 1,
+    todayDay
+  );
+
+  if (birthDate > todayDate) {
+    resultAmount.textContent =
+      "Birth date cannot be after the calculation date";
+    return;
+  }
+
+  let years = todayYear - birthYear;
+  let months = todayMonth - birthMonth;
+  let days = todayDay - birthDay;
+
+  if (days < 0) {
+
+    months--;
+
+    const previousMonth = new Date(
+      todayYear,
+      todayMonth - 1,
+      0
+    );
+
+    days += previousMonth.getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  resultAmount.textContent =
+    years + " years, " +
+    months + " months, " +
+    days + " days";
+
+}
+
+document.getElementById("todayDate").value =
+  new Date().toISOString().split("T")[0];
+
+</script>
+
+</body>
+</html>
