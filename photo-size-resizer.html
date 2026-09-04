@@ -374,8 +374,25 @@ Compression Quality:
 >
 
 </div>
+<div class="control-group">
 
+<label for="targetKB">
+Target File Size (Optional)
+</label>
 
+<input
+  type="number"
+  id="targetKB"
+  min="10"
+  placeholder="Example: 100"
+>
+
+<p style="margin:8px 0 0;color:#667085;font-size:14px;">
+Enter a target size in KB, such as 100 or 200.
+The tool will try to compress the image close to your target size.
+</p>
+
+</div>
 <button class="primary-btn" type="button" onclick="resizeImage()">
 Resize & Compress Photo
 </button>
@@ -656,9 +673,7 @@ function applyPreset() {
 
   document.getElementById("keepRatio").checked = false;
 }
-
-
-function resizeImage() {
+async function resizeImage() {
 
   if (!originalImage || !originalFile) {
     alert("Please select a photo first.");
@@ -668,6 +683,7 @@ function resizeImage() {
   const width = parseInt(document.getElementById("width").value);
   const height = parseInt(document.getElementById("height").value);
   const quality = parseInt(document.getElementById("quality").value) / 100;
+  const targetKB = parseFloat(document.getElementById("targetKB").value);
 
   if (!width || !height || width < 1 || height < 1) {
     alert("Please enter valid image dimensions.");
@@ -689,64 +705,105 @@ function resizeImage() {
     height
   );
 
-  canvas.toBlob(function(blob) {
+  function createJPEG(q) {
+    return new Promise(function(resolve) {
+      canvas.toBlob(function(blob) {
+        resolve(blob);
+      }, "image/jpeg", q);
+    });
+  }
 
-    if (!blob) {
-      alert("Could not process this image.");
-      return;
+  let finalBlob;
+
+  if (targetKB && targetKB >= 10) {
+
+    const targetBytes = targetKB * 1024;
+
+    let low = 0.05;
+    let high = 1;
+    let bestBlob = null;
+
+    for (let i = 0; i < 8; i++) {
+
+      const mid = (low + high) / 2;
+      const blob = await createJPEG(mid);
+
+      if (!blob) {
+        alert("Could not process this image.");
+        return;
+      }
+
+      if (blob.size <= targetBytes) {
+        bestBlob = blob;
+        low = mid;
+      } else {
+        high = mid;
+      }
     }
 
-    if (downloadURL) {
-      URL.revokeObjectURL(downloadURL);
+    if (!bestBlob) {
+      bestBlob = await createJPEG(0.05);
     }
 
-    downloadURL = URL.createObjectURL(blob);
+    finalBlob = bestBlob;
 
-    const newSize = blob.size;
-    const oldSize = originalFile.size;
+  } else {
 
-    let saved = ((oldSize - newSize) / oldSize) * 100;
+    finalBlob = await createJPEG(quality);
 
-    if (saved < 0) {
-      saved = 0;
-    }
+  }
 
-    document.getElementById("resultSize").textContent =
-      formatBytes(newSize);
+  if (!finalBlob) {
+    alert("Could not process this image.");
+    return;
+  }
 
-    document.getElementById("savedPercent").textContent =
-      saved.toFixed(1) + "%";
+  if (downloadURL) {
+    URL.revokeObjectURL(downloadURL);
+  }
 
-    document.getElementById("resultDimensions").textContent =
-      width + " × " + height;
+  downloadURL = URL.createObjectURL(finalBlob);
 
-    document.getElementById("resultBox").style.display = "block";
+  const newSize = finalBlob.size;
+  const oldSize = originalFile.size;
 
-    const downloadBtn = document.getElementById("downloadBtn");
+  let saved = ((oldSize - newSize) / oldSize) * 100;
 
-    downloadBtn.style.display = "block";
+  if (saved < 0) {
+    saved = 0;
+  }
 
-    downloadBtn.onclick = function() {
+  document.getElementById("resultSize").textContent =
+    formatBytes(newSize);
 
-      const link = document.createElement("a");
+  document.getElementById("savedPercent").textContent =
+    saved.toFixed(1) + "%";
 
-      link.href = downloadURL;
+  document.getElementById("resultDimensions").textContent =
+    width + " × " + height;
 
-      link.download = "resized-photo.jpg";
+  document.getElementById("resultBox").style.display = "block";
 
-      document.body.appendChild(link);
+  const downloadBtn = document.getElementById("downloadBtn");
 
-      link.click();
+  downloadBtn.style.display = "block";
 
-      document.body.removeChild(link);
+  downloadBtn.onclick = function() {
 
-    };
+    const link = document.createElement("a");
 
-  }, "image/jpeg", quality);
+    link.href = downloadURL;
 
+    link.download = "resized-photo.jpg";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+  };
 }
-
-
+  
 function formatBytes(bytes) {
 
   if (bytes === 0) return "0 Bytes";
