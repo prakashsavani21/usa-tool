@@ -1,39 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://usafreetool.com</loc>
+    <loc>https://usafreetool.com/</loc>
   </url>
+
   <url>
     <loc>https://usafreetool.com/about.html</loc>
   </url>
+
   <url>
     <loc>https://usafreetool.com/contact.html</loc>
   </url>
+
   <url>
     <loc>https://usafreetool.com/privacy.html</loc>
   </url>
+
   <url>
-  <loc>https://usafreetool.com/percentage-calculator.html</loc>
-</url>
+    <loc>https://usafreetool.com/percentage-calculator.html</loc>
+  </url>
+
   <url>
-  <loc>https://usafreetool.com/age-calculator.html</loc>
-</url>
-    <url>
+    <loc>https://usafreetool.com/age-calculator.html</loc>
+  </url>
+
+  <url>
     <loc>https://usafreetool.com/discount-calculator.html</loc>
   </url>
+
   <url>
-  <loc>https://usafreetool.com/tip-calculator.html</loc>
-</url>
+    <loc>https://usafreetool.com/tip-calculator.html</loc>
+  </url>
+
   <url>
-  <loc>https://usafreetool.com/average-calculator.html</loc>
-</url>
+    <loc>https://usafreetool.com/average-calculator.html</loc>
+  </url>
+
   <url>
-  <loc>https://usafreetool.com/simple-interest-calculator.html</loc>
-</url>
+    <loc>https://usafreetool.com/simple-interest-calculator.html</loc>
+  </url>
+
   <url>
-  <loc>https://usafreetool.com/decision-tool.html</loc>
-</url>
+    <loc>https://usafreetool.com/mortgage-calculator.html</loc>
+  </url>
+
   <url>
-  <loc>https://usafreetool.com/photo-size-resizer.html</loc>
-</url>
+    <loc>https://usafreetool.com/loan-payment-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://usafreetool.com/currency-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://usafreetool.com/time-zone-converter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://usafreetool.com/decision-tool.html</loc>
+  </url>
+
+  <url>
+    <loc>https://usafreetool.com/photo-size-resizer.html</loc>
+  </url>
+
 </urlset>
