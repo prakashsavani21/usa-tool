@@ -331,7 +331,11 @@ header {
 
   <div class="result" id="ageResult"></div>
 </article>
-<article class="card tool-card"><div class="card-icon">🏷️</div><h3>Discount Calculator</h3><p>Calculate sale price and total savings.</p><input class="input" type="number" id="price" placeholder="Original price ($)" min="0" step=".01"><input class="input" type="number" id="discount" placeholder="Discount (%)" min="0" max="100" step=".1"><button onclick="calculateDiscount()">Calculate Discount</button><div class="result" id="discountResult" aria-live="polite"></div></article>
+<article class="card tool-card"><div class="card-icon">🏷️</div><h3>
+  <a href="discount-calculator.html" style="color:inherit;text-decoration:none;">
+    Discount Calculator
+  </a>
+</h3><p>Calculate sale price and total savings.</p><input class="input" type="number" id="price" placeholder="Original price ($)" min="0" step=".01"><input class="input" type="number" id="discount" placeholder="Discount (%)" min="0" max="100" step=".1"><button onclick="calculateDiscount()">Calculate Discount</button><div class="result" id="discountResult" aria-live="polite"></div></article>
 <article class="card tool-card"><div class="card-icon">📊</div><h3>Average Calculator</h3><p>Calculate the average of multiple numbers.</p><input class="input" type="text" id="numbers" placeholder="Example: 10, 20, 30"><button onclick="calculateAverage()">Calculate Average</button><div class="result" id="averageResult" aria-live="polite"></div></article>
 <article class="card tool-card"><div class="card-icon">💵</div><h3>Simple Interest Calculator</h3><p>Calculate simple interest and final amount.</p><input class="input" type="number" id="principal" placeholder="Principal amount ($)" min="0" step=".01"><input class="input" type="number" id="rate" placeholder="Annual interest rate (%)" min="0" step=".01"><input class="input" type="number" id="years" placeholder="Years" min="0" step=".1"><button onclick="calculateInterest()">Calculate Interest</button><div class="result" id="interestResult" aria-live="polite"></div></article>
   <article class="card tool-card">
