@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQKEXJQBS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQKEXJQBS4');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6554717322177499"
+       crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Percentage Calculator - Calculate Percentages Online Free</title>
+
+  <meta name="description"
+        content="Free online percentage calculator. Calculate percentages, percentage increase, percentage decrease, and find what percent one number is of another.">
+
+  <meta name="keywords"
+        content="percentage calculator, percent calculator, calculate percentage, percentage increase calculator, percentage decrease calculator">
+
+  <link rel="canonical" href="https://usafreetool.com/percentage-calculator.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Percentage Calculator - Free Online Calculator">
+  <meta property="og:description" content="Calculate percentages, percentage increase, percentage decrease and more with this free online percentage calculator.">
+  <meta property="og:url" content="https://usafreetool.com/percentage-calculator.html">
+  <meta property="og:type" content="website">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Percentage Calculator",
+    "url": "https://usafreetool.com/percentage-calculator.html",
+    "applicationCategory": "Calculator",
+    "operatingSystem": "All",
+    "description": "Free online percentage calculator for calculating percentages, percentage increase and percentage decrease.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f9ff;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b63f6, #1746a2);
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b63f6, #1746a2);
+      color: white;
+      text-align: center;
+      padding: 55px 20px 70px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .calculator {
+      max-width: 650px;
+      margin: -35px auto 45px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(20, 60, 120, 0.12);
+      position: relative;
+    }
+
+    .calculator h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd6e5;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #0b63f6;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 9px;
+      background: #0b63f6;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: 10px;
+      background: #f1f6ff;
+      text-align: center;
+      min-height: 70px;
+    }
+
+    .result-label {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .result-amount {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0b63f6;
+      margin-top: 5px;
+    }
+
+    .content {
+      max-width: 950px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .content-section {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 18px rgba(20, 60, 120, 0.06);
+    }
+
+    h2 {
+      color: #172033;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    .example {
+      background: #f6f9ff;
+      border-left: 4px solid #0b63f6;
+      padding: 14px 18px;
+      margin: 15px 0;
+    }
+
+    footer {
+      background: #101828;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .calculator {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 22px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">USA Free Tools</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Percentage Calculator</h1>
+  <p>
+    Calculate percentages quickly and easily with our free online percentage calculator.
+  </p>
+</section>
+
+<section class="calculator">
+
+  <h2>Calculate Percentage</h2>
+
+  <div class="input-group">
+    <label for="percentage">Percentage (%)</label>
+    <input type="number" id="percentage" placeholder="Example: 20">
+  </div>
+
+  <div class="input-group">
+    <label for="number">Number</label>
+    <input type="number" id="number" placeholder="Example: 500">
+  </div>
+
+  <button onclick="calculatePercentage()">
+    Calculate Percentage
+  </button>
+
+  <div class="result" id="result">
+    <div class="result-label">Result</div>
+    <div class="result-amount" id="resultAmount">--</div>
+  </div>
+
+</section>
+
+<section class="content">
+
+  <div class="content-section">
+
+    <h2>Free Online Percentage Calculator</h2>
+
+    <p>
+      Our percentage calculator makes it easy to calculate percentages
+      without doing complicated calculations manually. Enter a percentage
+      and a number to instantly find the result.
+    </p>
+
+    <p>
+      For example, if you want to calculate <strong>20% of 500</strong>,
+      enter 20 as the percentage and 500 as the number. The calculator
+      will show the answer instantly.
+    </p>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>How to Calculate a Percentage</h2>
+
+    <p>
+      The basic percentage formula is:
+    </p>
+
+    <div class="example">
+      <strong>Percentage Result = (Percentage ÷ 100) × Number</strong>
+    </div>
+
+    <h3>Example: What is 20% of 500?</h3>
+
+    <p>
+      20 ÷ 100 × 500 = <strong>100</strong>
+    </p>
+
+    <p>
+      Therefore, <strong>20% of 500 is 100.</strong>
+    </p>
+
+    <h3>Example: What is 15% of 200?</h3>
+
+    <p>
+      15 ÷ 100 × 200 = <strong>30</strong>
+    </p>
+
+    <p>
+      Therefore, <strong>15% of 200 is 30.</strong>
+    </p>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>Percentage Calculation Examples</h2>
+
+    <div class="example">
+      <strong>10% of 100 = 10</strong>
+    </div>
+
+    <div class="example">
+      <strong>20% of 500 = 100</strong>
+    </div>
+
+    <div class="example">
+      <strong>25% of 200 = 50</strong>
+    </div>
+
+    <div class="example">
+      <strong>50% of 800 = 400</strong>
+    </div>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How do I calculate a percentage?</h3>
+
+    <p>
+      Divide the percentage by 100 and multiply it by the number.
+      For example, 20% of 500 is 100.
+    </p>
+
+    <h3>What is 20 percent of 500?</h3>
+
+    <p>
+      20 percent of 500 is <strong>100</strong>.
+    </p>
+
+    <h3>What is 10 percent of 100?</h3>
+
+    <p>
+      10 percent of 100 is <strong>10</strong>.
+    </p>
+
+    <h3>Is this percentage calculator free?</h3>
+
+    <p>
+      Yes. The percentage calculator is completely free to use online.
+    </p>
+
+  </div>
+
+  <div class="content-section">
+
+    <h2>More Free Calculators</h2>
+
+    <p>
+      Explore more free online calculators from USA Free Tools:
+    </p>
+
+    <p>
+      <a href="index.html">All Calculators</a> |
+      <a href="currency-converter.html">Currency Converter</a> |
+      <a href="about.html">About Us</a>
+    </p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>© 2026 USA Free Tools. All rights reserved.</p>
+
+  <p>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+
+</footer>
+
+<script>
+
+function calculatePercentage() {
+
+  const percentage = parseFloat(
+    document.getElementById("percentage").value
+  );
+
+  const number = parseFloat(
+    document.getElementById("number").value
+  );
+
+  const resultAmount = document.getElementById("resultAmount");
+
+  if (isNaN(percentage) || isNaN(number)) {
+    resultAmount.textContent = "Please enter both values";
+    return;
+  }
+
+  const result = (percentage / 100) * number;
+
+  resultAmount.textContent = result.toLocaleString(
+    undefined,
+    {
+      maximumFractionDigits: 10
+    }
+  );
+
+}
+
+</script>
+
+</body>
+</html>
