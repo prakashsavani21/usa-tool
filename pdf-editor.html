@@ -1,274 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Free PDF Editor Online | USA Free Tools</title>
-  <meta name="description" content="Edit PDF files online for free. Upload a PDF, rotate or delete pages, add text, and download your edited PDF directly in your browser.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://usafreetool.com/pdf-editor.html">
+<title>Free PDF Editor Online | USA Free Tools</title>
+<meta name="description" content="Edit PDF files online for free. Click existing text to edit it, add new text, rotate pages and download your edited PDF.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://usafreetool.com/pdf-editor.html">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #111827;
-    }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#111827;
+}
 
-    header {
-      background: #0b63f6;
-      color: white;
-      padding: 22px 20px;
-      text-align: center;
-    }
+header{
+  background:#0b63f6;
+  color:white;
+  padding:25px 18px;
+  text-align:center;
+}
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 32px;
-    }
+header h1{
+  margin:0 0 8px;
+  font-size:32px;
+}
 
-    header p {
-      margin: 0;
-      opacity: .92;
-    }
+header p{margin:0}
 
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 18px;
-    }
+.container{
+  max-width:1150px;
+  margin:30px auto;
+  padding:0 18px;
+}
 
-    .upload-box {
-      background: white;
-      border: 2px dashed #b8c7df;
-      border-radius: 18px;
-      padding: 45px 20px;
-      text-align: center;
-      margin-bottom: 22px;
-    }
+.upload-box,
+.toolbar,
+.pages-panel,
+.preview-panel,
+.info{
+  background:white;
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 5px 18px rgba(15,23,42,.06);
+}
 
-    .upload-box h2 {
-      margin-top: 0;
-    }
+.upload-box{
+  text-align:center;
+  border:2px dashed #bfd0e8;
+  padding:42px 20px;
+  margin-bottom:20px;
+}
 
-    input[type="file"] {
-      display: none;
-    }
+input[type=file]{display:none}
 
-    .upload-button,
-    button {
-      border: none;
-      border-radius: 9px;
-      padding: 12px 18px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.upload-btn,
+button{
+  border:0;
+  border-radius:9px;
+  padding:12px 17px;
+  font-weight:700;
+  cursor:pointer;
+}
 
-    .upload-button {
-      display: inline-block;
-      background: #0b63f6;
-      color: white;
-    }
+.upload-btn{
+  display:inline-block;
+  background:#0b63f6;
+  color:white;
+}
 
-    button {
-      background: #1746c7;
-      color: white;
-      margin: 4px;
-    }
+button{
+  background:#1746c7;
+  color:white;
+  margin:4px;
+}
 
-    button.secondary {
-      background: #475569;
-    }
+button.danger{background:#dc2626}
+button.green{background:#059669}
+button.gray{background:#475569}
 
-    button.danger {
-      background: #dc2626;
-    }
+.editor{display:none}
 
-    button.green {
-      background: #059669;
-    }
+.toolbar{
+  margin-bottom:20px;
+}
 
-    button:disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+}
 
-    .editor {
-      display: none;
-    }
+.controls input{
+  width:180px;
+  padding:11px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+}
 
-    .toolbar {
-      background: white;
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 18px rgba(15,23,42,.06);
-    }
+.workspace{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:20px;
+}
 
-    .toolbar h3 {
-      margin-top: 0;
-    }
+.pages-panel h2,
+.preview-panel h2{
+  margin-top:0;
+}
 
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
+#pageList{
+  display:grid;
+  gap:10px;
+  max-height:700px;
+  overflow:auto;
+}
 
-    .controls input {
-      width: 120px;
-      padding: 11px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 14px;
-    }
+.page-card{
+  border:2px solid #e5e7eb;
+  border-radius:10px;
+  padding:12px;
+  cursor:pointer;
+  background:#f8fafc;
+}
 
-    .page-info {
-      margin: 12px 0 0;
-      color: #64748b;
-      font-size: 14px;
-    }
+.page-card.selected{
+  border-color:#0b63f6;
+  background:#eff6ff;
+}
 
-    .workspace {
-      display: grid;
-      grid-template-columns: 330px 1fr;
-      gap: 20px;
-    }
+.page-card strong{display:block}
+.page-card small{color:#64748b}
 
-    .pages-panel,
-    .preview-panel {
-      background: white;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 5px 18px rgba(15,23,42,.06);
-    }
+#canvasWrap{
+  position:relative;
+  width:100%;
+  overflow:auto;
+  background:#e5e7eb;
+  padding:20px;
+  text-align:center;
+  min-height:500px;
+}
 
-    .pages-panel h2,
-    .preview-panel h2 {
-      margin-top: 0;
-      font-size: 21px;
-    }
+#pdfCanvas{
+  display:inline-block;
+  background:white;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
 
-    #pageList {
-      display: grid;
-      gap: 12px;
-      max-height: 650px;
-      overflow-y: auto;
-    }
+#textLayer{
+  position:absolute;
+  pointer-events:none;
+}
 
-    .page-card {
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 12px;
-      cursor: pointer;
-      background: #f8fafc;
-    }
+.text-item{
+  position:absolute;
+  pointer-events:auto;
+  cursor:pointer;
+  color:transparent;
+  white-space:pre;
+  border:1px solid transparent;
+}
 
-    .page-card.selected {
-      border-color: #0b63f6;
-      background: #eff6ff;
-    }
+.text-item:hover{
+  border:1px dashed #0b63f6;
+  background:rgba(11,99,246,.08);
+}
 
-    .page-card strong {
-      display: block;
-      margin-bottom: 6px;
-    }
+.hint{
+  margin:12px 0 0;
+  color:#64748b;
+  font-size:14px;
+}
 
-    .page-card small {
-      color: #64748b;
-    }
+.info{
+  margin-top:22px;
+  line-height:1.7;
+  color:#475569;
+}
 
-    iframe {
-      width: 100%;
-      height: 650px;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      background: #f8fafc;
-    }
+@media(max-width:800px){
+  .workspace{
+    grid-template-columns:1fr;
+  }
 
-    .empty-preview {
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #64748b;
-    }
+  header h1{
+    font-size:27px;
+  }
 
-    .notice {
-      margin-top: 20px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 12px;
-      padding: 16px;
-      color: #1e3a8a;
-      line-height: 1.6;
-    }
-
-    .content-section {
-      margin-top: 30px;
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 5px 18px rgba(15,23,42,.06);
-    }
-
-    .content-section h2 {
-      margin-top: 0;
-    }
-
-    .content-section p,
-    .content-section li {
-      line-height: 1.7;
-      color: #475569;
-    }
-
-    @media (max-width: 800px) {
-      .workspace {
-        grid-template-columns: 1fr;
-      }
-
-      iframe {
-        height: 500px;
-      }
-
-      header h1 {
-        font-size: 27px;
-      }
-    }
-  </style>
+  #canvasWrap{
+    padding:10px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>Free PDF Editor Online</h1>
-  <p>Edit PDF files directly in your browser</p>
+  <p>Edit PDF text and pages directly in your browser</p>
 </header>
 
 <div class="container">
 
   <div class="upload-box">
     <h2>Upload Your PDF</h2>
-    <p>Select a PDF file from your device to start editing.</p>
+    <p>Select a PDF file to start editing.</p>
 
-    <label for="pdfInput" class="upload-button">
+    <label for="pdfInput" class="upload-btn">
       Choose PDF File
     </label>
 
     <input type="file" id="pdfInput" accept="application/pdf">
 
-    <p class="page-info">
+    <p class="hint">
       Your PDF is processed locally in your browser.
     </p>
   </div>
@@ -289,20 +244,13 @@
 
         <input
           type="text"
-          id="textInput"
-          placeholder="Text to add"
+          id="newText"
+          placeholder="New text"
         >
 
-        <input
-          type="number"
-          id="fontSize"
-          value="18"
-          min="8"
-          max="72"
-          placeholder="Font size"
-        >
-
-        <button onclick="addText()">✏️ Add Text</button>
+        <button onclick="addText()">
+          ✏️ Add Text
+        </button>
 
         <button class="green" onclick="downloadPDF()">
           📥 Download PDF
@@ -310,8 +258,12 @@
 
       </div>
 
-      <div class="page-info" id="selectedInfo">
-        Select a page from the left.
+      <p class="hint">
+        Click existing text in the PDF to edit it.
+      </p>
+
+      <div id="selectedInfo" class="hint">
+        No page selected.
       </div>
 
     </div>
@@ -319,342 +271,549 @@
     <div class="workspace">
 
       <div class="pages-panel">
-        <h2>PDF Pages</h2>
+        <h2>Pages</h2>
         <div id="pageList"></div>
       </div>
 
       <div class="preview-panel">
         <h2>PDF Preview</h2>
 
-        <div id="previewArea">
-          <div class="empty-preview">
-            Select a PDF page to preview it.
-          </div>
+        <div id="canvasWrap">
+          <canvas id="pdfCanvas"></canvas>
+          <div id="textLayer"></div>
         </div>
+
+        <p class="hint">
+          Blue outline appears when you move over editable text.
+          Click the text to change it.
+        </p>
       </div>
 
     </div>
 
   </div>
 
-  <div class="notice">
+  <div class="info">
     <strong>Privacy:</strong> Your PDF is processed inside your browser.
     The file is not uploaded to our server.
-  </div>
 
-  <section class="content-section">
-
-    <h2>How to Edit a PDF Online</h2>
-
-    <p>
-      Our free PDF editor lets you make simple changes to PDF files
-      directly from your browser without installing desktop software.
-    </p>
+    <h2>How to Edit PDF Text</h2>
 
     <ol>
-      <li>Upload your PDF file.</li>
-      <li>Select the page you want to edit.</li>
-      <li>Rotate or delete pages when needed.</li>
-      <li>Add text to the selected page.</li>
-      <li>Download your edited PDF.</li>
+      <li>Upload your PDF.</li>
+      <li>Select a page.</li>
+      <li>Click existing text on the page.</li>
+      <li>Enter the replacement text.</li>
+      <li>Download the edited PDF.</li>
     </ol>
 
-    <h2>What Can You Do With This PDF Editor?</h2>
+    <h2>Other PDF Tools</h2>
 
-    <ul>
-      <li>Upload PDF files</li>
-      <li>Preview PDF pages</li>
-      <li>Rotate individual pages</li>
-      <li>Delete unwanted pages</li>
-      <li>Add text to a page</li>
-      <li>Download the edited PDF</li>
-    </ul>
-
-  </section>
+    <p>
+      You can also rotate pages, delete unwanted pages and add new text
+      before downloading the edited PDF.
+    </p>
+  </div>
 
 </div>
 
 <script>
-  let pdfDoc = null;
-  let selectedPage = 0;
-  let pdfBytes = null;
-  let previewUrl = null;
 
-  const pdfInput = document.getElementById("pdfInput");
-  const editor = document.querySelector(".editor");
-  const pageList = document.getElementById("pageList");
-  const previewArea = document.getElementById("previewArea");
-  const selectedInfo = document.getElementById("selectedInfo");
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-  pdfInput.addEventListener("change", async function () {
+let originalBytes = null;
+let pdfDocument = null;
+let pdfLibDocument = null;
+let selectedPage = 1;
 
-    const file = this.files[0];
+let textEdits = {};
+let addedTexts = {};
 
-    if (!file) return;
+const pdfInput = document.getElementById("pdfInput");
+const editor = document.querySelector(".editor");
+const pageList = document.getElementById("pageList");
+const canvas = document.getElementById("pdfCanvas");
+const ctx = canvas.getContext("2d");
+const textLayer = document.getElementById("textLayer");
+const canvasWrap = document.getElementById("canvasWrap");
+const selectedInfo = document.getElementById("selectedInfo");
 
-    if (file.type !== "application/pdf") {
-      alert("Please select a PDF file.");
-      return;
-    }
+pdfInput.addEventListener("change", async function(){
 
-    try {
+  const file = this.files[0];
 
-      pdfBytes = await file.arrayBuffer();
+  if(!file) return;
 
-      pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+  if(file.type !== "application/pdf"){
+    alert("Please select a PDF file.");
+    return;
+  }
 
-      selectedPage = 0;
+  try{
 
-      editor.style.display = "block";
+    originalBytes = await file.arrayBuffer();
+
+    pdfDocument = await pdfjsLib.getDocument({
+      data:new Uint8Array(originalBytes)
+    }).promise;
+
+    pdfLibDocument = await PDFLib.PDFDocument.load(originalBytes);
+
+    selectedPage = 1;
+
+    textEdits = {};
+    addedTexts = {};
+
+    editor.style.display = "block";
+
+    renderPageList();
+    renderSelectedPage();
+
+  }catch(error){
+
+    console.error(error);
+    alert("Could not open this PDF.");
+
+  }
+
+});
+
+
+function renderPageList(){
+
+  pageList.innerHTML = "";
+
+  for(let i=1;i<=pdfDocument.numPages;i++){
+
+    const card = document.createElement("div");
+
+    card.className =
+      "page-card" +
+      (i === selectedPage ? " selected" : "");
+
+    card.innerHTML = `
+      <strong>Page ${i}</strong>
+      <small>Click to edit this page</small>
+    `;
+
+    card.onclick = function(){
+
+      selectedPage = i;
 
       renderPageList();
+      renderSelectedPage();
 
-      updatePreview();
+    };
 
-    } catch (error) {
+    pageList.appendChild(card);
 
-      console.error(error);
+  }
 
-      alert("Could not open this PDF. Please try another PDF file.");
+  selectedInfo.textContent =
+    "Selected page: " + selectedPage;
 
-    }
+}
+
+
+async function renderSelectedPage(){
+
+  const page = await pdfDocument.getPage(selectedPage);
+
+  const viewport = page.getViewport({
+    scale:1.4
+  });
+
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+
+  const renderContext = {
+    canvasContext:ctx,
+    viewport:viewport
+  };
+
+  await page.render(renderContext).promise;
+
+  textLayer.innerHTML = "";
+
+  textLayer.style.left =
+    canvas.offsetLeft + "px";
+
+  textLayer.style.top =
+    canvas.offsetTop + "px";
+
+  textLayer.style.width =
+    viewport.width + "px";
+
+  textLayer.style.height =
+    viewport.height + "px";
+
+  const content =
+    await page.getTextContent();
+
+  content.items.forEach((item,index)=>{
+
+    if(!item.str.trim()) return;
+
+    const tx =
+      pdfjsLib.Util.transform(
+        viewport.transform,
+        item.transform
+      );
+
+    const x = tx[4];
+
+    const y = tx[5];
+
+    const fontHeight =
+      Math.abs(tx[3]);
+
+    const width =
+      item.width * viewport.scale;
+
+    const height =
+      Math.max(fontHeight,14);
+
+    const div =
+      document.createElement("div");
+
+    div.className = "text-item";
+
+    div.style.left = x + "px";
+
+    div.style.top =
+      (y - height) + "px";
+
+    div.style.width =
+      Math.max(width,20) + "px";
+
+    div.style.height =
+      height + "px";
+
+    div.title = "Click to edit";
+
+    div.onclick = function(e){
+
+      e.stopPropagation();
+
+      editExistingText(
+        index,
+        item.str,
+        x,
+        y,
+        fontHeight,
+        item.width
+      );
+
+    };
+
+    textLayer.appendChild(div);
 
   });
 
-
-  function renderPageList() {
-
-    pageList.innerHTML = "";
-
-    if (!pdfDoc) return;
-
-    const pages = pdfDoc.getPages();
-
-    pages.forEach((page, index) => {
-
-      const card = document.createElement("div");
-
-      card.className =
-        "page-card" +
-        (index === selectedPage ? " selected" : "");
-
-      card.innerHTML = `
-        <strong>Page ${index + 1}</strong>
-        <small>
-          Size: ${Math.round(page.getWidth())} ×
-          ${Math.round(page.getHeight())}
-        </small>
-      `;
-
-      card.addEventListener("click", function () {
-
-        selectedPage = index;
-
-        renderPageList();
-
-        updatePreview();
-
-      });
-
-      pageList.appendChild(card);
-
-    });
-
-    selectedInfo.textContent =
-      "Selected page: " + (selectedPage + 1);
-
-  }
+}
 
 
-  function rotatePage() {
+function editExistingText(
+  index,
+  oldText,
+  x,
+  y,
+  fontHeight,
+  width
+){
 
-    if (!pdfDoc) return;
-
-    const pages = pdfDoc.getPages();
-
-    if (!pages[selectedPage]) return;
-
-    const page = pages[selectedPage];
-
-    const currentRotation = page.getRotation().angle;
-
-    page.setRotation(
-      PDFLib.degrees((currentRotation + 90) % 360)
+  const newText =
+    prompt(
+      "Edit this text:",
+      oldText
     );
 
-    renderPageList();
+  if(newText === null) return;
 
-    updatePreview();
+  if(newText.trim() === ""){
 
-  }
+    alert("Text cannot be empty.");
 
-
-  function deletePage() {
-
-    if (!pdfDoc) return;
-
-    const pages = pdfDoc.getPages();
-
-    if (pages.length <= 1) {
-
-      alert("A PDF must contain at least one page.");
-
-      return;
-
-    }
-
-    const confirmed = confirm(
-      "Delete page " + (selectedPage + 1) + "?"
-    );
-
-    if (!confirmed) return;
-
-    pdfDoc.removePage(selectedPage);
-
-    if (selectedPage >= pdfDoc.getPageCount()) {
-      selectedPage = pdfDoc.getPageCount() - 1;
-    }
-
-    renderPageList();
-
-    updatePreview();
+    return;
 
   }
 
+  if(!textEdits[selectedPage]){
+    textEdits[selectedPage] = {};
+  }
 
-  async function addText() {
+  textEdits[selectedPage][index] = {
+    oldText:oldText,
+    newText:newText,
+    x:x,
+    y:y,
+    fontHeight:fontHeight,
+    width:width
+  };
 
-    if (!pdfDoc) return;
+  renderSelectedPage();
 
-    const text = document.getElementById("textInput").value.trim();
+}
 
-    const fontSize =
-      Number(document.getElementById("fontSize").value) || 18;
 
-    if (!text) {
+function addText(){
 
-      alert("Enter some text first.");
+  const text =
+    document.getElementById("newText")
+      .value.trim();
 
-      return;
+  if(!text){
 
-    }
+    alert("Enter text first.");
 
-    const pages = pdfDoc.getPages();
-
-    const page = pages[selectedPage];
-
-    if (!page) return;
-
-    const font = await pdfDoc.embedFont(
-      PDFLib.StandardFonts.Helvetica
-    );
-
-    const pageWidth = page.getWidth();
-
-    const pageHeight = page.getHeight();
-
-    page.drawText(text, {
-
-      x: 40,
-
-      y: pageHeight - 60,
-
-      size: fontSize,
-
-      font: font,
-
-      color: PDFLib.rgb(0, 0, 0)
-
-    });
-
-    document.getElementById("textInput").value = "";
-
-    updatePreview();
+    return;
 
   }
 
+  if(!addedTexts[selectedPage]){
+    addedTexts[selectedPage] = [];
+  }
 
-  async function updatePreview() {
+  addedTexts[selectedPage].push({
+    text:text,
+    x:40,
+    y:60,
+    size:18
+  });
 
-    if (!pdfDoc) return;
+  document.getElementById("newText").value = "";
 
-    try {
+  alert(
+    "Text added to the top-left area of the selected page."
+  );
 
-      const bytes = await pdfDoc.save();
+}
 
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
+
+function rotatePage(){
+
+  if(!pdfLibDocument) return;
+
+  const page =
+    pdfLibDocument.getPages()[selectedPage-1];
+
+  const current =
+    page.getRotation().angle;
+
+  page.setRotation(
+    PDFLib.degrees(
+      (current + 90) % 360
+    )
+  );
+
+  alert(
+    "Page rotation applied. It will appear after download."
+  );
+
+}
+
+
+function deletePage(){
+
+  if(!pdfLibDocument) return;
+
+  if(pdfLibDocument.getPageCount() <= 1){
+
+    alert("A PDF must have at least one page.");
+
+    return;
+
+  }
+
+  if(!confirm(
+    "Delete page " + selectedPage + "?"
+  )) return;
+
+  pdfLibDocument.removePage(
+    selectedPage - 1
+  );
+
+  if(selectedPage > pdfLibDocument.getPageCount()){
+    selectedPage =
+      pdfLibDocument.getPageCount();
+  }
+
+  alert(
+    "Page deleted. The change will appear after download."
+  );
+
+}
+
+
+async function downloadPDF(){
+
+  if(!pdfLibDocument){
+
+    alert("Please upload a PDF first.");
+
+    return;
+
+  }
+
+  try{
+
+    const pages =
+      pdfLibDocument.getPages();
+
+    for(const pageNumber in textEdits){
+
+      const pageIndex =
+        Number(pageNumber) - 1;
+
+      const page =
+        pages[pageIndex];
+
+      if(!page) continue;
+
+      const edits =
+        textEdits[pageNumber];
+
+      const font =
+        await pdfLibDocument.embedFont(
+          PDFLib.StandardFonts.Helvetica
+        );
+
+      const pageWidth =
+        page.getWidth();
+
+      const pageHeight =
+        page.getHeight();
+
+      for(const key in edits){
+
+        const edit =
+          edits[key];
+
+        const scale = 1.4;
+
+        const pdfX =
+          edit.x / scale;
+
+        const pdfY =
+          pageHeight -
+          (edit.y / scale);
+
+        const fontSize =
+          Math.max(
+            8,
+            edit.fontHeight / scale
+          );
+
+        const estimatedWidth =
+          Math.max(
+            35,
+            (edit.width / scale) + 8
+          );
+
+        page.drawRectangle({
+
+          x:pdfX - 2,
+
+          y:pdfY - fontSize - 3,
+
+          width:estimatedWidth,
+
+          height:fontSize + 7,
+
+          color:PDFLib.rgb(1,1,1)
+
+        });
+
+        page.drawText(
+          edit.newText,
+          {
+            x:pdfX,
+            y:pdfY - fontSize,
+            size:fontSize,
+            font:font,
+            color:PDFLib.rgb(0,0,0)
+          }
+        );
+
       }
 
-      const blob = new Blob(
-        [bytes],
-        { type: "application/pdf" }
-      );
+    }
 
-      previewUrl = URL.createObjectURL(blob);
 
-      previewArea.innerHTML = `
-        <iframe
-          src="${previewUrl}"
-          title="PDF Preview">
-        </iframe>
-      `;
+    for(const pageNumber in addedTexts){
 
-    } catch (error) {
+      const page =
+        pages[Number(pageNumber)-1];
 
-      console.error(error);
+      if(!page) continue;
+
+      const font =
+        await pdfLibDocument.embedFont(
+          PDFLib.StandardFonts.Helvetica
+        );
+
+      for(const item of addedTexts[pageNumber]){
+
+        page.drawText(
+          item.text,
+          {
+            x:item.x,
+            y:page.getHeight()-item.y,
+            size:item.size,
+            font:font,
+            color:PDFLib.rgb(0,0,0)
+          }
+        );
+
+      }
 
     }
+
+
+    const finalBytes =
+      await pdfLibDocument.save();
+
+    const blob =
+      new Blob(
+        [finalBytes],
+        {type:"application/pdf"}
+      );
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      "edited-pdf.pdf";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    setTimeout(
+      ()=>URL.revokeObjectURL(url),
+      1000
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Could not create the edited PDF."
+    );
 
   }
 
+}
 
-  async function downloadPDF() {
-
-    if (!pdfDoc) {
-
-      alert("Please upload a PDF first.");
-
-      return;
-
-    }
-
-    try {
-
-      const bytes = await pdfDoc.save();
-
-      const blob = new Blob(
-        [bytes],
-        { type: "application/pdf" }
-      );
-
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-
-      link.href = url;
-
-      link.download = "edited-pdf.pdf";
-
-      document.body.appendChild(link);
-
-      link.click();
-
-      link.remove();
-
-      setTimeout(() => {
-        URL.revokeObjectURL(url);
-      }, 1000);
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert("Could not create the edited PDF.");
-
-    }
-
-  }
 </script>
 
 </body>
