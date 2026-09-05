@@ -4,13 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Free PDF Editor Online | USA Free Tools</title>
+<title>Free PDF Text Editor Online | USA Free Tools</title>
 
-<meta name="description" content="Edit existing PDF text online for free. Upload a PDF, edit detected text, add text, delete pages and download your edited PDF.">
+<meta name="description" content="Edit existing PDF text online for free. Upload a PDF, click detected text, change it and download your edited PDF.">
+
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://usafreetool.com/pdf-editor.html">
 
+<!-- PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- PDF-Lib -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 
 <style>
@@ -48,10 +52,10 @@ header p{
 }
 
 .upload-box{
-  background:#fff;
+  background:white;
   border:2px dashed #bfdbfe;
   border-radius:18px;
-  padding:35px 20px;
+  padding:40px 20px;
   text-align:center;
 }
 
@@ -59,17 +63,17 @@ header p{
   margin-top:0;
 }
 
-.file-label{
+.file-button{
   display:inline-block;
   background:#0b63f6;
   color:white;
-  padding:13px 22px;
-  border-radius:9px;
+  padding:14px 24px;
+  border-radius:10px;
   cursor:pointer;
   font-weight:700;
 }
 
-.file-label:hover{
+.file-button:hover{
   background:#1746c7;
 }
 
@@ -78,8 +82,8 @@ header p{
 }
 
 .status{
-  margin-top:15px;
-  color:#64748b;
+  margin-top:18px;
+  color:#475569;
   white-space:pre-line;
 }
 
@@ -88,8 +92,17 @@ header p{
   margin-top:25px;
 }
 
+.notice{
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:18px;
+  color:#1e3a8a;
+}
+
 .toolbar{
-  background:#fff;
+  background:white;
   padding:15px;
   border-radius:14px;
   display:flex;
@@ -103,39 +116,19 @@ header p{
 .toolbar button{
   border:0;
   background:#0b63f6;
-  color:#fff;
+  color:white;
   padding:10px 15px;
   border-radius:8px;
   cursor:pointer;
-  font-weight:600;
+  font-weight:700;
 }
 
 .toolbar button:hover{
   background:#1746c7;
 }
 
-.toolbar button.danger{
-  background:#dc2626;
-}
-
-.toolbar button.secondary{
-  background:#475569;
-}
-
-.toolbar button.green{
+.toolbar .download{
   background:#059669;
-}
-
-.toolbar label{
-  font-weight:600;
-  color:#374151;
-}
-
-.toolbar input[type="number"]{
-  width:70px;
-  padding:8px;
-  border:1px solid #d1d5db;
-  border-radius:7px;
 }
 
 .workspace{
@@ -145,11 +138,11 @@ header p{
 }
 
 .pages{
-  background:#fff;
+  background:white;
   border-radius:14px;
   padding:15px;
   max-height:750px;
-  overflow-y:auto;
+  overflow:auto;
   box-shadow:0 4px 15px rgba(15,23,42,.06);
 }
 
@@ -164,7 +157,6 @@ header p{
   margin-bottom:10px;
   cursor:pointer;
   text-align:center;
-  background:#fff;
 }
 
 .page-item.active{
@@ -174,7 +166,6 @@ header p{
 
 .page-item canvas{
   width:100%;
-  height:auto;
   display:block;
 }
 
@@ -189,10 +180,10 @@ header p{
   border-radius:14px;
   padding:20px;
   min-height:650px;
+  overflow:auto;
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  overflow:auto;
 }
 
 .canvas-wrapper{
@@ -207,51 +198,42 @@ header p{
 
 .text-layer{
   position:absolute;
-  inset:0;
+  left:0;
+  top:0;
   overflow:hidden;
 }
 
-.edit-text{
+.editable-text{
   position:absolute;
   margin:0;
-  padding:1px 3px;
+  padding:0 2px;
   border:1px solid transparent;
   background:transparent;
-  color:transparent;
+  outline:none;
   resize:none;
   overflow:hidden;
   white-space:pre;
-  line-height:1;
   font-family:Arial,sans-serif;
-  outline:none;
+  color:transparent;
   cursor:text;
 }
 
-.edit-text:hover,
-.edit-text:focus{
+.editable-text:hover{
+  border-color:#2563eb;
+  background:rgba(255,255,255,.8);
   color:#111827;
-  background:rgba(255,255,255,.88);
-  border:1px solid #2563eb;
 }
 
-.edit-text.changed{
+.editable-text:focus,
+.editable-text.changed{
+  border-color:#2563eb;
+  background:white;
   color:#111827;
-  background:rgba(255,255,255,.92);
-  border:1px solid #2563eb;
-}
-
-.info{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:20px;
-  color:#1e3a8a;
 }
 
 .instructions{
-  background:white;
   margin-top:25px;
+  background:white;
   padding:25px;
   border-radius:16px;
   line-height:1.7;
@@ -267,21 +249,19 @@ header p{
 }
 
 @media(max-width:750px){
+
   .workspace{
     grid-template-columns:1fr;
   }
 
   .pages{
-    max-height:240px;
+    max-height:250px;
   }
 
   header h1{
     font-size:26px;
   }
 
-  .toolbar{
-    justify-content:center;
-  }
 }
 </style>
 </head>
@@ -289,83 +269,93 @@ header p{
 <body>
 
 <header>
-  <h1>Free PDF Editor Online</h1>
+  <h1>Free PDF Text Editor</h1>
   <p>Edit existing PDF text directly in your browser.</p>
 </header>
 
 <div class="container">
 
   <div class="upload-box">
+
     <h2>Upload Your PDF</h2>
 
-    <p>Select a PDF to edit its existing text.</p>
+    <p>Select a PDF file to start editing.</p>
 
-    <label class="file-label" for="pdfFile">
+    <label class="file-button" for="pdfFile">
       Choose PDF File
     </label>
 
     <input
-      type="file"
       id="pdfFile"
-      accept="application/pdf,.pdf"
+      type="file"
+      accept=".pdf,application/pdf"
     >
 
-    <div class="status" id="uploadStatus">
+    <div class="status" id="status">
       Your PDF is processed locally in your browser.
     </div>
 
     <p class="privacy">
       🔒 Your PDF is not uploaded to our server.
     </p>
+
   </div>
+
 
   <div class="editor" id="editor">
 
-    <div class="info">
-      <strong>✏️ Text Editing:</strong>
-      Existing detected text is shown as editable fields.
-      Click a text field, change it, then download the edited PDF.
+    <div class="notice">
+      <strong>✏️ Edit Existing Text:</strong>
+      Click any detected text on the PDF and type your replacement.
+      Then click Download Edited PDF.
     </div>
+
 
     <div class="toolbar">
 
-      <button onclick="previousPage()">← Previous</button>
-
-      <button onclick="nextPage()">Next →</button>
-
-      <button onclick="addText()">＋ Add Text</button>
-
-      <button class="danger" onclick="deletePage()">
-        🗑 Delete Page
+      <button onclick="previousPage()">
+        ← Previous
       </button>
 
-      <button class="secondary" onclick="resetPage()">
-        ↺ Reset Page
+      <button onclick="nextPage()">
+        Next →
       </button>
 
-      <button class="green" onclick="downloadPDF()">
+      <button onclick="addText()">
+        ＋ Add Text
+      </button>
+
+      <button class="download" onclick="downloadPDF()">
         ⬇ Download Edited PDF
       </button>
 
     </div>
 
+
     <div class="workspace">
 
       <div class="pages">
+
         <h3>Pages</h3>
+
         <div id="pageList"></div>
+
       </div>
+
 
       <div class="canvas-area">
 
-        <div class="canvas-wrapper" id="canvasWrapper">
+        <div
+          class="canvas-wrapper"
+          id="canvasWrapper"
+        >
 
           <canvas id="pdfCanvas"></canvas>
 
           <div
             class="text-layer"
-            id="textLayer">
-          </div>
+            id="textLayer"
+          ></div>
 
         </div>
 
@@ -375,106 +365,175 @@ header p{
 
   </div>
 
+
   <div class="instructions">
 
     <h2>How to Edit PDF Text</h2>
 
     <ol>
-      <li>Upload your PDF.</li>
-      <li>Wait for the PDF pages and text to load.</li>
-      <li>Click on any detected text.</li>
-      <li>Change the text directly.</li>
-      <li>Use Add Text if you want to insert new text.</li>
+      <li>Click Choose PDF File.</li>
+      <li>Select a normal text-based PDF.</li>
+      <li>Wait for the PDF to load.</li>
+      <li>Click on detected text.</li>
+      <li>Change the text.</li>
       <li>Click Download Edited PDF.</li>
     </ol>
 
     <p>
+      Scanned PDFs and image-only PDFs do not contain selectable
+      text, so their existing text cannot be detected by this editor.
+    </p>
+
+    <p>
       Your PDF is processed locally in your browser.
-      It is not uploaded to our server.
     </p>
 
   </div>
 
 </div>
 
+
 <script>
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+/* =========================
+   PDF LIBRARY CHECK
+========================= */
 
+if(
+  typeof pdfjsLib === "undefined" ||
+  typeof PDFLib === "undefined"
+){
+
+  document.getElementById("status").textContent =
+    "PDF editor libraries could not load. Please refresh the page.";
+
+  console.error(
+    "PDF.js or PDF-Lib failed to load."
+  );
+
+}else{
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+}
+
+
+/* =========================
+   VARIABLES
+========================= */
 
 let originalBytes = null;
-let pdfJsDocument = null;
-let pdfLibDocument = null;
 
-let currentPage = 1;
+let pdfJsDocument = null;
+
 let totalPages = 0;
 
-let pageData = {};
+let currentPage = 1;
+
+let pageInformation = {};
 
 const SCALE = 1.5;
 
 
 /* =========================
-   FILE UPLOAD
+   FILE INPUT
 ========================= */
 
 document
   .getElementById("pdfFile")
-  .addEventListener("change", handleFile);
+  .addEventListener(
+    "change",
+    handlePDF
+  );
 
 
-async function handleFile(event){
+/* =========================
+   OPEN PDF
+========================= */
 
-  const file = event.target.files[0];
+async function handlePDF(event){
+
+  const file =
+    event.target.files[0];
 
   if(!file){
     return;
   }
 
+
   const status =
-    document.getElementById("uploadStatus");
+    document.getElementById(
+      "status"
+    );
+
+
+  if(
+    typeof pdfjsLib === "undefined" ||
+    typeof PDFLib === "undefined"
+  ){
+
+    status.textContent =
+      "PDF libraries are not available.";
+
+    return;
+
+  }
+
+
+  if(
+    file.type !== "application/pdf" &&
+    !file.name.toLowerCase().endsWith(".pdf")
+  ){
+
+    alert(
+      "Please select a PDF file."
+    );
+
+    return;
+
+  }
+
 
   status.textContent =
     "Opening PDF...";
 
+
   try{
+
+    /*
+      Read file.
+    */
 
     originalBytes =
       await file.arrayBuffer();
 
-    if(!originalBytes ||
-       originalBytes.byteLength === 0){
+
+    if(
+      !originalBytes ||
+      originalBytes.byteLength === 0
+    ){
 
       throw new Error(
         "The selected file is empty."
       );
+
     }
 
 
     /*
-      Load with pdf.js for rendering
-      and text detection.
+      Load PDF using PDF.js.
     */
 
     pdfJsDocument =
       await pdfjsLib.getDocument({
-        data:new Uint8Array(originalBytes)
+
+        data:
+          new Uint8Array(
+            originalBytes
+          )
+
       }).promise;
-
-
-    /*
-      Load separate copy with pdf-lib
-      for final PDF creation.
-    */
-
-    const libBytes =
-      new Uint8Array(originalBytes);
-
-    pdfLibDocument =
-      await PDFLib.PDFDocument.load(
-        libBytes
-      );
 
 
     totalPages =
@@ -482,13 +541,19 @@ async function handleFile(event){
 
 
     if(totalPages < 1){
+
       throw new Error(
-        "No pages found in this PDF."
+        "No pages were found."
       );
+
     }
 
 
-    pageData = {};
+    /*
+      Prepare page data.
+    */
+
+    pageInformation = {};
 
     for(
       let i = 1;
@@ -496,16 +561,19 @@ async function handleFile(event){
       i++
     ){
 
-      pageData[i] = {
-        originalTexts:[],
-        edits:[],
+      pageInformation[i] = {
+
+        texts:[],
+
         added:[]
+
       };
 
     }
 
 
     currentPage = 1;
+
 
     document
       .getElementById("editor")
@@ -517,29 +585,39 @@ async function handleFile(event){
       totalPages +
       " page" +
       (totalPages === 1 ? "" : "s") +
-      " loaded.";
+      " found.";
 
 
     await renderPageList();
 
-    await renderPage(currentPage);
+    await renderPage(
+      currentPage
+    );
 
 
   }catch(error){
 
     console.error(
-      "PDF loading error:",
+      "PDF OPEN ERROR:",
       error
     );
 
-    alert(
-      "Could not open this PDF.\n\n" +
-      (error.message || "")
-    );
+
+    let reason =
+      error && error.message
+        ? error.message
+        : "Unknown error";
+
 
     status.textContent =
-      "Could not open this PDF. " +
-      "Please try another PDF file.";
+      "PDF could not be opened.\n\n" +
+      reason;
+
+
+    alert(
+      "Could not open this PDF.\n\n" +
+      reason
+    );
 
   }
 
@@ -553,7 +631,9 @@ async function handleFile(event){
 async function renderPageList(){
 
   const list =
-    document.getElementById("pageList");
+    document.getElementById(
+      "pageList"
+    );
 
   list.innerHTML = "";
 
@@ -565,17 +645,24 @@ async function renderPageList(){
   ){
 
     const item =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     item.className =
       "page-item" +
-      (i === currentPage
-        ? " active"
-        : "");
+      (
+        i === currentPage
+          ? " active"
+          : ""
+      );
 
 
     const thumb =
-      document.createElement("canvas");
+      document.createElement(
+        "canvas"
+      );
 
 
     try{
@@ -583,10 +670,12 @@ async function renderPageList(){
       const page =
         await pdfJsDocument.getPage(i);
 
+
       const viewport =
         page.getViewport({
           scale:.22
         });
+
 
       thumb.width =
         viewport.width;
@@ -594,10 +683,14 @@ async function renderPageList(){
       thumb.height =
         viewport.height;
 
+
       await page.render({
+
         canvasContext:
           thumb.getContext("2d"),
+
         viewport:viewport
+
       }).promise;
 
 
@@ -611,20 +704,28 @@ async function renderPageList(){
     }
 
 
-    item.appendChild(thumb);
+    item.appendChild(
+      thumb
+    );
 
 
     const number =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     number.className =
       "page-number";
+
 
     number.textContent =
       "Page " + i;
 
 
-    item.appendChild(number);
+    item.appendChild(
+      number
+    );
 
 
     item.onclick =
@@ -632,14 +733,18 @@ async function renderPageList(){
 
         currentPage = i;
 
-        renderPageList();
+        await renderPageList();
 
-        await renderPage(i);
+        await renderPage(
+          currentPage
+        );
 
       };
 
 
-    list.appendChild(item);
+    list.appendChild(
+      item
+    );
 
   }
 
@@ -647,10 +752,12 @@ async function renderPageList(){
 
 
 /* =========================
-   RENDER PAGE
+   RENDER CURRENT PAGE
 ========================= */
 
-async function renderPage(pageNumber){
+async function renderPage(
+  pageNumber
+){
 
   const page =
     await pdfJsDocument.getPage(
@@ -669,10 +776,12 @@ async function renderPage(pageNumber){
       "pdfCanvas"
     );
 
+
   const wrapper =
     document.getElementById(
       "canvasWrapper"
     );
+
 
   const layer =
     document.getElementById(
@@ -706,13 +815,20 @@ async function renderPage(pageNumber){
 
 
   await page.render({
+
     canvasContext:context,
+
     viewport:viewport
+
   }).promise;
 
 
   layer.innerHTML = "";
 
+
+  /*
+    Detect existing PDF text.
+  */
 
   await detectText(
     page,
@@ -722,24 +838,26 @@ async function renderPage(pageNumber){
 
 
   /*
-    Restore previously added text.
+    Restore added text.
   */
 
   if(
-    pageData[pageNumber] &&
-    pageData[pageNumber].added
+    pageInformation[pageNumber] &&
+    pageInformation[pageNumber].added
   ){
 
-    pageData[pageNumber]
+    pageInformation[pageNumber]
       .added
-      .forEach(function(data){
+      .forEach(
+        function(item){
 
-        createAddedTextElement(
-          data,
-          layer
-        );
+          createAddedText(
+            item,
+            layer
+          );
 
-      });
+        }
+      );
 
   }
 
@@ -766,25 +884,8 @@ async function detectText(
     );
 
 
-  if(
-    !pageData[pageNumber]
-  ){
-
-    pageData[pageNumber] = {
-      originalTexts:[],
-      edits:[],
-      added:[]
-    };
-
-  }
-
-
-  /*
-    Clear only original detected text.
-  */
-
-  pageData[pageNumber]
-    .originalTexts = [];
+  pageInformation[pageNumber]
+    .texts = [];
 
 
   content.items.forEach(
@@ -794,53 +895,51 @@ async function detectText(
         !item.str ||
         !item.str.trim()
       ){
+
         return;
+
       }
 
 
-      /*
-        Convert PDF text transform
-        into screen coordinates.
-      */
-
-      const tx =
+      const transform =
         pdfjsLib.Util.transform(
+
           viewport.transform,
+
           item.transform
+
         );
+
+
+      const x =
+        transform[4];
+
+
+      const y =
+        transform[5];
 
 
       const fontSize =
         Math.max(
           8,
-          Math.abs(tx[3])
+          Math.abs(
+            transform[3]
+          )
         );
-
-
-      const x =
-        tx[4];
-
-
-      const y =
-        tx[5];
 
 
       const width =
         Math.max(
-          item.width * SCALE,
-          25
+          30,
+          item.width * SCALE
         );
 
 
       const height =
         Math.max(
-          fontSize * 1.25,
-          14
+          16,
+          fontSize * 1.3
         );
-
-
-      const top =
-        y - height;
 
 
       const data = {
@@ -853,28 +952,25 @@ async function detectText(
 
         x:x,
 
-        y:top,
+        y:y - height,
 
         width:width,
 
         height:height,
 
-        fontSize:fontSize,
-
-        changed:false
+        fontSize:fontSize
 
       };
 
 
-      pageData[pageNumber]
-        .originalTexts
+      pageInformation[pageNumber]
+        .texts
         .push(data);
 
 
       createEditableText(
         data,
-        layer,
-        pageNumber
+        layer
       );
 
     }
@@ -884,13 +980,12 @@ async function detectText(
 
 
 /* =========================
-   CREATE EDITABLE TEXT
+   EDITABLE EXISTING TEXT
 ========================= */
 
 function createEditableText(
   data,
-  layer,
-  pageNumber
+  layer
 ){
 
   const input =
@@ -900,7 +995,7 @@ function createEditableText(
 
 
   input.className =
-    "edit-text";
+    "editable-text";
 
 
   input.value =
@@ -920,24 +1015,20 @@ function createEditableText(
 
   input.style.width =
     Math.max(
-      35,
-      data.width + 8
+      30,
+      data.width
     ) + "px";
 
 
   input.style.height =
     Math.max(
       18,
-      data.height + 5
+      data.height
     ) + "px";
 
 
   input.style.fontSize =
     data.fontSize + "px";
-
-
-  input.dataset.id =
-    data.id;
 
 
   input.addEventListener(
@@ -947,11 +1038,11 @@ function createEditableText(
       data.value =
         input.value;
 
-      data.changed =
-        input.value !==
-        data.original;
 
-      if(data.changed){
+      if(
+        data.value !==
+        data.original
+      ){
 
         input.classList.add(
           "changed"
@@ -969,24 +1060,9 @@ function createEditableText(
   );
 
 
-  /*
-    Double click / focus makes
-    the existing text visible.
-  */
-
-  input.addEventListener(
-    "focus",
-    function(){
-
-      input.classList.add(
-        "changed"
-      );
-
-    }
+  layer.appendChild(
+    input
   );
-
-
-  layer.appendChild(input);
 
 }
 
@@ -996,11 +1072,6 @@ function createEditableText(
 ========================= */
 
 function addText(){
-
-  if(!pageData[currentPage]){
-    return;
-  }
-
 
   const layer =
     document.getElementById(
@@ -1016,23 +1087,21 @@ function addText(){
 
     y:60,
 
-    width:130,
+    width:150,
 
     height:30,
 
-    fontSize:18,
-
-    added:true
+    fontSize:18
 
   };
 
 
-  pageData[currentPage]
+  pageInformation[currentPage]
     .added
     .push(data);
 
 
-  createAddedTextElement(
+  createAddedText(
     data,
     layer
   );
@@ -1040,7 +1109,7 @@ function addText(){
 }
 
 
-function createAddedTextElement(
+function createAddedText(
   data,
   layer
 ){
@@ -1052,7 +1121,7 @@ function createAddedTextElement(
 
 
   input.className =
-    "edit-text changed";
+    "editable-text changed";
 
 
   input.value =
@@ -1090,7 +1159,10 @@ function createAddedTextElement(
   );
 
 
-  layer.appendChild(input);
+  layer.appendChild(
+    input
+  );
+
 
   input.focus();
 
@@ -1100,7 +1172,7 @@ function createAddedTextElement(
 
 
 /* =========================
-   PAGE NAVIGATION
+   PREVIOUS
 ========================= */
 
 async function previousPage(){
@@ -1109,7 +1181,9 @@ async function previousPage(){
     return;
   }
 
+
   currentPage--;
+
 
   await renderPageList();
 
@@ -1119,142 +1193,23 @@ async function previousPage(){
 
 }
 
+
+/* =========================
+   NEXT
+========================= */
 
 async function nextPage(){
 
-  if(currentPage >= totalPages){
+  if(
+    currentPage >= totalPages
+  ){
+
     return;
+
   }
+
 
   currentPage++;
-
-  await renderPageList();
-
-  await renderPage(
-    currentPage
-  );
-
-}
-
-
-/* =========================
-   RESET PAGE
-========================= */
-
-async function resetPage(){
-
-  if(!originalBytes){
-    return;
-  }
-
-
-  pageData[currentPage] = {
-
-    originalTexts:[],
-
-    edits:[],
-
-    added:[]
-
-  };
-
-
-  await renderPage(
-    currentPage
-  );
-
-}
-
-
-/* =========================
-   DELETE PAGE
-========================= */
-
-async function deletePage(){
-
-  if(!pdfLibDocument){
-    return;
-  }
-
-
-  if(
-    pdfLibDocument.getPageCount()
-    <= 1
-  ){
-
-    alert(
-      "A PDF must contain at least one page."
-    );
-
-    return;
-
-  }
-
-
-  const ok =
-    confirm(
-      "Delete page " +
-      currentPage +
-      "?"
-    );
-
-
-  if(!ok){
-    return;
-  }
-
-
-  pdfLibDocument.removePage(
-    currentPage - 1
-  );
-
-
-  totalPages =
-    pdfLibDocument.getPageCount();
-
-
-  if(currentPage > totalPages){
-
-    currentPage =
-      totalPages;
-
-  }
-
-
-  /*
-    Reload PDF.js from the edited
-    PDF so page numbering stays correct.
-  */
-
-  const editedBytes =
-    await pdfLibDocument.save();
-
-
-  pdfJsDocument =
-    await pdfjsLib.getDocument({
-      data:new Uint8Array(
-        editedBytes
-      )
-    }).promise;
-
-
-  pageData = {};
-
-  for(
-    let i = 1;
-    i <= totalPages;
-    i++
-  ){
-
-    pageData[i] = {
-
-      originalTexts:[],
-      edits:[],
-      added:[]
-
-    };
-
-  }
 
 
   await renderPageList();
@@ -1272,19 +1227,21 @@ async function deletePage(){
 
 async function downloadPDF(){
 
-  if(!pdfLibDocument){
+  if(!originalBytes){
+
     alert(
       "Please upload a PDF first."
     );
+
     return;
+
   }
 
 
   try{
 
     /*
-      Work on a fresh copy of the
-      original PDF.
+      Make a fresh PDF copy.
     */
 
     const output =
@@ -1293,21 +1250,19 @@ async function downloadPDF(){
       );
 
 
-    /*
-      Process every page.
-    */
-
     for(
       let pageNumber = 1;
       pageNumber <= totalPages;
       pageNumber++
     ){
 
-      const data =
-        pageData[pageNumber];
+      const information =
+        pageInformation[
+          pageNumber
+        ];
 
 
-      if(!data){
+      if(!information){
         continue;
       }
 
@@ -1323,176 +1278,164 @@ async function downloadPDF(){
 
 
       /*
-        Existing detected text:
-        cover the old text with white
-        rectangle and draw the new text.
+        Existing text edits.
       */
 
-      if(data.originalTexts){
+      for(
+        const item
+        of information.texts
+      ){
 
-        for(
-          const item
-          of data.originalTexts
+        if(
+          item.value ===
+          item.original
         ){
 
-          if(
-            item.value ===
-            item.original
-          ){
+          continue;
 
-            continue;
-
-          }
+        }
 
 
-          const scale =
-            SCALE;
+        const pdfX =
+          item.x / SCALE;
 
 
-          const pdfX =
-            item.x / scale;
+        const pdfY =
+          pageSize.height -
+          (
+            (item.y +
+             item.height)
+            / SCALE
+          );
 
 
-          const pdfY =
-            pageSize.height -
-            ((item.y + item.height)
-             / scale);
+        const pdfWidth =
+          Math.max(
+            item.width / SCALE,
+            20
+          );
 
 
-          const pdfWidth =
-            Math.max(
-              item.width / scale,
-              20
-            );
+        const pdfHeight =
+          Math.max(
+            item.height / SCALE,
+            12
+          );
 
 
-          const pdfHeight =
-            Math.max(
-              item.height / scale,
-              12
-            );
+        /*
+          White rectangle hides
+          the original text.
+        */
+
+        page.drawRectangle({
+
+          x:pdfX - 2,
+
+          y:pdfY - 3,
+
+          width:pdfWidth + 6,
+
+          height:pdfHeight + 7,
+
+          color:
+            PDFLib.rgb(
+              1,
+              1,
+              1
+            )
+
+        });
 
 
-          /*
-            Cover original text.
-          */
+        /*
+          Draw replacement text.
+        */
 
-          page.drawRectangle({
+        page.drawText(
+          item.value,
+          {
 
-            x:pdfX - 2,
+            x:pdfX,
 
-            y:pdfY - 2,
+            y:pdfY + 1,
 
-            width:pdfWidth + 6,
-
-            height:pdfHeight + 6,
+            size:
+              Math.max(
+                6,
+                item.fontSize /
+                SCALE
+              ),
 
             color:
               PDFLib.rgb(
-                1,
-                1,
-                1
-              ),
+                0.07,
+                0.09,
+                0.12
+              )
 
-            borderWidth:0
-
-          });
-
-
-          /*
-            Draw replacement text.
-          */
-
-          page.drawText(
-            item.value,
-            {
-
-              x:pdfX,
-
-              y:pdfY + 1,
-
-              size:
-                Math.max(
-                  6,
-                  item.fontSize /
-                  scale
-                ),
-
-              color:
-                PDFLib.rgb(
-                  .07,
-                  .09,
-                  .12
-                )
-
-            }
-          );
-
-        }
+          }
+        );
 
       }
 
 
       /*
-        Add newly created text.
+        New text.
       */
 
-      if(data.added){
+      for(
+        const item
+        of information.added
+      ){
 
-        for(
-          const item
-          of data.added
+        if(
+          !item.value ||
+          !item.value.trim()
         ){
 
-          if(
-            !item.value ||
-            !item.value.trim()
-          ){
-
-            continue;
-
-          }
-
-
-          const pdfX =
-            item.x / SCALE;
-
-
-          const pdfY =
-            pageSize.height -
-            (
-              (item.y +
-               item.height)
-              / SCALE
-            );
-
-
-          page.drawText(
-            item.value,
-            {
-
-              x:pdfX,
-
-              y:pdfY,
-
-              size:
-                Math.max(
-                  6,
-                  item.fontSize /
-                  SCALE
-                ),
-
-              color:
-                PDFLib.rgb(
-                  .07,
-                  .09,
-                  .12
-                )
-
-            }
-          );
+          continue;
 
         }
+
+
+        const pdfX =
+          item.x / SCALE;
+
+
+        const pdfY =
+          pageSize.height -
+          (
+            (item.y +
+             item.height)
+            / SCALE
+          );
+
+
+        page.drawText(
+          item.value,
+          {
+
+            x:pdfX,
+
+            y:pdfY,
+
+            size:
+              Math.max(
+                6,
+                item.fontSize /
+                SCALE
+              ),
+
+            color:
+              PDFLib.rgb(
+                0.07,
+                0.09,
+                0.12
+              )
+
+          }
+        );
 
       }
 
@@ -1525,7 +1468,9 @@ async function downloadPDF(){
       );
 
 
-    link.href = url;
+    link.href =
+      url;
+
 
     link.download =
       "edited-pdf.pdf";
@@ -1535,7 +1480,9 @@ async function downloadPDF(){
       link
     );
 
+
     link.click();
+
 
     link.remove();
 
@@ -1555,14 +1502,17 @@ async function downloadPDF(){
   }catch(error){
 
     console.error(
-      "PDF creation error:",
+      "PDF DOWNLOAD ERROR:",
       error
     );
 
 
     alert(
       "Could not create the edited PDF.\n\n" +
-      error.message
+      (
+        error.message ||
+        "Unknown error"
+      )
     );
 
   }
