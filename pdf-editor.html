@@ -530,7 +530,7 @@ async function handlePDF(event){
 
         data:
           new Uint8Array(
-            originalBytes
+            originalBytes.slice(0)
           )
 
       }).promise;
