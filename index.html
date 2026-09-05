@@ -319,6 +319,47 @@ header {
     font-size:25px;
   }
 }
+  .quick-guides{
+  margin:0 0 45px;
+}
+
+.guide-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.guide-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 6px 20px rgba(15,23,42,.06);
+}
+
+.guide-card h3{
+  margin:0 0 10px;
+  font-size:20px;
+  color:#111827;
+}
+
+.guide-card p{
+  margin:0;
+  color:#64748b;
+  line-height:1.6;
+}
+
+@media(max-width:900px){
+  .guide-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .guide-grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"USA Free Tools","url":"https://usafreetool.com/","description":"Free online calculators for everyday calculations."}
@@ -346,6 +387,44 @@ header {
       <a href="currency-converter.html">💱 Currency</a>
       <a href="photo-size-resizer.html">🖼️ Photo Size</a>
     </div>
+  </div>
+</section>
+  <section class="quick-guides">
+  <div class="section-title">
+    <h2>Quick Calculator Guides</h2>
+    <p>Simple explanations to help you get the most from our free tools.</p>
+  </div>
+
+  <div class="guide-grid">
+    <article class="guide-card">
+      <h3>🧮 Percentage</h3>
+      <p>Enter a number and percentage to quickly find the percentage value.</p>
+    </article>
+
+    <article class="guide-card">
+      <h3>🏷️ Discount</h3>
+      <p>Enter the original price and discount rate to see your savings and sale price.</p>
+    </article>
+
+    <article class="guide-card">
+      <h3>💰 Tip</h3>
+      <p>Enter your bill and tip percentage to calculate the tip and total amount.</p>
+    </article>
+
+    <article class="guide-card">
+      <h3>🏠 Mortgage</h3>
+      <p>Estimate your monthly mortgage payment using the loan amount, rate and term.</p>
+    </article>
+
+    <article class="guide-card">
+      <h3>💱 Currency</h3>
+      <p>Select two currencies and enter an amount to get the latest available conversion rate.</p>
+    </article>
+
+    <article class="guide-card">
+      <h3>🖼️ Photo Size</h3>
+      <p>Resize and compress an image when you need a smaller file size for uploading or sharing.</p>
+    </article>
   </div>
 </section>
 <section id="tools"><div class="section-title"><h2>Our Free Tools</h2><p>Choose a calculator and get your result instantly.</p></div>
