@@ -247,6 +247,78 @@ header {
     border-radius: 18px;
   }
 }
+  .smart-assistant{
+  margin:0 0 45px;
+  padding:35px 25px;
+  background:linear-gradient(135deg,#eff6ff,#f8fafc);
+  border:1px solid #dbeafe;
+  border-radius:24px;
+  text-align:center;
+}
+
+.smart-assistant-content{
+  max-width:850px;
+  margin:auto;
+}
+
+.smart-badge{
+  display:inline-block;
+  background:#dbeafe;
+  color:#1746c7;
+  padding:7px 13px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.smart-assistant h2{
+  margin:5px 0 8px;
+  font-size:30px;
+  color:#111827;
+}
+
+.smart-assistant p{
+  margin:0 0 22px;
+  color:#64748b;
+}
+
+.smart-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.smart-options a{
+  display:block;
+  padding:15px 12px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  color:#111827;
+  text-decoration:none;
+  font-weight:700;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.smart-options a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(15,23,42,.10);
+}
+
+@media(max-width:650px){
+  .smart-options{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .smart-assistant{
+    padding:28px 18px;
+  }
+
+  .smart-assistant h2{
+    font-size:25px;
+  }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"USA Free Tools","url":"https://usafreetool.com/","description":"Free online calculators for everyday calculations."}
@@ -258,6 +330,24 @@ header {
 <section class="hero"><div class="badge">✓ Free • Fast • No Installation</div><h1>Free Online Tools &amp; Calculators</h1><p>Simple, accurate and easy-to-use calculators for everyday needs.</p><div class="search-box"><input type="search" id="toolSearch" placeholder="Search calculators..." aria-label="Search calculators" oninput="searchTools()"></div></section>
 </header>
 <main class="container">
+  <section class="smart-assistant">
+  <div class="smart-assistant-content">
+    <span class="smart-badge">✨ Smart Tool Finder</span>
+
+    <h2>What do you need to calculate?</h2>
+
+    <p>Choose what you need and we'll take you to the right tool.</p>
+
+    <div class="smart-options">
+      <a href="percentage-calculator.html">🧮 Percentage</a>
+      <a href="age-calculator.html">🎂 Age</a>
+      <a href="discount-calculator.html">🏷️ Discount</a>
+      <a href="mortgage-calculator.html">🏠 Mortgage</a>
+      <a href="currency-converter.html">💱 Currency</a>
+      <a href="photo-size-resizer.html">🖼️ Photo Size</a>
+    </div>
+  </div>
+</section>
 <section id="tools"><div class="section-title"><h2>Our Free Tools</h2><p>Choose a calculator and get your result instantly.</p></div>
 <div class="tools" id="toolGrid">
   <h2 style="grid-column:1/-1;margin:10px 0 5px;font-size:28px;">
