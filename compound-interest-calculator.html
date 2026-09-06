@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Compound Interest Calculator | USA Free Tools</title>
+
+  <meta
+    name="description"
+    content="Free compound interest calculator to calculate future value, total interest earned, and growth of your investment over time."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://usafreetool.com/compound-interest-calculator.html"
+  >
+
+  <meta
+    property="og:title"
+    content="Compound Interest Calculator | USA Free Tools"
+  >
+
+  <meta
+    property="og:description"
+    content="Calculate compound interest, total interest earned, and future investment value for free."
+  >
+
+  <meta
+    property="og:url"
+    content="https://usafreetool.com/compound-interest-calculator.html"
+  >
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQKEXJQBS4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQKEXJQBS4');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6554717322177499"
+    crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #111827;
+    }
+
+    header {
+      background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1d4ed8,
+        #2563eb
+      );
+      padding: 18px 20px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1d4ed8,
+        #2563eb
+      );
+      color: #ffffff;
+      text-align: center;
+      padding: 70px 20px 90px;
+    }
+
+    .hero h1 {
+      margin: 0 0 15px;
+      font-size: 42px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: -45px auto 60px;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .calculator-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
+    }
+
+    .calculator-card h2 {
+      margin: 0 0 25px;
+      font-size: 27px;
+      color: #111827;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1px solid #d5dce5;
+      border-radius: 11px;
+      background: #f8fafc;
+      font-size: 16px;
+      color: #111827;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #2563eb;
+      background: #ffffff;
+    }
+
+    .calculate-btn {
+      width: 100%;
+      border: none;
+      border-radius: 11px;
+      padding: 15px;
+      background: linear-gradient(
+        135deg,
+        #0b63f6,
+        #1746c7
+      );
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .calculate-btn:hover {
+      opacity: 0.95;
+    }
+
+    .error {
+      display: none;
+      margin-top: 15px;
+      padding: 12px 15px;
+      border-radius: 9px;
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 600;
+    }
+
+    .results {
+      display: none;
+      margin-top: 28px;
+    }
+
+    .results h2 {
+      margin-bottom: 18px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .result-box {
+      background: #eff6ff;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .result-box span {
+      display: block;
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .result-box strong {
+      display: block;
+      color: #1746c7;
+      font-size: 24px;
+    }
+
+    .breakdown {
+      margin-top: 25px;
+      overflow-x: auto;
+    }
+
+    .breakdown h3 {
+      margin-bottom: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: right;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #334155;
+    }
+
+    .info-section {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 30px 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    .info-section h2 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    .info-section p,
+    .info-section li {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .formula {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 15px;
+      font-weight: 700;
+      color: #1e3a8a;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0 0 12px;
+      color: #cbd5e1;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+
+      .header-inner {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 55px 18px 80px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+
+      .calculator-card {
+        padding: 24px 18px;
+        border-radius: 18px;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-box strong {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-inner">
+
+      <a href="index.html" class="logo">
+        🇺🇸 USA Free Tools
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Compound Interest Calculator</h1>
+
+    <p>
+      Calculate compound interest, total interest earned,
+      and the future value of your investment over time.
+    </p>
+  </section>
+
+  <main class="container">
+
+    <section class="calculator-card">
+
+      <h2>Calculate Compound Interest</h2>
+
+      <div class="form-group">
+        <label for="principal">
+          Initial Investment ($)
+        </label>
+
+        <input
+          type="number"
+          id="principal"
+          min="0"
+          step="0.01"
+          placeholder="Example: 1000"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="rate">
+          Annual Interest Rate (%)
+        </label>
+
+        <input
+          type="number"
+          id="rate"
+          min="0"
+          step="0.01"
+          placeholder="Example: 7"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="years">
+          Investment Period (Years)
+        </label>
+
+        <input
+          type="number"
+          id="years"
+          min="0"
+          step="0.1"
+          placeholder="Example: 10"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="frequency">
+          Compounding Frequency
+        </label>
+
+        <select id="frequency">
+          <option value="1">Annually</option>
+          <option value="2">Semi-annually</option>
+          <option value="4">Quarterly</option>
+          <option value="12" selected>Monthly</option>
+          <option value="365">Daily</option>
+        </select>
+      </div>
+
+      <button
+        class="calculate-btn"
+        onclick="calculateCompoundInterest()"
+      >
+        Calculate Compound Interest
+      </button>
+
+      <div id="error" class="error"></div>
+
+      <div id="results" class="results">
+
+        <h2>Results</h2>
+
+        <div class="result-grid">
+
+          <div class="result-box">
+            <span>Initial Investment</span>
+            <strong id="initialResult">$0.00</strong>
+          </div>
+
+          <div class="result-box">
+            <span>Total Interest</span>
+            <strong id="interestResult">$0.00</strong>
+          </div>
+
+          <div class="result-box">
+            <span>Future Value</span>
+            <strong id="futureResult">$0.00</strong>
+          </div>
+
+        </div>
+
+        <div class="breakdown">
+
+          <h3>Yearly Growth</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Balance</th>
+                <th>Interest Earned</th>
+              </tr>
+            </thead>
+
+            <tbody id="breakdownBody"></tbody>
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="info-section">
+
+      <h2>How Compound Interest Works</h2>
+
+      <p>
+        Compound interest allows your money to grow by earning interest
+        on both the original investment and previously earned interest.
+        The longer your money remains invested, the more powerful
+        compounding can become.
+      </p>
+
+      <div class="formula">
+        A = P × (1 + r / n)<sup>nt</sup>
+      </div>
+
+      <p>
+        In this formula, A is the future value, P is the initial
+        investment, r is the annual interest rate as a decimal,
+        n is the number of compounding periods per year, and t is
+        the number of years.
+      </p>
+
+    </section>
+
+    <section class="info-section">
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is compound interest?</h3>
+
+      <p>
+        Compound interest is interest calculated on the original
+        amount plus interest accumulated during previous periods.
+      </p>
+
+      <h3>What does compounding frequency mean?</h3>
+
+      <p>
+        Compounding frequency describes how often interest is added
+        to the account. Common options include annually, quarterly,
+        monthly, and daily.
+      </p>
+
+      <h3>Does compound interest grow faster over longer periods?</h3>
+
+      <p>
+        Generally, keeping money invested for a longer period gives
+        compounding more time to increase the balance.
+      </p>
+
+      <h3>Is this calculator free?</h3>
+
+      <p>
+        Yes. This compound interest calculator is free to use
+        directly in your web browser.
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <p>
+      © 2026 USA Free Tools. All rights reserved.
+    </p>
+
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+  </footer>
+
+  <script>
+
+    function formatCurrency(value) {
+      return value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+      });
+    }
+
+    function calculateCompoundInterest() {
+
+      const principal =
+        parseFloat(document.getElementById("principal").value);
+
+      const rate =
+        parseFloat(document.getElementById("rate").value);
+
+      const years =
+        parseFloat(document.getElementById("years").value);
+
+      const frequency =
+        parseInt(document.getElementById("frequency").value);
+
+      const error =
+        document.getElementById("error");
+
+      const results =
+        document.getElementById("results");
+
+      error.style.display = "none";
+      results.style.display = "none";
+
+      if (
+        isNaN(principal) ||
+        isNaN(rate) ||
+        isNaN(years)
+      ) {
+        error.textContent =
+          "Please enter all required values.";
+        error.style.display = "block";
+        return;
+      }
+
+      if (
+        principal < 0 ||
+        rate < 0 ||
+        years <= 0
+      ) {
+        error.textContent =
+          "Please enter valid positive values.";
+        error.style.display = "block";
+        return;
+      }
+
+      const decimalRate = rate / 100;
+
+      const futureValue =
+        principal *
+        Math.pow(
+          1 + decimalRate / frequency,
+          frequency * years
+        );
+
+      const totalInterest =
+        futureValue - principal;
+
+      document.getElementById("initialResult").textContent =
+        formatCurrency(principal);
+
+      document.getElementById("interestResult").textContent =
+        formatCurrency(totalInterest);
+
+      document.getElementById("futureResult").textContent =
+        formatCurrency(futureValue);
+
+      const breakdownBody =
+        document.getElementById("breakdownBody");
+
+      breakdownBody.innerHTML = "";
+
+      const fullYears = Math.floor(years);
+
+      for (let year = 1; year <= fullYears; year++) {
+
+        const balance =
+          principal *
+          Math.pow(
+            1 + decimalRate / frequency,
+            frequency * year
+          );
+
+        const interest =
+          balance - principal;
+
+        const row =
+          document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${year}</td>
+          <td>${formatCurrency(balance)}</td>
+          <td>${formatCurrency(interest)}</td>
+        `;
+
+        breakdownBody.appendChild(row);
+      }
+
+      results.style.display = "block";
+
+      try {
+
+        const historyKey =
+          "usaFreeToolsHistory";
+
+        const history =
+          JSON.parse(
+            localStorage.getItem(historyKey) || "[]"
+          );
+
+        history.unshift({
+          tool: "Compound Interest Calculator",
+          result: formatCurrency(futureValue),
+          date: new Date().toLocaleString()
+        });
+
+        localStorage.setItem(
+          historyKey,
+          JSON.stringify(history.slice(0, 10))
+        );
+
+      } catch (e) {
+        // Ignore local storage errors.
+      }
+    }
+
+  </script>
+
+</body>
+</html>
