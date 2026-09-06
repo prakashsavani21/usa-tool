@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>US Sales Tax Calculator | Free Sales Tax Calculator</title>
+
+  <meta name="description"
+        content="Free US Sales Tax Calculator. Calculate sales tax and final price using your state tax rate and optional local sales tax.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="google-adsense-account" content="ca-pub-6554717322177499">
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6554717322177499"
+    crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #111827;
+    }
+
+    header {
+      background: linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+      padding: 18px 20px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+      color: white;
+      text-align: center;
+      padding: 65px 20px 90px;
+    }
+
+    .hero h1 {
+      margin: 0 0 15px;
+      font-size: 42px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      line-height: 1.7;
+      color: #ffffff;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: -45px auto 60px;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .calculator-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 35px rgba(15,23,42,.10);
+    }
+
+    .calculator-card h2 {
+      margin-top: 0;
+      font-size: 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field label {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #374151;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+      background: white;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+
+    .calculate-btn {
+      width: 100%;
+      border: none;
+      margin-top: 22px;
+      padding: 15px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,#0b63f6,#1746c7);
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .calculate-btn:hover {
+      opacity: .95;
+    }
+
+    .results {
+      margin-top: 25px;
+      display: none;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #dbeafe;
+    }
+
+    .result-row:last-child {
+      border-bottom: none;
+    }
+
+    .result-row strong {
+      color: #111827;
+    }
+
+    .final-total {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1746c7;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 15px;
+      background: #f8fafc;
+      border-left: 4px solid #2563eb;
+      color: #64748b;
+      line-height: 1.6;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .content-section {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      margin-top: 25px;
+      box-shadow: 0 6px 20px rgba(15,23,42,.06);
+    }
+
+    .content-section h2 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    .content-section h3 {
+      margin-top: 25px;
+      color: #111827;
+    }
+
+    .content-section p,
+    .content-section li {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .formula {
+      background: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1746c7;
+      margin: 20px 0;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 50px 18px 80px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .calculator-card,
+      .content-section {
+        padding: 22px;
+      }
+
+      .result-row {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "US Sales Tax Calculator",
+    "url": "https://usafreetool.com/sales-tax-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">USA Free Tools</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="percentage-calculator.html">Calculators</a>
+      <a href="currency-converter.html">Currency</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>US Sales Tax Calculator</h1>
+
+  <p>
+    Calculate sales tax and the final price for purchases in the United States.
+    Select your state and optionally add a local sales tax rate.
+  </p>
+</section>
+
+<main class="container">
+
+  <section class="calculator-card">
+
+    <h2>Sales Tax Calculator</h2>
+
+    <div class="form-grid">
+
+      <div class="field">
+        <label for="price">Purchase Price ($)</label>
+        <input
+          type="number"
+          id="price"
+          min="0"
+          step="0.01"
+          placeholder="e.g. 100"
+        >
+      </div>
+
+      <div class="field">
+        <label for="state">State</label>
+
+        <select id="state">
+          <option value="">Select a state</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="stateRate">State Sales Tax Rate (%)</label>
+        <input
+          type="number"
+          id="stateRate"
+          step="0.001"
+          min="0"
+          readonly
+        >
+      </div>
+
+      <div class="field">
+        <label for="localRate">Local Sales Tax Rate (%)</label>
+        <input
+          type="number"
+          id="localRate"
+          min="0"
+          step="0.001"
+          value="0"
+          placeholder="e.g. 2.5"
+        >
+      </div>
+
+    </div>
+
+    <button class="calculate-btn" onclick="calculateTax()">
+      Calculate Sales Tax
+    </button>
+
+    <div class="results" id="results">
+
+      <div class="result-row">
+        <span>Purchase Price</span>
+        <strong id="resultPrice">$0.00</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Total Tax Rate</span>
+        <strong id="resultRate">0%</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Sales Tax</span>
+        <strong id="resultTax">$0.00</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Final Price</span>
+        <strong class="final-total" id="resultTotal">$0.00</strong>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <strong>Important:</strong>
+      State sales tax rates are used as a starting point. Actual sales tax
+      can vary by city, county, district, product type and other local rules.
+      Enter the applicable local rate when you know it.
+    </div>
+
+  </section>
+
+  <section class="content-section">
+
+    <h2>How to Calculate Sales Tax</h2>
+
+    <p>
+      Sales tax is an additional amount charged on many purchases in the
+      United States. The amount can include state and local sales taxes.
+    </p>
+
+    <div class="formula">
+      Sales Tax = Purchase Price × Total Tax Rate ÷ 100
+    </div>
+
+    <p>
+      For example, if an item costs $100 and the total sales tax rate is 8%,
+      the sales tax is $8 and the final price is $108.
+    </p>
+
+    <h3>How to Use This Sales Tax Calculator</h3>
+
+    <ol>
+      <li>Enter the purchase price.</li>
+      <li>Select your US state.</li>
+      <li>Check the state tax rate shown by the calculator.</li>
+      <li>Enter your local sales tax rate if applicable.</li>
+      <li>Click Calculate Sales Tax.</li>
+    </ol>
+
+    <h3>State Sales Tax vs. Local Sales Tax</h3>
+
+    <p>
+      Sales tax in the United States can include both state and local taxes.
+      Local rates may differ between cities, counties and other jurisdictions.
+      For that reason, a state-only rate should not always be treated as the
+      exact rate for a specific location.
+    </p>
+
+  </section>
+
+  <section class="content-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is sales tax?</h3>
+
+    <p>
+      Sales tax is a consumption tax generally added to the price of taxable
+      goods or services at the time of purchase.
+    </p>
+
+    <h3>How do I calculate sales tax?</h3>
+
+    <p>
+      Multiply the purchase price by the total sales tax rate and divide by
+      100. Then add the sales tax to the original price to get the final
+      amount.
+    </p>
+
+    <h3>Which US state has the highest state sales tax?</h3>
+
+    <p>
+      California has the highest statewide sales tax rate at 7.25% among the
+      states in the 2026 rates used by this calculator.
+    </p>
+
+    <h3>Which US states have no statewide sales tax?</h3>
+
+    <p>
+      Alaska, Delaware, Montana, New Hampshire and Oregon have no statewide
+      sales tax. Local sales taxes can still apply in some locations,
+      particularly in Alaska.
+    </p>
+
+    <h3>Is this sales tax calculator free?</h3>
+
+    <p>
+      Yes. This US Sales Tax Calculator is free to use online and does not
+      require software installation.
+    </p>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 USA Free Tools. All rights reserved.</p>
+
+  <p>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+</footer>
+
+<script>
+
+const states = [
+  ["Alabama", 4.00],
+  ["Alaska", 0.00],
+  ["Arizona", 5.60],
+  ["Arkansas", 6.50],
+  ["California", 7.25],
+  ["Colorado", 2.90],
+  ["Connecticut", 6.35],
+  ["Delaware", 0.00],
+  ["Florida", 6.00],
+  ["Georgia", 4.00],
+  ["Hawaii", 4.00],
+  ["Idaho", 6.00],
+  ["Illinois", 6.25],
+  ["Indiana", 7.00],
+  ["Iowa", 6.00],
+  ["Kansas", 6.50],
+  ["Kentucky", 6.00],
+  ["Louisiana", 5.00],
+  ["Maine", 5.50],
+  ["Maryland", 6.00],
+  ["Massachusetts", 6.25],
+  ["Michigan", 6.00],
+  ["Minnesota", 6.88],
+  ["Mississippi", 7.00],
+  ["Missouri", 4.23],
+  ["Montana", 0.00],
+  ["Nebraska", 5.50],
+  ["Nevada", 6.85],
+  ["New Hampshire", 0.00],
+  ["New Jersey", 6.63],
+  ["New Mexico", 4.88],
+  ["New York", 4.00],
+  ["North Carolina", 4.75],
+  ["North Dakota", 5.00],
+  ["Ohio", 5.75],
+  ["Oklahoma", 4.50],
+  ["Oregon", 0.00],
+  ["Pennsylvania", 6.00],
+  ["Rhode Island", 7.00],
+  ["South Carolina", 6.00],
+  ["South Dakota", 4.20],
+  ["Tennessee", 7.00],
+  ["Texas", 6.25],
+  ["Utah", 6.10],
+  ["Vermont", 6.00],
+  ["Virginia", 5.30],
+  ["Washington", 6.50],
+  ["West Virginia", 6.00],
+  ["Wisconsin", 5.00],
+  ["Wyoming", 4.00],
+  ["Washington, D.C.", 6.00]
+];
+
+const stateSelect = document.getElementById("state");
+const stateRateInput = document.getElementById("stateRate");
+
+states.forEach(function(state) {
+  const option = document.createElement("option");
+
+  option.value = state[1];
+  option.textContent = state[0];
+
+  stateSelect.appendChild(option);
+});
+
+stateSelect.addEventListener("change", function() {
+  stateRateInput.value = this.value;
+});
+
+function calculateTax() {
+
+  const price = parseFloat(document.getElementById("price").value);
+  const stateRate = parseFloat(document.getElementById("stateRate").value);
+  const localRate = parseFloat(document.getElementById("localRate").value) || 0;
+
+  if (isNaN(price) || price < 0) {
+    alert("Please enter a valid purchase price.");
+    return;
+  }
+
+  if (isNaN(stateRate)) {
+    alert("Please select a state.");
+    return;
+  }
+
+  if (localRate < 0) {
+    alert("Local tax rate cannot be negative.");
+    return;
+  }
+
+  const totalRate = stateRate + localRate;
+
+  const salesTax = price * totalRate / 100;
+
+  const finalPrice = price + salesTax;
+
+  document.getElementById("resultPrice").textContent =
+    "$" + price.toFixed(2);
+
+  document.getElementById("resultRate").textContent =
+    totalRate.toFixed(3).replace(/\.?0+$/, "") + "%";
+
+  document.getElementById("resultTax").textContent =
+    "$" + salesTax.toFixed(2);
+
+  document.getElementById("resultTotal").textContent =
+    "$" + finalPrice.toFixed(2);
+
+  document.getElementById("results").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
