@@ -396,49 +396,6 @@
 
 </section>
 
-<footer>
-
-  <p>© 2026 USA Free Tools. All rights reserved.</p>
-
-  <p>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </p>
-
-</footer>
-
-<script>
-
-function calculatePercentage() {
-
-  const percentage = parseFloat(
-    document.getElementById("percentage").value
-  );
-
-  const number = parseFloat(
-    document.getElementById("number").value
-  );
-
-  const resultAmount = document.getElementById("resultAmount");
-
-  if (isNaN(percentage) || isNaN(number)) {
-    resultAmount.textContent = "Please enter both values";
-    return;
-  }
-
-  const result = (percentage / 100) * number;
-
-  resultAmount.textContent = result.toLocaleString(
-    undefined,
-    {
-      maximumFractionDigits: 10
-    }
-  );
-
-}
-
-</script>
 <section class="info-section" style="max-width:900px;margin:40px auto;padding:30px 20px;line-height:1.7;">
 
   <h2>Percentage Calculator</h2>
@@ -550,5 +507,50 @@ function calculatePercentage() {
 </p>
   
 </section>
+
+<footer>
+
+  <p>© 2026 USA Free Tools. All rights reserved.</p>
+
+  <p>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+
+</footer>
+
+<script>
+
+function calculatePercentage() {
+
+  const percentage = parseFloat(
+    document.getElementById("percentage").value
+  );
+
+  const number = parseFloat(
+    document.getElementById("number").value
+  );
+
+  const resultAmount = document.getElementById("resultAmount");
+
+  if (isNaN(percentage) || isNaN(number)) {
+    resultAmount.textContent = "Please enter both values";
+    return;
+  }
+
+  const result = (percentage / 100) * number;
+
+  resultAmount.textContent = result.toLocaleString(
+    undefined,
+    {
+      maximumFractionDigits: 10
+    }
+  );
+
+}
+
+</script>
+
 </body>
 </html>
