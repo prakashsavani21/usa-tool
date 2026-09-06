@@ -523,6 +523,67 @@
       font-size:14px;
     }
 
+
+
+    /* BLOG & ARTICLES */
+
+    .blog-section{
+      max-width:1180px;
+      margin:65px auto 0;
+    }
+
+    .blog-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .blog-card{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 6px 20px rgba(15,23,42,.06);
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+
+    .blog-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 30px rgba(15,23,42,.10);
+    }
+
+    .blog-date{
+      display:inline-block;
+      margin-bottom:10px;
+      color:#2563eb;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .blog-card h3{
+      margin:0 0 10px;
+      font-size:21px;
+      color:#111827;
+    }
+
+    .blog-card p{
+      margin:0;
+      color:#64748b;
+      line-height:1.65;
+    }
+
+    .blog-read{
+      display:inline-block;
+      margin-top:15px;
+      color:#2563eb;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .blog-read:hover{
+      text-decoration:underline;
+    }
+
     /* MOBILE */
 
     @media(max-width:950px){
@@ -566,6 +627,10 @@
       }
 
       .guide-grid{
+        grid-template-columns:1fr;
+      }
+
+      .blog-grid{
         grid-template-columns:1fr;
       }
 
@@ -830,6 +895,96 @@
 
       </article>
 
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- BLOG & ARTICLES -->
+
+  <section class="blog-section">
+
+    <div class="section-title">
+
+      <h2>
+        Blog &amp; Articles
+      </h2>
+
+      <p>
+        Helpful guides, tips and original articles from USA Free Tools.
+      </p>
+
+    </div>
+
+    <div class="blog-grid">
+
+      <article class="blog-card">
+
+        <span class="blog-date">
+          September 2026
+        </span>
+
+        <h3>
+          How to Calculate a Percentage Easily
+        </h3>
+
+        <p>
+          Learn the simple percentage formula and see how percentage
+          calculations can be used in everyday situations.
+        </p>
+
+        <a class="blog-read" href="blog.html">
+          Read Article →
+        </a>
+
+      </article>
+
+
+      <article class="blog-card">
+
+        <span class="blog-date">
+          September 2026
+        </span>
+
+        <h3>
+          How Loan Payments Are Calculated
+        </h3>
+
+        <p>
+          Understand how loan amount, interest rate and loan term affect
+          your estimated monthly payment and total interest.
+        </p>
+
+        <a class="blog-read" href="blog.html">
+          Read Article →
+        </a>
+
+      </article>
+
+
+      <article class="blog-card">
+
+        <span class="blog-date">
+          September 2026
+        </span>
+
+        <h3>
+          Simple Ways to Calculate a Discount
+        </h3>
+
+        <p>
+          Learn how to calculate discounts, savings and final prices
+          with an easy-to-follow example.
+        </p>
+
+        <a class="blog-read" href="blog.html">
+          Read Article →
+        </a>
+
+      </article>
 
     </div>
 
