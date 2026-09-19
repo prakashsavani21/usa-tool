@@ -1,3 +1,1 @@
-Homepage now has multiple 300x250 Adsterra placements using the supplied ad unit.
-Placements are separated by content to avoid clustering all ads together.
-Do not incentivize ad clicks or click your own ads.
+Homepage fixed: no ad before navigation or inside hero. Exactly four 300x250 ad units are placed after the hero and within the main content.
