@@ -1,0 +1,11 @@
+GIVEAWAY AD SETUP
+
+The supplied Adsterra/highrevenueformat 300x250 unit is installed in rewards.html
+in four separate placements.
+
+Important:
+- Keep the exact ad code/ID supplied by the ad network.
+- Do not ask or incentivize visitors to click ads.
+- If the network limits repeated use of one ad unit, create separate units in the
+  Adsterra dashboard and replace the corresponding snippets.
+- Ad display can vary by geography, device, fill rate, browser and ad-blocking.
