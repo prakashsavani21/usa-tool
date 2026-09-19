@@ -77,7 +77,7 @@ placeholder="you@example.com">
 <span>I confirm that I am 18 or older, have read the Official Rules, and understand that entering does not guarantee a prize.</span>
 </label>
 <button class="btn" type="submit" style="border:0;background:#2563eb;color:#fff;cursor:pointer;margin-top:16px">Enter Free</button>
-<p id="formMsg" class="muted" aria-live="polite"></p>
+<p id="formMsg" class="muted" aria-live="polite"></p><p class="muted" style="font-size:13px">We use your email to administer the giveaway and contact a potential winner. See our <a href="privacy.html">Privacy Policy</a>.</p>
 </form>
 
 <p class="note"><strong>Important:</strong> This page is the public entry interface. The giveaway is free to enter. Never send money to enter or to claim a prize.</p>
@@ -163,10 +163,62 @@ USA Free Tools · <a href="privacy.html">Privacy</a> · <a href="contact.html">C
 </footer>
 
 <script>
-function submitEntry(e){
+const SUPABASE_URL = "https://axliquekzrlaxosacmfb.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_VRd_pgWNESJbPqLMoi2s1w_XYVazULO";
+
+async function submitEntry(e) {
   e.preventDefault();
-  document.getElementById('formMsg').textContent =
-    'Entry received on this demo interface. A verified entry backend must be connected before accepting live entries.';
+
+  const form = document.getElementById("entryForm");
+  const emailInput = document.getElementById("email");
+  const agree = document.getElementById("agree");
+  const msg = document.getElementById("formMsg");
+  const button = form.querySelector("button[type='submit']");
+  const email = emailInput.value.trim().toLowerCase();
+
+  if (!email || !agree.checked) return false;
+
+  button.disabled = true;
+  button.textContent = "Submitting...";
+  msg.textContent = "";
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL + "/rest/v1/giveaway_entries",
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_PUBLISHABLE_KEY,
+          "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({ email: email })
+      }
+    );
+
+    if (response.ok) {
+      form.reset();
+      msg.textContent = "🎉 Entry received! Your email has been entered for today's drawing.";
+      msg.style.color = "#166534";
+    } else if (response.status === 409) {
+      msg.textContent = "This email has already been entered for today's drawing.";
+      msg.style.color = "#9a3412";
+    } else {
+      const detail = await response.text();
+      console.error("Giveaway entry error:", response.status, detail);
+      msg.textContent = "We couldn't submit your entry right now. Please try again.";
+      msg.style.color = "#b42318";
+    }
+  } catch (error) {
+    console.error("Giveaway entry network error:", error);
+    msg.textContent = "Connection error. Please try again.";
+    msg.style.color = "#b42318";
+  } finally {
+    button.disabled = false;
+    button.textContent = "Enter Free";
+  }
+
   return false;
 }
 </script>

@@ -1,0 +1,21 @@
+REAL ENTRY BACKEND CONNECTED
+
+rewards.html now submits entries to the Supabase REST API using the project's
+publishable browser key.
+
+Table: giveaway_entries
+Endpoint: /rest/v1/giveaway_entries
+
+The publishable key is intended for browser use. The service-role/secret key
+must never be placed in this website.
+
+Before advertising the giveaway broadly, test:
+1. Submit a test email.
+2. Confirm one row appears in Supabase Table Editor.
+3. Submit the same email again on the same day and confirm it is rejected.
+4. Verify that no public SELECT policy exists for giveaway_entries.
+5. Test the form on mobile and desktop.
+
+This client-side form does not by itself provide email verification, CAPTCHA,
+IP/device anti-abuse controls, or a secure admin/winner-drawing interface.
+Those are separate production-hardening steps.
