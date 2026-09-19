@@ -1,0 +1,11 @@
+FINAL HOMEPAGE AD LAYOUT
+
+The homepage now has 4 separate 300x250 ad placements.
+1. Ad 1: after the hero section
+2. Ad 2: after the main Tools section
+3. Ad 3: before the giveaway/share card
+4. Ad 4: immediately before the footer
+
+There is NO grouped 2x2 ad grid.
+There are NO ads above the header/hero.
+Deploy/overwrite the live index.html with this version, then hard refresh with Ctrl+F5.
