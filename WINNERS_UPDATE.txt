@@ -1,0 +1,9 @@
+WINNERS PAGE
+
+Edit winners.html daily:
+1. Change the latest card's display name.
+2. Keep first name + last initial unless the winner has given appropriate permission.
+3. Confirm the winner has been verified and the prize has actually been awarded before marking the result as a confirmed winner.
+4. Add the next daily card at the top if extending the campaign.
+
+Do not publish private email addresses, payment details, IDs, or other sensitive information.
