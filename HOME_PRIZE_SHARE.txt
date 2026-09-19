@@ -1,0 +1,1 @@
+Homepage now includes the $100 Daily Giveaway social-share block. It links users to rewards.html and records eligible share-button actions to share_events when an email is present. It is placed after the main homepage content, not above the navigation/hero.
