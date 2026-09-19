@@ -1,8 +1,6 @@
 FINAL HOMEPAGE AD LAYOUT
-- No advertisement before the navigation/header.
-- No advertisement inside the hero.
-- Exactly 4 x 300x250 Adsterra units.
-- All four are in one dedicated section immediately AFTER the header/hero.
-- Desktop: 2x2 grid with 28px spacing.
-- Mobile: one column.
-- Removed previous scattered home-ad and empty test-banner wrappers.
+
+- No homepage ads above the navbar/header or inside the hero.
+- The 4 x 300x250 ads are placed AFTER the main Tools section.
+- Desktop: 2x2 grid. Mobile: 1 column.
+- This keeps the header, hero, Smart Tool Finder and tools visible before ads.
