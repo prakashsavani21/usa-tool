@@ -46,6 +46,13 @@ header{background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff}.nav{max-wi
   };
 </script>
 <script src="https://www.highrevenueformat.com/a3c2f8aee6e1e6440d7b67e048d90f37/invoke.js"></script></div>
+
+<div id="dailyCountdown" style="max-width:760px;margin:22px auto;padding:22px;border-radius:18px;background:#111827;color:#fff;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.12)">
+  <div style="font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.8">⏰ Today's drawing closes in</div>
+  <div id="countdownTimer" style="font-size:42px;font-weight:900;line-height:1.15;margin:8px 0">00:00:00</div>
+  <div id="countdownDate" style="font-size:14px;opacity:.8">Pacific Time</div>
+</div>
+
 <main class="container">
 
 
@@ -222,5 +229,63 @@ async function submitEntry(e) {
   return false;
 }
 </script>
+
+<script>
+(function () {
+  const timer = document.getElementById("countdownTimer");
+  const label = document.getElementById("countdownDate");
+  if (!timer) return;
+
+  const PT_OFFSET = "-07:00"; // campaign dates are in Pacific Daylight Time (September 2026)
+
+  function nextDrawing() {
+    const now = new Date();
+    const ptDate = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).formatToParts(now);
+
+    const y = ptDate.find(x => x.type === "year").value;
+    const m = ptDate.find(x => x.type === "month").value;
+    const d = ptDate.find(x => x.type === "day").value;
+
+    // Daily drawing closes at 11:59:59 PM Pacific Time.
+    let target = new Date(`${y}-${m}-${d}T23:59:59${PT_OFFSET}`);
+
+    if (target.getTime() <= now.getTime()) {
+      const next = new Date(Date.UTC(Number(y), Number(m) - 1, Number(d) + 1));
+      const ny = next.getUTCFullYear();
+      const nm = String(next.getUTCMonth() + 1).padStart(2, "0");
+      const nd = String(next.getUTCDate()).padStart(2, "0");
+      target = new Date(`${ny}-${nm}-${nd}T23:59:59${PT_OFFSET}`);
+    }
+    return target;
+  }
+
+  function tick() {
+    const now = new Date();
+    const target = nextDrawing();
+    let seconds = Math.max(0, Math.floor((target - now) / 1000));
+
+    const h = Math.floor(seconds / 3600);
+    seconds %= 3600;
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+
+    timer.textContent =
+      String(h).padStart(2, "0") + ":" +
+      String(min).padStart(2, "0") + ":" +
+      String(sec).padStart(2, "0");
+
+    label.textContent = "Daily drawing closes at 11:59:59 PM Pacific Time";
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
 </body>
 </html>
