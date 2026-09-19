@@ -1,0 +1,3 @@
+Winner page updated with two 300x250 ad placements using the existing ad code.
+If an ad does not render immediately, allow the ad network time to fill the placement
+and check with extensions/ad blockers disabled. Do not click your own ads.
