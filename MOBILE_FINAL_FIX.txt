@@ -1,0 +1,1 @@
+Final mobile full-width fix: removes right-side blank space and prevents horizontal overflow. Replace index.html.

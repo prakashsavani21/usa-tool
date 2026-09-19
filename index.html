@@ -745,6 +745,79 @@
   footer{width:100%;overflow:hidden;}
 }
 </style>
+
+<style>
+/* FINAL MOBILE FULL-WIDTH FIX */
+@media screen and (max-width: 768px){
+  html, body {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+  header, main, footer {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .navbar, .hero, .container, .footer-inner {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .navbar {
+    padding: 16px 14px !important;
+    align-items: center !important;
+  }
+  .logo {
+    font-size: 20px !important;
+    white-space: nowrap !important;
+  }
+  .nav-links {
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px 14px !important;
+  }
+  .hero {
+    padding: 44px 16px 48px !important;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+  }
+  .hero p {
+    max-width: 100% !important;
+  }
+  .container {
+    padding: 32px 14px !important;
+  }
+  .separate-home-ad {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .separate-ad-box {
+    width: min(300px, calc(100vw - 28px)) !important;
+    max-width: calc(100vw - 28px) !important;
+    height: 250px !important;
+  }
+  .share-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  img, iframe, video { max-width: 100% !important; }
+}
+</style>
+
 </head>
 
 <body>
