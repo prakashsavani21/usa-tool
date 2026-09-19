@@ -1,0 +1,7 @@
+Homepage and giveaway messaging updated for today's campaign.
+
+IMPORTANT:
+The public pages are now labeled LIVE, but the current HTML entry form is not a
+secure production database/drawing system. Do not announce winners or collect
+real entries until a verified backend is connected and the final official rules
+are published.
