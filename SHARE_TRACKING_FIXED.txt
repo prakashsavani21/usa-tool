@@ -1,0 +1,1 @@
+Share tracking fixed: email input added to homepage and rewards page. Share events are posted to Supabase share_events after valid email is entered. The page shows recorded/error status. No CAPTCHA added.

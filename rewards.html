@@ -198,6 +198,11 @@ placeholder="you@example.com">
 <section class="share-card" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);text-align:center;">
   <h2 style="margin:0 0 8px;">🎁 Share the Giveaway</h2>
   <p style="margin:0 0 18px;color:#64748b;">Share with friends and family so they can enter too.</p>
+  <div style="max-width:520px;margin:0 auto 18px;text-align:left;">
+    <label for="shareEmail" style="display:block;margin-bottom:7px;font-weight:800;color:#0f172a;">Enter your email to track your shares</label>
+    <input id="shareEmail" type="email" autocomplete="email" placeholder="you@example.com" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;outline:none;">
+    <small style="display:block;margin-top:6px;color:#64748b;">Use the same email each time so your shares stay under one entry.</small>
+  </div>
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
     <a id="waShare" href="#" target="_blank" rel="noopener" style="padding:12px 16px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:800;">WhatsApp</a>
     <a id="fbShare" href="#" target="_blank" rel="noopener" style="padding:12px 16px;border-radius:10px;background:#1877F2;color:#fff;text-decoration:none;font-weight:800;">Facebook</a>
@@ -342,7 +347,7 @@ async function submitEntry(e) {
   const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_VRd_pgWNESJbPqLMoi2s1w_XYVazULO";
 
   async function recordShare(platform) {
-    const email = (document.getElementById("email")?.value || "").trim().toLowerCase();
+    const email = (document.getElementById("shareEmail")?.value || "").trim().toLowerCase();
     if (!email) return;
     try {
       await fetch(SUPABASE_URL + "/rest/v1/share_events", {
