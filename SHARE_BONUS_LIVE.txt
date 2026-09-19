@@ -1,0 +1,7 @@
+Share bonus added to the public rules:
+- Separate $1,000 share-bonus pool.
+- 1st: $500
+- 2nd: $300
+- 3rd: $200
+- 10-day campaign period.
+- Share counts are based on eligible share-button actions and may be audited/disqualified.

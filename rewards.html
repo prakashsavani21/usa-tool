@@ -12,7 +12,7 @@
 header{background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff}.nav{max-width:1180px;margin:auto;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}.logo{color:#fff;text-decoration:none;font-weight:800;font-size:22px}.nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600}
 .hero{max-width:980px;margin:auto;text-align:center;padding:58px 20px 68px}.pill{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.14);font-weight:700;font-size:13px}.hero h1{font-size:52px;line-height:1.05;margin:18px 0 12px}.hero p{font-size:19px;color:#dbeafe;max-width:720px;margin:0 auto 22px}.btn{display:inline-block;padding:15px 24px;background:#fff;color:#1d4ed8;text-decoration:none;border-radius:12px;font-weight:900}
 .container{max-width:1050px;margin:auto;padding:34px 20px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:28px;box-shadow:0 10px 30px rgba(15,23,42,.07);margin-bottom:24px}.prize{font-size:50px;font-weight:900}.status{display:inline-block;background:#dcfce7;color:#166534;padding:7px 12px;border-radius:999px;font-weight:800;font-size:13px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{padding:20px;background:#f8fafc;border-radius:16px;border:1px solid #e5e7eb}.step b{display:block;margin-bottom:5px}.muted{color:#64748b}.note{font-size:14px;color:#475467;background:#f8fafc;padding:16px;border-radius:12px}.adbox{min-height:90px;display:flex;align-items:center;justify-content:center;background:#fafafa;border:1px dashed #d0d5dd;border-radius:12px;color:#98a2b3;font-size:12px;margin:20px 0}.rules{columns:2;column-gap:35px}.rules p{break-inside:avoid}.footer{background:#0f172a;color:#cbd5e1;text-align:center;padding:35px 20px}.footer a{color:#fff;margin:0 8px}
-@media(max-width:700px){.hero h1{font-size:39px}.nav{flex-direction:column;gap:10px}.nav a{margin:0 7px}.grid{grid-template-columns:1fr}.rules{columns:1}}
+#shareLeaderboard > div:nth-child(2){grid-template-columns:1fr !important}\n@media(max-width:700px){.hero h1{font-size:39px}.nav{flex-direction:column;gap:10px}.nav a{margin:0 7px}.grid{grid-template-columns:1fr}.rules{columns:1}}
 </style>
 
 <style>
@@ -155,6 +155,11 @@ placeholder="you@example.com">
 
 <p><strong>13. Disputes and Law.</strong> The promotion is subject to applicable laws and regulations. If a jurisdiction imposes requirements that conflict with these rules, those requirements control for entrants in that jurisdiction.</p>
 
+
+<p><strong>15. Separate Share Bonus.</strong> In addition to the daily $100 giveaway prizes, the initial 10-day campaign offers a separate $1,000 share-bonus pool: $500 for first place, $300 for second place, and $200 for third place on the campaign share leaderboard.</p>
+<p><strong>16. Share Counting.</strong> The website records eligible share-button actions associated with an entrant's email. Because external social networks do not provide a universal way for this website to verify every completed share, a recorded share action is not necessarily proof that a post was published or viewed. The Sponsor may review and exclude automated, fraudulent, duplicate, self-generated, manipulated, or otherwise ineligible activity.</p>
+<p><strong>17. Share-Bonus Winners.</strong> After the campaign ends, the three eligible participants with the highest verified share counts will be ranked first, second, and third and may receive the $500, $300, and $200 prizes respectively. Ties and disqualifications will be handled according to the Sponsor's published rules and applicable law.</p>
+
 <p><strong>14. Winner List.</strong> After the campaign, the Sponsor may publish a winner list on the website containing limited winner information as permitted by applicable law.</p>
 </div>
 
@@ -162,6 +167,47 @@ placeholder="you@example.com">
 </section>
 
 
+
+
+
+<section id="shareLeaderboard" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);">
+  <div style="text-align:center">
+    <div style="font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#2563eb">🏆 10-Day Share Leaderboard</div>
+    <h2 style="margin:8px 0">$1,000 Share Bonus</h2>
+    <p style="color:#64748b;margin:0">Top 3 verified sharers at the end of the campaign receive separate prizes.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;">
+    <div style="padding:18px;border-radius:15px;background:#fff7ed;text-align:center"><div style="font-size:26px">🥇</div><strong>$500</strong><div style="margin-top:6px;color:#64748b">1st place</div></div>
+    <div style="padding:18px;border-radius:15px;background:#f8fafc;text-align:center"><div style="font-size:26px">🥈</div><strong>$300</strong><div style="margin-top:6px;color:#64748b">2nd place</div></div>
+    <div style="padding:18px;border-radius:15px;background:#fff7ed;text-align:center"><div style="font-size:26px">🥉</div><strong>$200</strong><div style="margin-top:6px;color:#64748b">3rd place</div></div>
+  </div>
+  <div style="overflow-x:auto;margin-top:22px">
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr><th style="text-align:left;padding:12px;border-bottom:1px solid #e5e7eb">Rank</th><th style="text-align:left;padding:12px;border-bottom:1px solid #e5e7eb">Participant</th><th style="text-align:right;padding:12px;border-bottom:1px solid #e5e7eb">Shares</th></tr></thead>
+      <tbody id="leaderboardRows">
+        <tr><td colspan="3" style="padding:18px;text-align:center;color:#64748b">Leaderboard loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin:16px 0 0;font-size:13px;color:#64748b;text-align:center">
+    Share counts shown here are tracked from eligible share-button actions on this website; social networks do not provide a reliable public API for verifying every completed share.
+    Fraudulent, automated, duplicate, or manipulated activity may be disqualified under the Official Rules.
+  </p>
+</section>
+
+<section class="share-card" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);text-align:center;">
+  <h2 style="margin:0 0 8px;">🎁 Share the Giveaway</h2>
+  <p style="margin:0 0 18px;color:#64748b;">Share with friends and family so they can enter too.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+    <a id="waShare" href="#" target="_blank" rel="noopener" style="padding:12px 16px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:800;">WhatsApp</a>
+    <a id="fbShare" href="#" target="_blank" rel="noopener" style="padding:12px 16px;border-radius:10px;background:#1877F2;color:#fff;text-decoration:none;font-weight:800;">Facebook</a>
+    <a id="xShare" href="#" target="_blank" rel="noopener" style="padding:12px 16px;border-radius:10px;background:#111827;color:#fff;text-decoration:none;font-weight:800;">X</a>
+    <a id="tgShare" href="#" target="_blank" rel="noopener" style="padding:12px 16px;border-radius:10px;background:#229ED9;color:#fff;text-decoration:none;font-weight:800;">Telegram</a>
+    <button id="copyShare" type="button" style="padding:12px 16px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-weight:800;cursor:pointer;">Copy Link</button>
+    <button id="nativeShare" type="button" style="padding:12px 16px;border:0;border-radius:10px;background:#7c3aed;color:#fff;font-weight:800;cursor:pointer;">More Apps</button>
+  </div>
+  <p id="shareMsg" style="margin:14px 0 0;color:#166534;font-weight:700;" aria-live="polite"></p>
+</section>
 
 </main>
 
@@ -284,6 +330,102 @@ async function submitEntry(e) {
 
   tick();
   setInterval(tick, 1000);
+})();
+</script>
+
+
+<script>
+(function(){
+  const shareUrl = "https://usafreetool.com/rewards.html";
+
+  const SUPABASE_URL = "https://axliquekzrlaxosacmfb.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_VRd_pgWNESJbPqLMoi2s1w_XYVazULO";
+
+  async function recordShare(platform) {
+    const email = (document.getElementById("email")?.value || "").trim().toLowerCase();
+    if (!email) return;
+    try {
+      await fetch(SUPABASE_URL + "/rest/v1/share_events", {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_PUBLISHABLE_KEY,
+          "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({ email: email, platform: platform })
+      });
+    } catch (e) {
+      console.warn("Share event could not be recorded.");
+    }
+  }
+
+  const shareText = "🎁 Enter the USA Free Tools $100 Daily Giveaway — free entry, worldwide where lawful!";
+  const enc = encodeURIComponent;
+
+  const wa = document.getElementById("waShare");
+  const fb = document.getElementById("fbShare");
+  const x = document.getElementById("xShare");
+  const tg = document.getElementById("tgShare");
+  const copy = document.getElementById("copyShare");
+  const native = document.getElementById("nativeShare");
+  const msg = document.getElementById("shareMsg");
+
+  if(wa) wa.href = "https://wa.me/?text=" + enc(shareText + " " + shareUrl);
+  if(fb) fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + enc(shareUrl);
+  if(x) x.href = "https://twitter.com/intent/tweet?text=" + enc(shareText) + "&url=" + enc(shareUrl);
+  if(tg) tg.href = "https://t.me/share/url?url=" + enc(shareUrl) + "&text=" + enc(shareText);
+
+
+  if(wa) wa.addEventListener("click", function(){ recordShare("whatsapp"); });
+  if(fb) fb.addEventListener("click", function(){ recordShare("facebook"); });
+  if(x) x.addEventListener("click", function(){ recordShare("x"); });
+  if(tg) tg.addEventListener("click", function(){ recordShare("telegram"); });
+  if(copy) copy.addEventListener("click", function(){ recordShare("copy"); });
+  if(native) native.addEventListener("click", function(){ recordShare("native"); });
+
+  async function loadLeaderboard() {
+    const rows = document.getElementById("leaderboardRows");
+    if (!rows) return;
+    try {
+      const r = await fetch(
+        SUPABASE_URL + "/rest/v1/share_leaderboard?select=display_email,share_count&order=share_count.desc&limit=10",
+        { headers: { "apikey": SUPABASE_PUBLISHABLE_KEY, "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY } }
+      );
+      if (!r.ok) throw new Error("leaderboard");
+      const data = await r.json();
+      if (!data.length) {
+        rows.innerHTML = '<tr><td colspan="3" style="padding:18px;text-align:center;color:#64748b">No share activity yet.</td></tr>';
+        return;
+      }
+      rows.innerHTML = data.map((item,i) => {
+        const safeName = String(item.display_email || "Participant");
+        return '<tr><td style="padding:12px;border-bottom:1px solid #e5e7eb">#'+(i+1)+'</td><td style="padding:12px;border-bottom:1px solid #e5e7eb">'+safeName+'</td><td style="padding:12px;text-align:right;border-bottom:1px solid #e5e7eb;font-weight:800">'+Number(item.share_count || 0)+'</td></tr>';
+      }).join("");
+    } catch(e) {
+      rows.innerHTML = '<tr><td colspan="3" style="padding:18px;text-align:center;color:#b42318">Leaderboard temporarily unavailable.</td></tr>';
+    }
+  }
+  loadLeaderboard();
+
+  if(copy) copy.addEventListener("click", async function(){
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      msg.textContent = "✅ Giveaway link copied!";
+    } catch(e) {
+      msg.textContent = "Copy failed — please copy the page URL from your browser.";
+    }
+  });
+
+  if(native) native.addEventListener("click", async function(){
+    if(navigator.share){
+      try {
+        await navigator.share({title:"$100 Daily Giveaway", text:shareText, url:shareUrl});
+      } catch(e) {}
+    } else {
+      msg.textContent = "Use Copy Link to share on Instagram, Snapchat, TikTok and other apps.";
+    }
+  });
 })();
 </script>
 

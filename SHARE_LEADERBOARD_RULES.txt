@@ -1,0 +1,19 @@
+SHARE BONUS STRUCTURE
+
+Separate from the $1,000 giveaway prize pool:
+1st share leaderboard: $500
+2nd: $300
+3rd: $200
+Total share bonus pool: $1,000
+
+Campaign period: September 19, 2026 through September 28, 2026.
+
+Important:
+- The site can count share-button actions, not guaranteed completed shares on external
+  social networks.
+- Publish only masked participant identifiers.
+- Fraudulent, automated, duplicate, or manipulated activity must be excluded under
+  the Official Rules.
+- The share bonus rules should be included in the site's final official rules before
+  accepting entries.
+- The current browser-side event endpoint is not a fraud-proof contest system.

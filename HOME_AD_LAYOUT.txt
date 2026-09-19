@@ -1,0 +1,4 @@
+Homepage ad layout updated:
+- Removed the existing top hero ad.
+- Added exactly four 300x250 Adsterra placements distributed through the upper/middle homepage content.
+- No ad is placed over the navigation or hero headline.

@@ -1,0 +1,4 @@
+Giveaway share buttons added to rewards.html:
+WhatsApp, Facebook, X, Telegram, Copy Link, and More Apps (native share sheet).
+Instagram does not provide a standard web share URL, so mobile users can use
+More Apps/Copy Link and choose Instagram or another installed app.
