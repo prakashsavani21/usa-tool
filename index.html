@@ -821,7 +821,9 @@
 <script src="https://pl31424378.profitableratecpmnetwork.com/cd/b8/08/cdb808567cd9804e85b4172c63a8012c.js"></script>
 <link rel="stylesheet" href="localization.css">
 <script src="localization.js" defer></script>
-</head>
+<style>
+.home-mystery-gift{height:150px;display:flex;align-items:center;justify-content:center;position:relative}.home-gift{position:relative;width:120px;height:95px;filter:drop-shadow(0 14px 15px rgba(0,0,0,.28));animation:homeFloat 2.4s ease-in-out infinite}.home-gift-body{position:absolute;left:10px;right:10px;bottom:0;height:64px;border-radius:9px 9px 12px 12px;background:linear-gradient(145deg,#ef4444,#b91c1c);border:3px solid rgba(255,255,255,.8)}.home-gift-body:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:23px;transform:translateX(-50%);background:linear-gradient(90deg,#fbbf24,#fde68a,#f59e0b)}.home-gift-lid{position:absolute;z-index:2;left:2px;right:2px;top:18px;height:28px;border-radius:8px;background:linear-gradient(145deg,#f87171,#dc2626);border:3px solid rgba(255,255,255,.8);transform:rotate(-4deg)}.home-gift-lid:before{content:"";position:absolute;left:50%;top:-5px;width:23px;height:37px;transform:translateX(-50%);background:linear-gradient(90deg,#fbbf24,#fde68a,#f59e0b);border-radius:4px}.home-gift-bow{position:absolute;z-index:3;top:0;left:50%;width:54px;height:30px;transform:translateX(-50%)}.home-gift-bow:before,.home-gift-bow:after{content:"";position:absolute;top:1px;width:29px;height:21px;background:#fbbf24;border:2px solid #fff1b2;border-radius:70% 25% 70% 25%}.home-gift-bow:before{right:25px;transform:rotate(25deg)}.home-gift-bow:after{left:25px;transform:scaleX(-1) rotate(25deg)}@keyframes homeFloat{50%{transform:translateY(-7px)}}
+</style></head>
 
 <body>
 
@@ -874,7 +876,29 @@
   </section>
 
 <!-- MYSTERY BOX PROMO -->
-<section id="mysteryBoxTeaser" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:22px;background:linear-gradient(135deg,#111827,#312e81);color:#fff;text-align:center"><div style="font-size:34px">🎁</div><h2 style="margin:8px 0">Mystery Box</h2><p style="color:#e0e7ff">Open a free box for a chance to reveal a $1, $2 or $5 Amazon Pay reward.</p><a href="rewards.html#mysteryBox" style="display:inline-block;padding:13px 20px;background:#fbbf24;color:#111827;border-radius:12px;text-decoration:none;font-weight:900">Open Mystery Box</a></section>
+
+.mystery-note{font-size:13px!important;color:#c7d2fe!important}
+.gift-stage{height:190px;display:flex;align-items:center;justify-content:center;position:relative;margin:4px auto 8px;perspective:700px}
+.gift-box-art{position:relative;width:150px;height:118px;filter:drop-shadow(0 18px 18px rgba(0,0,0,.28));transform:translateY(8px)}
+.gift-body{position:absolute;left:14px;right:14px;bottom:0;height:82px;border-radius:10px 10px 14px 14px;background:linear-gradient(145deg,#ef4444,#b91c1c);border:3px solid rgba(255,255,255,.75);overflow:hidden}
+.gift-body:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:28px;transform:translateX(-50%);background:linear-gradient(90deg,#fbbf24,#fde68a,#f59e0b)}
+.gift-lid{position:absolute;z-index:3;left:4px;right:4px;top:18px;height:34px;border-radius:10px;background:linear-gradient(145deg,#f87171,#dc2626);border:3px solid rgba(255,255,255,.82);transform-origin:12% 90%;transition:transform .75s cubic-bezier(.2,.85,.25,1),top .75s ease,box-shadow .75s ease}
+.gift-lid:before{content:"";position:absolute;left:50%;top:-7px;width:28px;height:44px;transform:translateX(-50%);background:linear-gradient(90deg,#fbbf24,#fde68a,#f59e0b);border-radius:5px}
+.gift-bow{position:absolute;z-index:4;top:0;left:50%;width:62px;height:34px;transform:translateX(-50%)}
+.gift-bow:before,.gift-bow:after{content:"";position:absolute;top:2px;width:34px;height:24px;background:#fbbf24;border:3px solid #fff1b2;border-radius:70% 25% 70% 25%;box-shadow:0 4px 7px rgba(0,0,0,.16)}
+.gift-bow:before{right:29px;transform:rotate(25deg)}.gift-bow:after{left:29px;transform:scaleX(-1) rotate(25deg)}
+.gift-spark{position:absolute;z-index:5;opacity:0;font-size:25px;pointer-events:none}
+.gift-s1{left:12px;top:28px}.gift-s2{right:8px;top:50px}.gift-s3{left:25px;top:108px}
+.mystery-box.is-opening .gift-lid{transform:translateY(-34px) rotate(-24deg);top:4px;box-shadow:0 12px 22px rgba(251,191,36,.28)}
+.mystery-box.is-opening .gift-box-art{animation:giftShake .42s ease-in-out 3}
+.mystery-box.is-opening .gift-spark{animation:sparkle .9s ease-out infinite}
+.mystery-box.is-opening .gift-s2{animation-delay:.18s}.mystery-box.is-opening .gift-s3{animation-delay:.34s}
+.mystery-box.is-open .gift-lid{transform:translateY(-38px) rotate(-30deg);top:0;box-shadow:0 14px 25px rgba(251,191,36,.34)}
+.mystery-box.is-open .gift-box-art:after{content:"✨";position:absolute;left:50%;top:30px;transform:translateX(-50%);font-size:38px;animation:prizePop .9s ease-out both}
+@keyframes giftShake{0%,100%{transform:translateY(8px) rotate(0)}25%{transform:translateY(8px) rotate(-3deg)}75%{transform:translateY(8px) rotate(3deg)}}
+@keyframes sparkle{0%{opacity:0;transform:scale(.4) translateY(12px)}35%{opacity:1}100%{opacity:0;transform:scale(1.25) translateY(-20px)}}
+@keyframes prizePop{0%{opacity:0;transform:translateX(-50%) translateY(22px) scale(.3)}65%{opacity:1;transform:translateX(-50%) translateY(-4px) scale(1.15)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+@media(max-width:700px){.gift-stage{height:170px}.gift-box-art{transform:scale(.9) translateY(8px)}}
 
 
 </header>

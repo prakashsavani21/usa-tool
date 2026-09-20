@@ -25,7 +25,29 @@ header{background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff}.nav{max-wi
 
   <!-- Adsterra Popunder -->
   <script src="https://pl31424378.profitableratecpmnetwork.com/cd/b8/08/cdb808567cd9804e85b4172c63a8012c.js"></script>
-<style>.mystery-box{background:linear-gradient(135deg,#111827,#312e81);color:#fff;border-radius:24px;padding:30px;max-width:900px;margin:26px auto;box-shadow:0 18px 45px rgba(15,23,42,.18);text-align:center}.mystery-box h2{margin:0 0 8px;font-size:32px}.mystery-box p{color:#e0e7ff}.mystery-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.mystery-form input{padding:14px 15px;border-radius:12px;border:0;min-width:260px;font-size:16px}.mystery-open{border:0;border-radius:12px;padding:14px 22px;font-weight:900;background:#fbbf24;color:#111827;cursor:pointer;font-size:16px}.mystery-open:disabled{opacity:.6;cursor:not-allowed}.mystery-result{display:none;margin:20px auto 0;padding:20px;border-radius:18px;background:rgba(255,255,255,.12);max-width:620px}.mystery-code{font-size:24px;font-weight:900;letter-spacing:1px;word-break:break-all;background:#fff;color:#111827;padding:12px;border-radius:12px;margin-top:12px}.mystery-note{font-size:13px!important;color:#c7d2fe!important}</style></head>
+<style>.mystery-box{background:linear-gradient(135deg,#111827,#312e81);color:#fff;border-radius:24px;padding:30px;max-width:900px;margin:26px auto;box-shadow:0 18px 45px rgba(15,23,42,.18);text-align:center}.mystery-box h2{margin:0 0 8px;font-size:32px}.mystery-box p{color:#e0e7ff}.mystery-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.mystery-form input{padding:14px 15px;border-radius:12px;border:0;min-width:260px;font-size:16px}.mystery-open{border:0;border-radius:12px;padding:14px 22px;font-weight:900;background:#fbbf24;color:#111827;cursor:pointer;font-size:16px}.mystery-open:disabled{opacity:.6;cursor:not-allowed}.mystery-result{display:none;margin:20px auto 0;padding:20px;border-radius:18px;background:rgba(255,255,255,.12);max-width:620px}.mystery-code{font-size:24px;font-weight:900;letter-spacing:1px;word-break:break-all;background:#fff;color:#111827;padding:12px;border-radius:12px;margin-top:12px}
+.mystery-note{font-size:13px!important;color:#c7d2fe!important}
+.gift-stage{height:190px;display:flex;align-items:center;justify-content:center;position:relative;margin:4px auto 8px;perspective:700px}
+.gift-box-art{position:relative;width:150px;height:118px;filter:drop-shadow(0 18px 18px rgba(0,0,0,.28));transform:translateY(8px)}
+.gift-body{position:absolute;left:14px;right:14px;bottom:0;height:82px;border-radius:10px 10px 14px 14px;background:linear-gradient(145deg,#ef4444,#b91c1c);border:3px solid rgba(255,255,255,.75);overflow:hidden}
+.gift-body:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:28px;transform:translateX(-50%);background:linear-gradient(90deg,#fbbf24,#fde68a,#f59e0b)}
+.gift-lid{position:absolute;z-index:3;left:4px;right:4px;top:18px;height:34px;border-radius:10px;background:linear-gradient(145deg,#f87171,#dc2626);border:3px solid rgba(255,255,255,.82);transform-origin:12% 90%;transition:transform .75s cubic-bezier(.2,.85,.25,1),top .75s ease,box-shadow .75s ease}
+.gift-lid:before{content:"";position:absolute;left:50%;top:-7px;width:28px;height:44px;transform:translateX(-50%);background:linear-gradient(90deg,#fbbf24,#fde68a,#f59e0b);border-radius:5px}
+.gift-bow{position:absolute;z-index:4;top:0;left:50%;width:62px;height:34px;transform:translateX(-50%)}
+.gift-bow:before,.gift-bow:after{content:"";position:absolute;top:2px;width:34px;height:24px;background:#fbbf24;border:3px solid #fff1b2;border-radius:70% 25% 70% 25%;box-shadow:0 4px 7px rgba(0,0,0,.16)}
+.gift-bow:before{right:29px;transform:rotate(25deg)}.gift-bow:after{left:29px;transform:scaleX(-1) rotate(25deg)}
+.gift-spark{position:absolute;z-index:5;opacity:0;font-size:25px;pointer-events:none}
+.gift-s1{left:12px;top:28px}.gift-s2{right:8px;top:50px}.gift-s3{left:25px;top:108px}
+.mystery-box.is-opening .gift-lid{transform:translateY(-34px) rotate(-24deg);top:4px;box-shadow:0 12px 22px rgba(251,191,36,.28)}
+.mystery-box.is-opening .gift-box-art{animation:giftShake .42s ease-in-out 3}
+.mystery-box.is-opening .gift-spark{animation:sparkle .9s ease-out infinite}
+.mystery-box.is-opening .gift-s2{animation-delay:.18s}.mystery-box.is-opening .gift-s3{animation-delay:.34s}
+.mystery-box.is-open .gift-lid{transform:translateY(-38px) rotate(-30deg);top:0;box-shadow:0 14px 25px rgba(251,191,36,.34)}
+.mystery-box.is-open .gift-box-art:after{content:"✨";position:absolute;left:50%;top:30px;transform:translateX(-50%);font-size:38px;animation:prizePop .9s ease-out both}
+@keyframes giftShake{0%,100%{transform:translateY(8px) rotate(0)}25%{transform:translateY(8px) rotate(-3deg)}75%{transform:translateY(8px) rotate(3deg)}}
+@keyframes sparkle{0%{opacity:0;transform:scale(.4) translateY(12px)}35%{opacity:1}100%{opacity:0;transform:scale(1.25) translateY(-20px)}}
+@keyframes prizePop{0%{opacity:0;transform:translateX(-50%) translateY(22px) scale(.3)}65%{opacity:1;transform:translateX(-50%) translateY(-4px) scale(1.15)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+@media(max-width:700px){.gift-stage{height:170px}.gift-box-art{transform:scale(.9) translateY(8px)}}</style></head>
 <body>
 <header>
 <nav class="nav">
@@ -178,7 +200,12 @@ placeholder="you@example.com">
 <section id="shareLeaderboard" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);">
   <div id="shareCampaignTimer" style="margin:0 auto 22px;max-width:720px;padding:18px;border-radius:16px;background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff;text-align:center;box-shadow:0 8px 25px rgba(15,23,42,.12)">
     <section class="mystery-box" id="mysteryBox">
-<div class="mystery-box-icon" id="mysteryBoxIcon">🎁</div><h2>Daily Mystery Box</h2>
+<div class="gift-stage" aria-hidden="true">
+  <div class="gift-box-art">
+    <div class="gift-lid"></div><div class="gift-bow"></div><div class="gift-body"></div>
+    <span class="gift-spark gift-s1">✦</span><span class="gift-spark gift-s2">✧</span><span class="gift-spark gift-s3">✦</span>
+  </div>
+</div><h2>Daily Mystery Box</h2>
 <p>This campaign has <strong>100,000 total eligible openings</strong>. The counter never resets. Each email gets <strong>3 chances per day</strong>.</p>
 <div style="max-width:680px;margin:18px auto 12px;background:rgba(255,255,255,.12);border-radius:14px;padding:14px">
   <div style="display:flex;justify-content:space-between;font-weight:900;font-size:14px">
@@ -526,7 +553,7 @@ async function submitEntry(e) {
     localStorage.setItem("usaGiveawayEmail",e);
     b.disabled=true; b.textContent="Opening…";
     const box=document.getElementById("mysteryBox"), cd=document.getElementById("mysteryCountdown"), rv=document.getElementById("mysteryReveal");
-    box.classList.add("is-opening"); cd.classList.add("show"); rv.classList.remove("show"); r.style.display="none";
+    box.classList.remove("is-open"); box.classList.add("is-opening"); cd.classList.add("show"); rv.classList.remove("show"); r.style.display="none";
     for(const n of [3,2,1]){cd.textContent=n; await wait(650);}
     cd.textContent="✨"; await wait(450);
     try{
@@ -536,7 +563,7 @@ async function submitEntry(e) {
       const x=Array.isArray(d)?d[0]:d,n=Number(x.total_clicks||0),max=Number(x.max_clicks||100000);
       if(ptxt)ptxt.textContent=n.toLocaleString()+" / "+max.toLocaleString();
       if(pbar)pbar.style.width=Math.min(100,n/max*100)+"%";
-      box.classList.remove("is-opening"); cd.classList.remove("show"); rv.classList.add("show");
+      box.classList.remove("is-opening"); box.classList.add("is-open"); cd.classList.remove("show"); rv.classList.add("show");
       r.style.display="block";
       if(x.won){
         r.classList.add("winner"); title.textContent="🎉 YOU WON!"; a.textContent="$"+Number(x.reward_amount).toFixed(2)+" Amazon Pay"; c.textContent=x.reward_code; codeLabel.style.display="block"; confetti();
@@ -545,7 +572,7 @@ async function submitEntry(e) {
       }
       const left=Number(x.attempts_left)||0; b.disabled=false; b.textContent=left>0?"🎁 Open Again":"✓ Daily Chances Used"; if(n>=max){b.disabled=true;b.textContent="Campaign Complete";}
     }catch(e){
-      box.classList.remove("is-opening"); cd.classList.remove("show"); rv.classList.remove("show"); b.disabled=false;b.textContent="🎁 Open My Box"; alert(e.message||"Mystery Box is temporarily unavailable.");
+      box.classList.remove("is-opening","is-open"); cd.classList.remove("show"); rv.classList.remove("show"); b.disabled=false;b.textContent="🎁 Open My Box"; alert(e.message||"Mystery Box is temporarily unavailable.");
     }
   };})();
 </script></body>
