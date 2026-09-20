@@ -25,7 +25,7 @@ header{background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff}.nav{max-wi
 
   <!-- Adsterra Popunder -->
   <script src="https://pl31424378.profitableratecpmnetwork.com/cd/b8/08/cdb808567cd9804e85b4172c63a8012c.js"></script>
-</head>
+<style>.mystery-box{background:linear-gradient(135deg,#111827,#312e81);color:#fff;border-radius:24px;padding:30px;max-width:900px;margin:26px auto;box-shadow:0 18px 45px rgba(15,23,42,.18);text-align:center}.mystery-box h2{margin:0 0 8px;font-size:32px}.mystery-box p{color:#e0e7ff}.mystery-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.mystery-form input{padding:14px 15px;border-radius:12px;border:0;min-width:260px;font-size:16px}.mystery-open{border:0;border-radius:12px;padding:14px 22px;font-weight:900;background:#fbbf24;color:#111827;cursor:pointer;font-size:16px}.mystery-open:disabled{opacity:.6;cursor:not-allowed}.mystery-result{display:none;margin:20px auto 0;padding:20px;border-radius:18px;background:rgba(255,255,255,.12);max-width:620px}.mystery-code{font-size:24px;font-weight:900;letter-spacing:1px;word-break:break-all;background:#fff;color:#111827;padding:12px;border-radius:12px;margin-top:12px}.mystery-note{font-size:13px!important;color:#c7d2fe!important}</style></head>
 <body>
 <header>
 <nav class="nav">
@@ -177,7 +177,30 @@ placeholder="you@example.com">
 
 <section id="shareLeaderboard" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);">
   <div id="shareCampaignTimer" style="margin:0 auto 22px;max-width:720px;padding:18px;border-radius:16px;background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff;text-align:center;box-shadow:0 8px 25px rgba(15,23,42,.12)">
-    <div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;opacity:.8">10-Day Share Competition</div>
+    <section class="mystery-box" id="mysteryBox">
+<h2>🎁 Daily Mystery Box</h2>
+<p>This campaign has <strong>100,000 total eligible openings</strong>. The counter never resets. Each email gets <strong>3 chances per day</strong>.</p>
+<div style="max-width:680px;margin:18px auto 12px;background:rgba(255,255,255,.12);border-radius:14px;padding:14px">
+  <div style="display:flex;justify-content:space-between;font-weight:900;font-size:14px">
+    <span>Campaign Progress</span><span id="mysteryProgressText">0 / 100,000</span>
+  </div>
+  <div style="height:14px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;margin-top:9px">
+    <div id="mysteryProgressBar" style="height:100%;width:0%;background:#fbbf24;border-radius:99px"></div>
+  </div>
+</div>
+<div class="mystery-form">
+<input id="mysteryEmail" type="email" autocomplete="email" placeholder="Enter your email">
+<button class="mystery-open" id="mysteryOpen" type="button">🎁 Open My Box</button>
+</div>
+<p class="mystery-note">Winning milestones: <strong>#500</strong>, <strong>#50,000</strong>, and one randomly selected milestone from <strong>#90,001–#100,000</strong>. The counter never resets. No purchase or ad click is required.</p>
+<div class="mystery-result" id="mysteryResult">
+  <div style="font-size:20px;font-weight:800" id="mysteryResultTitle">🎉 Mystery Box Result</div>
+  <div id="mysteryAmount" style="font-size:30px;font-weight:900;margin-top:6px"></div>
+  <div id="mysteryCodeLabel" style="margin-top:8px">Your Amazon Pay code:</div>
+  <div class="mystery-code" id="mysteryCode"></div>
+  <p class="mystery-note">Keep any prize code private and redeem it according to applicable Amazon terms.</p>
+</div>
+</section><div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;opacity:.8">10-Day Share Competition</div>
     <div id="shareTimer" style="font-size:38px;font-weight:900;line-height:1.1;margin:7px 0">00:00:00:00</div>
     <div id="shareTimerLabel" style="font-size:13px;opacity:.85">Ends September 28, 2026 at 11:59:59 PM Pacific Time</div>
   </div>
@@ -466,5 +489,66 @@ async function submitEntry(e) {
 })();
 </script>
 
-</body>
+<script>
+(function(){
+  const U="https://axliquekzrlaxosacmfb.supabase.co";
+  const K="sb_publishable_VRd_pgWNESJbPqLMoi2s1w_XYVazULO";
+  const b=document.getElementById("mysteryOpen"), i=document.getElementById("mysteryEmail");
+  const r=document.getElementById("mysteryResult"), a=document.getElementById("mysteryAmount");
+  const c=document.getElementById("mysteryCode"), title=document.getElementById("mysteryResultTitle");
+  const codeLabel=document.getElementById("mysteryCodeLabel"), ptxt=document.getElementById("mysteryProgressText"), pbar=document.getElementById("mysteryProgressBar");
+  const saved=localStorage.getItem("usaGiveawayEmail"); if(i&&saved)i.value=saved;
+  const H={apikey:K,Authorization:"Bearer "+K,"Content-Type":"application/json"};
+
+  async function status(){
+    try{
+      const q=await fetch(U+"/rest/v1/rpc/mystery_box_status",{method:"POST",headers:H,body:"{}"});
+      if(!q.ok)return;
+      const d=await q.json(),x=Array.isArray(d)?d[0]:d,n=Number(x.total_clicks||0),max=Number(x.max_clicks||100000);
+      if(ptxt)ptxt.textContent=n.toLocaleString()+" / "+max.toLocaleString();
+      if(pbar)pbar.style.width=Math.min(100,n/max*100)+"%";
+      if(b && !x.active){b.disabled=true;b.textContent="Campaign Complete";}
+    }catch(e){}
+  }
+  status();
+
+  if(!b)return;
+  b.onclick=async()=>{
+    const e=(i.value||"").trim().toLowerCase();
+    if(!e||!e.includes("@")){i.focus();alert("Please enter a valid email.");return;}
+    localStorage.setItem("usaGiveawayEmail",e);
+    b.disabled=true;b.textContent="Opening…";
+    try{
+      const q=await fetch(U+"/rest/v1/rpc/claim_mystery_box",{method:"POST",headers:H,body:JSON.stringify({p_email:e})});
+      const d=await q.json();
+      if(!q.ok)throw new Error(d.message||d.hint||"Mystery Box unavailable");
+      const x=Array.isArray(d)?d[0]:d,n=Number(x.total_clicks||0),max=Number(x.max_clicks||100000);
+      if(ptxt)ptxt.textContent=n.toLocaleString()+" / "+max.toLocaleString();
+      if(pbar)pbar.style.width=Math.min(100,n/max*100)+"%";
+      r.style.display="block";
+
+      if(x.won){
+        title.textContent="🎉 YOU WON!";
+        a.textContent="$"+Number(x.reward_amount).toFixed(2)+" Amazon Pay";
+        c.textContent=x.reward_code;
+        codeLabel.style.display="block";
+      }else{
+        title.textContent="📦 No prize this time";
+        a.textContent=(Number(x.attempts_left)||0)+" chance"+((Number(x.attempts_left)||0)===1?"":"s")+" left today";
+        c.textContent="";
+        codeLabel.textContent="Your next chance is available today.";
+        codeLabel.style.display="block";
+      }
+
+      const left=Number(x.attempts_left)||0;
+      b.disabled=false;
+      b.textContent=left>0?"🎁 Open Again":"✓ Daily Chances Used";
+      if(n>=max){b.disabled=true;b.textContent="Campaign Complete";}
+    }catch(e){
+      b.disabled=false;b.textContent="🎁 Open My Box";
+      alert(e.message||"Mystery Box is temporarily unavailable.");
+    }
+  };
+})();
+</script></body>
 </html>
