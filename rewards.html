@@ -176,10 +176,15 @@ placeholder="you@example.com">
 
 
 <section id="shareLeaderboard" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);">
+  <div id="shareCampaignTimer" style="margin:0 auto 22px;max-width:720px;padding:18px;border-radius:16px;background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff;text-align:center;box-shadow:0 8px 25px rgba(15,23,42,.12)">
+    <div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;opacity:.8">10-Day Share Competition</div>
+    <div id="shareTimer" style="font-size:38px;font-weight:900;line-height:1.1;margin:7px 0">00:00:00:00</div>
+    <div id="shareTimerLabel" style="font-size:13px;opacity:.85">Ends September 28, 2026 at 11:59:59 PM Pacific Time</div>
+  </div>
   <div style="text-align:center">
     <div style="font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#2563eb">🏆 10-Day Share Leaderboard</div>
     <h2 style="margin:8px 0">$1,000 Share Bonus</h2>
-    <p style="color:#64748b;margin:0">Top 3 verified sharers at the end of the campaign receive separate prizes.</p>
+    <p style="color:#64748b;margin:0">The live leaderboard tracks eligible share-button actions during this campaign. Final winners are subject to verification and the Official Rules.</p>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;">
     <div style="padding:18px;border-radius:15px;background:#fff7ed;text-align:center"><div style="font-size:26px">🥇</div><strong>$500</strong><div style="margin-top:6px;color:#64748b">1st place</div></div>
@@ -256,6 +261,7 @@ async function submitEntry(e) {
     );
 
     if (response.ok) {
+      localStorage.setItem("usaGiveawayEmail", email);
       form.reset();
       msg.textContent = "🎉 Entry received! Your email has been entered for today's drawing.";
       msg.style.color = "#166534";
@@ -343,12 +349,34 @@ async function submitEntry(e) {
 (function(){
   const shareUrl = "https://usafreetool.com/rewards.html";
 
+  // Share competition: Sep 19 through Sep 28, 2026, Pacific Time.
+  const shareEnd = new Date("2026-09-29T00:00:00-07:00");
+  const shareTimer = document.getElementById("shareTimer");
+  const shareTimerLabel = document.getElementById("shareTimerLabel");
+  function updateShareTimer(){
+    if(!shareTimer) return;
+    const diff = Math.max(0, shareEnd.getTime() - Date.now());
+    let sec = Math.floor(diff / 1000);
+    const days = Math.floor(sec / 86400); sec %= 86400;
+    const hours = Math.floor(sec / 3600); sec %= 3600;
+    const mins = Math.floor(sec / 60);
+    const secs = sec % 60;
+    shareTimer.textContent = String(days).padStart(2,"0") + ":" + String(hours).padStart(2,"0") + ":" + String(mins).padStart(2,"0") + ":" + String(secs).padStart(2,"0");
+    if(diff <= 0 && shareTimerLabel) shareTimerLabel.textContent = "Share competition ended. Final results are subject to verification.";
+  }
+  updateShareTimer();
+  setInterval(updateShareTimer, 1000);
+
   const SUPABASE_URL = "https://axliquekzrlaxosacmfb.supabase.co";
   const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_VRd_pgWNESJbPqLMoi2s1w_XYVazULO";
 
   async function recordShare(platform) {
-    const email = (document.getElementById("email")?.value || "").trim().toLowerCase();
-    if (!email) return;
+    const email = ((document.getElementById("email")?.value || localStorage.getItem("usaGiveawayEmail") || "").trim().toLowerCase());
+    if (!email) {
+      const msg = document.getElementById("shareMsg");
+      if (msg) msg.textContent = "Enter your email first, then use a share button.";
+      return;
+    }
     try {
       await fetch(SUPABASE_URL + "/rest/v1/share_events", {
         method: "POST",
@@ -358,14 +386,14 @@ async function submitEntry(e) {
           "Content-Type": "application/json",
           "Prefer": "return=minimal"
         },
-        body: JSON.stringify({ email: email, platform: platform })
+        body: JSON.stringify({ email: email, platform: platform, campaign_key: "sep-2026" })
       });
     } catch (e) {
       console.warn("Share event could not be recorded.");
     }
   }
 
-  const shareText = "🎁 Enter the USA Free Tools $100 Daily Giveaway — free entry, worldwide where lawful!";
+  const shareText = "🎁 Enter the USA Free Tools $100 Daily Giveaway + join the 10-day Share Bonus. Free entry where lawful!";
   const enc = encodeURIComponent;
 
   const wa = document.getElementById("waShare");
@@ -375,6 +403,10 @@ async function submitEntry(e) {
   const copy = document.getElementById("copyShare");
   const native = document.getElementById("nativeShare");
   const msg = document.getElementById("shareMsg");
+
+  const savedEmail = localStorage.getItem("usaGiveawayEmail");
+  const emailField = document.getElementById("email");
+  if(emailField && savedEmail && !emailField.value) emailField.value = savedEmail;
 
   if(wa) wa.href = "https://wa.me/?text=" + enc(shareText + " " + shareUrl);
   if(fb) fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + enc(shareUrl);
