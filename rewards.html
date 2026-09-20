@@ -178,7 +178,7 @@ placeholder="you@example.com">
 <section id="shareLeaderboard" style="max-width:900px;margin:28px auto;padding:28px 20px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 25px rgba(15,23,42,.06);">
   <div id="shareCampaignTimer" style="margin:0 auto 22px;max-width:720px;padding:18px;border-radius:16px;background:linear-gradient(135deg,#111827,#1d4ed8);color:#fff;text-align:center;box-shadow:0 8px 25px rgba(15,23,42,.12)">
     <section class="mystery-box" id="mysteryBox">
-<h2>🎁 Daily Mystery Box</h2>
+<div class="mystery-box-icon" id="mysteryBoxIcon">🎁</div><h2>Daily Mystery Box</h2>
 <p>This campaign has <strong>100,000 total eligible openings</strong>. The counter never resets. Each email gets <strong>3 chances per day</strong>.</p>
 <div style="max-width:680px;margin:18px auto 12px;background:rgba(255,255,255,.12);border-radius:14px;padding:14px">
   <div style="display:flex;justify-content:space-between;font-weight:900;font-size:14px">
@@ -193,7 +193,7 @@ placeholder="you@example.com">
 <button class="mystery-open" id="mysteryOpen" type="button">🎁 Open My Box</button>
 </div>
 <p class="mystery-note">The counter never resets. No purchase or ad click is required.</p>
-<div class="mystery-result" id="mysteryResult">
+<div class="mystery-countdown" id="mysteryCountdown">3</div><div class="mystery-reveal" id="mysteryReveal">🔓 Box opened! Revealing your result…</div><div class="mystery-result" id="mysteryResult">
   <div style="font-size:20px;font-weight:800" id="mysteryResultTitle">🎉 Mystery Box Result</div>
   <div id="mysteryAmount" style="font-size:30px;font-weight:900;margin-top:6px"></div>
   <div id="mysteryCodeLabel" style="margin-top:8px">Your Amazon Pay code:</div>
@@ -513,11 +513,22 @@ async function submitEntry(e) {
   status();
 
   if(!b)return;
+  function confetti(){
+    const wrap=document.createElement("div"); wrap.className="mystery-confetti";
+    for(let j=0;j<34;j++){const x=document.createElement("i");x.style.left=(Math.random()*100)+"%";x.style.setProperty("--dx",((Math.random()-.5)*260)+"px");x.style.animationDelay=(Math.random()*.35)+"s";x.style.transform="rotate("+(Math.random()*180)+"deg)";wrap.appendChild(x)}
+    document.body.appendChild(wrap); setTimeout(()=>wrap.remove(),2300);
+  }
+  function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+
   b.onclick=async()=>{
     const e=(i.value||"").trim().toLowerCase();
     if(!e||!e.includes("@")){i.focus();alert("Please enter a valid email.");return;}
     localStorage.setItem("usaGiveawayEmail",e);
-    b.disabled=true;b.textContent="Opening…";
+    b.disabled=true; b.textContent="Opening…";
+    const box=document.getElementById("mysteryBox"), cd=document.getElementById("mysteryCountdown"), rv=document.getElementById("mysteryReveal");
+    box.classList.add("is-opening"); cd.classList.add("show"); rv.classList.remove("show"); r.style.display="none";
+    for(const n of [3,2,1]){cd.textContent=n; await wait(650);}
+    cd.textContent="✨"; await wait(450);
     try{
       const q=await fetch(U+"/rest/v1/rpc/claim_mystery_box",{method:"POST",headers:H,body:JSON.stringify({p_email:e})});
       const d=await q.json();
@@ -525,30 +536,17 @@ async function submitEntry(e) {
       const x=Array.isArray(d)?d[0]:d,n=Number(x.total_clicks||0),max=Number(x.max_clicks||100000);
       if(ptxt)ptxt.textContent=n.toLocaleString()+" / "+max.toLocaleString();
       if(pbar)pbar.style.width=Math.min(100,n/max*100)+"%";
+      box.classList.remove("is-opening"); cd.classList.remove("show"); rv.classList.add("show");
       r.style.display="block";
-
       if(x.won){
-        title.textContent="🎉 YOU WON!";
-        a.textContent="$"+Number(x.reward_amount).toFixed(2)+" Amazon Pay";
-        c.textContent=x.reward_code;
-        codeLabel.style.display="block";
+        r.classList.add("winner"); title.textContent="🎉 YOU WON!"; a.textContent="$"+Number(x.reward_amount).toFixed(2)+" Amazon Pay"; c.textContent=x.reward_code; codeLabel.style.display="block"; confetti();
       }else{
-        title.textContent="📦 No prize this time";
-        a.textContent=(Number(x.attempts_left)||0)+" chance"+((Number(x.attempts_left)||0)===1?"":"s")+" left today";
-        c.textContent="";
-        codeLabel.textContent="Your next chance is available today.";
-        codeLabel.style.display="block";
+        r.classList.remove("winner"); title.textContent="📦 No prize this time"; a.textContent=(Number(x.attempts_left)||0)+" chance"+((Number(x.attempts_left)||0)===1?"":"s")+" left today"; c.textContent=""; codeLabel.textContent="No reward on this opening — you can try again today."; codeLabel.style.display="block";
       }
-
-      const left=Number(x.attempts_left)||0;
-      b.disabled=false;
-      b.textContent=left>0?"🎁 Open Again":"✓ Daily Chances Used";
-      if(n>=max){b.disabled=true;b.textContent="Campaign Complete";}
+      const left=Number(x.attempts_left)||0; b.disabled=false; b.textContent=left>0?"🎁 Open Again":"✓ Daily Chances Used"; if(n>=max){b.disabled=true;b.textContent="Campaign Complete";}
     }catch(e){
-      b.disabled=false;b.textContent="🎁 Open My Box";
-      alert(e.message||"Mystery Box is temporarily unavailable.");
+      box.classList.remove("is-opening"); cd.classList.remove("show"); rv.classList.remove("show"); b.disabled=false;b.textContent="🎁 Open My Box"; alert(e.message||"Mystery Box is temporarily unavailable.");
     }
-  };
-})();
+  };})();
 </script></body>
 </html>
