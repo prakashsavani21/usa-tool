@@ -1,0 +1,7 @@
+POPUNDER REMOVED - September 22, 2026
+
+The Adsterra popunder script has been removed from all deployed HTML/JS pages in this package.
+Internal navigation links are left as normal links so the first click navigates directly to the requested page.
+Display/native/banner ad units are otherwise unchanged.
+
+After deployment, hard refresh with Ctrl+F5 and clear any CDN/cache if an old popunder still appears.
