@@ -1,0 +1,19 @@
+BINANCE PAY MYSTERY BOX
+
+Campaign:
+- 100,000 total global openings
+- Counter never resets
+- 3 chances per email per UTC day
+- 100 winners
+- Every winner receives one $100 Binance Pay voucher
+- Winning positions are hidden server-side in Supabase
+
+Before launch:
+1. Add the 100 real Binance Pay voucher codes to public.mystery_reward_codes in Supabase.
+2. Each row must have reward_amount = 100 and a unique reward_code.
+3. Keep voucher codes out of HTML/JavaScript.
+4. Test with a non-production/test voucher before public launch.
+
+The website calls:
+POST /rest/v1/rpc/claim_mystery_box
+with {"p_email":"user@example.com"}.
