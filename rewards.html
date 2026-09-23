@@ -224,9 +224,9 @@ placeholder="you@example.com">
 <div class="mystery-countdown" id="mysteryCountdown">3</div><div class="mystery-reveal" id="mysteryReveal">🔓 Box opened! Revealing your result…</div><div class="mystery-result" id="mysteryResult">
   <div style="font-size:20px;font-weight:800" id="mysteryResultTitle">🎉 Mystery Box Result</div>
   <div id="mysteryAmount" style="font-size:30px;font-weight:900;margin-top:6px"></div>
-  <div id="mysteryCodeLabel" style="margin-top:8px">Your Amazon Pay code:</div>
+  <div id="mysteryCodeLabel" style="margin-top:8px">Your Binance Pay code:</div>
   <div class="mystery-code" id="mysteryCode"></div>
-  <p class="mystery-note">Keep any prize code private and redeem it according to applicable Amazon terms.</p>
+  <p class="mystery-note">Keep your Binance Pay code private and redeem it according to the applicable Binance terms.</p>
 </div>
 </section><div style="font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;opacity:.8">10-Day Share Competition</div>
     <div id="shareTimer" style="font-size:38px;font-weight:900;line-height:1.1;margin:7px 0">00:00:00:00</div>
@@ -567,7 +567,7 @@ async function submitEntry(e) {
       box.classList.remove("is-opening"); box.classList.add("is-open"); cd.classList.remove("show"); rv.classList.add("show");
       r.style.display="block";
       if(x.won){
-        r.classList.add("winner"); title.textContent="🎉 YOU WON!"; a.textContent="$"+Number(x.reward_amount).toFixed(2)+" Amazon Pay"; c.textContent=x.reward_code; codeLabel.style.display="block"; confetti();
+        r.classList.add("winner"); title.textContent="🎉 YOU WON!"; a.textContent="$"+Number(x.reward_amount).toFixed(2)+" Binance Pay"; c.textContent=x.reward_code; codeLabel.style.display="block"; confetti();
       }else{
         r.classList.remove("winner"); title.textContent="📦 No prize this time"; a.textContent=(Number(x.attempts_left)||0)+" chance"+((Number(x.attempts_left)||0)===1?"":"s")+" left today"; c.textContent=""; codeLabel.textContent="No reward on this opening — you can try again today."; codeLabel.style.display="block";
       }
