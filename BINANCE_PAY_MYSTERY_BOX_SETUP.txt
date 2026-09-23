@@ -1,0 +1,12 @@
+BINANCE PAY MYSTERY BOX SETUP
+
+The homepage and rewards page now say Binance Pay instead of Amazon Pay.
+
+Backend: the current original SQL was built for three Amazon Pay codes ($5/$2/$1).
+If the intended campaign is 100 Binance Pay codes worth $100 each, do NOT rely on the front-end text alone.
+1. Add 100 actual Binance Pay codes to public.mystery_reward_codes with reward_amount=100.
+2. Run BINANCE_PAY_100_CODES_MIGRATION.sql in Supabase only if the campaign has not already initialized milestones.
+3. Then run: select public.initialize_mystery_milestones();
+4. Never place the actual codes in HTML or JavaScript.
+
+If the existing mystery campaign is already live/initialized, stop before running the migration and make a separate campaign/reset plan rather than overwriting existing milestones.

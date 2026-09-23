@@ -1,0 +1,7 @@
+Homepage final layout:
+- Binance Pay $100 Mystery Box is visible directly on the homepage.
+- A sponsored 300x250 ad is placed immediately after the Mystery Box.
+- Existing homepage ad placements are preserved.
+- Existing popunder/network script is preserved.
+- Existing rewards.html / Binance Pay flow is preserved.
+- Upload the contents of usa-binance/ to the GitHub Pages site root.
