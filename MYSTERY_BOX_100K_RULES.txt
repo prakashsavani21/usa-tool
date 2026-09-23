@@ -1,4 +1,4 @@
 MYSTERY BOX 100K RULES
 
 "
-"Three Binance Pay prizes ($5, $2, $1) are awarded at three distinct randomly selected eligible-click milestones from 1 to 100,000. The milestones are selected server-side after the three codes are loaded. Each email gets up to 3 eligible openings per UTC day. No purchase or ad click is required. The public counter shows total eligible openings; winning milestones remain undisclosed until reached. Fraudulent, automated, duplicate, or manipulated activity may be disqualified. The promotion should be legally reviewed for each jurisdiction before launch.
+"Three Amazon Pay prizes ($5, $2, $1) are awarded at three distinct randomly selected eligible-click milestones from 1 to 100,000. The milestones are selected server-side after the three codes are loaded. One eligible opening per email per UTC day. No purchase or ad click is required. The public counter shows total eligible openings; winning milestones remain undisclosed until reached. Fraudulent, automated, duplicate, or manipulated activity may be disqualified. The promotion should be legally reviewed for each jurisdiction before launch.

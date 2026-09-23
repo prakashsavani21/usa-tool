@@ -2,7 +2,7 @@
 -- 100,000 global eligible openings per day.
 -- Each email gets up to 3 eligible openings per UTC day.
 -- Winners: #500, #50,000, and one random milestone from #90,001–#100,000.
--- Binance Pay codes remain server-side in Supabase.
+-- Amazon Pay codes remain server-side in Supabase.
 
 create table if not exists public.mystery_box_daily_campaign (
   campaign_date date primary key,
