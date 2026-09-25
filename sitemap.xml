@@ -78,8 +78,25 @@
 </url>
   <url><loc>https://usafreetool.com/rewards.html</loc></url>
   <url><loc>https://usafreetool.com/winners.html</loc></url>
-<url><loc>https://usafreetool.com/budget-planner.html</loc></url>
-<url><loc>https://usafreetool.com/password-generator.html</loc></url>
-<url><loc>https://usafreetool.com/word-counter.html</loc></url>
-<url><loc>https://usafreetool.com/random-number-generator.html</loc></url>
+
+  <url><loc>https://usafreetool.com/budget-planner.html</loc></url>
+  <url><loc>https://usafreetool.com/password-generator.html</loc></url>
+  <url><loc>https://usafreetool.com/word-counter.html</loc></url>
+  <url><loc>https://usafreetool.com/random-number.html</loc></url>
+  <url><loc>https://usafreetool.com/qr-generator.html</loc></url>
+  <url><loc>https://usafreetool.com/random-name-picker.html</loc></url>
+  <url><loc>https://usafreetool.com/username-generator.html</loc></url>
+  <url><loc>https://usafreetool.com/color-picker.html</loc></url>
+  <url><loc>https://usafreetool.com/text-case-converter.html</loc></url>
+  <url><loc>https://usafreetool.com/text-cleaner.html</loc></url>
+  <url><loc>https://usafreetool.com/json-formatter.html</loc></url>
+  <url><loc>https://usafreetool.com/url-encoder.html</loc></url>
+  <url><loc>https://usafreetool.com/uuid-generator.html</loc></url>
+  <url><loc>https://usafreetool.com/salary-calculator.html</loc></url>
+  <url><loc>https://usafreetool.com/split-bill.html</loc></url>
+  <url><loc>https://usafreetool.com/debt-payoff.html</loc></url>
+  <url><loc>https://usafreetool.com/savings-goal.html</loc></url>
+  <url><loc>https://usafreetool.com/countdown.html</loc></url>
+  <url><loc>https://usafreetool.com/date-difference.html</loc></url>
+  <url><loc>https://usafreetool.com/dice-roller.html</loc></url>
 </urlset>
