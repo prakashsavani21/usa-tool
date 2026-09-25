@@ -822,6 +822,7 @@
 <style id="site-ad-placement-style">.site-ad{display:flex;justify-content:center;align-items:center;margin:24px auto;min-height:20px;overflow:hidden;text-align:center}.site-ad-300x250{width:300px;min-height:250px}.site-ad-native{width:100%;max-width:720px;min-height:120px}</style>
   <!-- Monetag Multitag -->
   <script src="https://quge5.com/88/tag.min.js" data-zone="285011" async data-cfasync="false"></script>
+<link rel="stylesheet" href="usft-mobile.css">
 </head>
 
 <body>
@@ -860,7 +861,7 @@
       🎁 Enter $100 Giveaway
     </a>
 
-    <div class="search-box">
+    <div class="search-box" id="search">
 
       <input
         type="search"
@@ -885,6 +886,8 @@
   </section>
 
 </header>
+<section class="usft-daily-hub" id="daily" aria-label="Daily utility hub"><div class="section-title"><h2>Today at USA Free Tools</h2><p>Quick information and useful tools for everyday tasks.</p></div><div class="usft-daily-grid"><div class="usft-daily-card"><h3>📅 Today</h3><strong id="usft-date">—</strong><small id="usft-days">—</small></div><div class="usft-daily-card"><h3>⏰ Local Time</h3><strong id="usft-time">—</strong><small>Your device time</small></div><div class="usft-daily-card"><h3>🧮 Free Tools</h3><strong>30+</strong><small>Calculators & utilities</small></div><div class="usft-daily-card"><h3>⭐ Quick Access</h3><strong>Fast</strong><small>Mobile-friendly tools</small></div></div></section>
+
 
 
 
@@ -1227,7 +1230,7 @@
   
 <!-- TOOLS -->
 
-  <section id="tools">
+  <section class="container" aria-label="New tools"><div class="section-title"><h2>New Everyday Tools</h2><p>Useful utilities you can use anytime.</p></div><div class="tools"><a class="tool-card" href="budget-planner.html"><h3>💰 Budget Planner</h3><p>Track income, expenses and remaining budget.</p></a><a class="tool-card" href="password-generator.html"><h3>🔐 Password Generator</h3><p>Create strong random passwords instantly.</p></a><a class="tool-card" href="word-counter.html"><h3>📝 Word Counter</h3><p>Count words and characters while you type.</p></a><a class="tool-card" href="random-number-generator.html"><h3>🎲 Random Number</h3><p>Generate a random number between two values.</p></a></div></section><section id="tools">
 
     <div class="section-title">
 
@@ -2986,5 +2989,9 @@ sc.async=true;
 
 <div class="site-ad" aria-label="Advertisement">
 </div>
+<nav class="usft-mobile-nav" id="usft-mobile-nav" aria-label="Mobile navigation"><a href="index.html"><span>⌂</span>Home</a><a href="index.html#tools"><span>🧰</span>Tools</a><a href="index.html#daily"><span>☀</span>Today</a><a href="index.html#search"><span>⌕</span>Search</a></nav>
+<script>
+(function(){function tick(){var n=new Date(),d=document.getElementById('usft-date'),t=document.getElementById('usft-time'),r=document.getElementById('usft-days');if(d)d.textContent=n.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});if(t)t.textContent=n.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});if(r){var e=new Date(n.getFullYear(),11,31,23,59,59);r.textContent=Math.ceil((e-n)/86400000)+' days left this year'}}tick();setInterval(tick,1000)})();
+</script>
 </body>
 </html>
